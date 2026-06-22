@@ -1,0 +1,166 @@
+\documentclass[12pt,a4paper]{scrreprt}
+
+% --- Grundlegende Pakete ---
+\usepackage[T1]{fontenc}
+\usepackage[ngerman]{babel}
+\usepackage{lmodern}
+
+% --- Schrift für APA: Times New Roman ---
+\usepackage{newtxtext,newtxmath}
+
+% APA-konforme Seitenränder (1 inch = 2.54 cm)
+\usepackage{geometry}
+\geometry{left=2.54cm, right=2.54cm, top=2.54cm, bottom=2.54cm}
+
+% Absatzformat APA
+\setlength{\parindent}{0pt}         % kein Einzug
+\setlength{\parskip}{0.8em}         % Abstand zwischen Absätzen
+
+\usepackage{xcolor}
+
+% --- Chapter ohne Seitenumbruch ---
+\RedeclareSectionCommand[beforeskip=0pt, afterskip=1.5em]{chapter}
+
+% --- Kopf- und Fußzeile ---
+\usepackage[automark]{scrlayer-scrpage}
+\KOMAoptions{headings=small} % sorgt dafür, dass Kapitel die Kopf-/Fußzeile übernehmen
+\clearpairofpagestyles
+
+% APA-konforme Kopfzeile: Titel bzw. Kapitelname + Seitenzahl
+\ohead{\leftmark}  
+\ofoot*{\pagemark}   % Fuß rechts auf allen Seiten, * sorgt auch für plain-Seiten
+\pagestyle{scrheadings}
+
+% --- Mathe, Tabellen, Grafiken, Verzeichnisse ---
+\usepackage{amsmath}  % amssymb entfernt, kein Konflikt mehr
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage[printonlyused]{acronym} % nur verwendete Abkürzungen ins Verzeichnis
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{array}
+\newcolumntype{P}[1]{>{\raggedright\arraybackslash}p{#1}}
+\usepackage{chngcntr}
+\counterwithout{table}{chapter}
+\counterwithout{figure}{chapter} 
+\usepackage{caption}
+\captionsetup[table]{font=normalsize}
+
+% --- PDF-Seiten einbinden (z. B. Deckblatt) ---
+\usepackage{pdfpages}
+
+% --- Literatur ---
+\usepackage{csquotes}
+\usepackage[backend=biber,style=apa]{biblatex}
+\DefineBibliographyStrings{ngerman}{
+  andothers = {et\addabbrvspace al\adddot}
+}
+%\renewcommand*{\nameyeardelim}{\addcomma\space}
+\addbibresource{bib/references.bib}
+
+% --- Hyperlinks und typografische Optimierung ---
+\usepackage{microtype}
+\usepackage[colorlinks=true, linkcolor=black, citecolor=blue]{hyperref}
+
+% --- Dokumentbeginn ---
+\begin{document}
+
+% --------------------------------------------------------
+% Deckblatt Vorlage (Word-Datei als PDF-Dokument)
+% --------------------------------------------------------
+%\pagestyle{empty}  % keine Seitenzahl auf Deckblatt
+% Deckblatt als PDF einbinden, ohne Seitenzahl
+\includepdf[pages=1, pagecommand={\thispagestyle{empty}}]{images/...}
+\clearpage
+
+% --------------------------------------------------------
+% Abstract
+% --------------------------------------------------------
+\pagenumbering{roman}
+\setcounter{page}{2}
+\input{chapters/0_abstract.tex}
+\clearpage
+
+% --------------------------------------------------------
+% Inhaltsverzeichnis
+% --------------------------------------------------------
+
+\tableofcontents
+\clearpage
+
+% --------------------------------------------------------
+% Abbildungsverzeichnis
+% --------------------------------------------------------
+% \chapter*{Abbildungsverzeichnis}
+
+\listoffigures
+\addcontentsline{toc}{chapter}{Abbildungsverzeichnis}
+\clearpage
+% --------------------------------------------------------
+% Tabellenverzeichnis
+% --------------------------------------------------------
+% \chapter*{Tabellenverzeichnis}
+\listoftables
+\addcontentsline{toc}{chapter}{Tabellenverzeichnis}
+\clearpage
+
+% --------------------------------------------------------
+% Abkürzungsverzeichnis
+% --------------------------------------------------------
+\chapter*{Abkürzungsverzeichnis}
+\addcontentsline{toc}{chapter}{Abkürzungsverzeichnis}
+\begin{acronym}
+\end{acronym}
+\clearpage
+
+% --------------------------------------------------------
+% Kopf- und Fußzeilen für Hauptteil einstellen
+% --------------------------------------------------------
+\pagenumbering{arabic}  % arabische Zahlen: 1, 2, 3 …
+\setcounter{page}{1}
+\ohead{\leftmark}        % Kopf rechts: aktuelles Kapitel
+\ofoot{\pagemark}        % Fuß rechts: Seitenzahl
+\pagestyle{scrheadings}  % aktiviere KOMA-Script-Kopf-/Fußzeilen
+
+% --------------------------------------------------------
+% Kapitel laden
+% --------------------------------------------------------
+
+{
+  \let\clearpage\relax
+  \input{chapters/}
+}
+%\let\clearpage\clearpage
+\clearpage
+
+% --------------------------------------------------------
+% Literaturverzeichnis
+% --------------------------------------------------------
+%\nocite{*}
+\pagenumbering{roman}  % arabische Zahlen: 1, 2, 3 …
+\setcounter{page}{8}
+\addcontentsline{toc}{chapter}{Literaturverzeichnis}
+\printbibliography[title={Literaturverzeichnis}]
+\clearpage
+
+% --------------------------------------------------------
+% Eigenständigkeitserklärung
+% --------------------------------------------------------
+% \chapter*{Eigenständigkeitserklärung}
+\input{chapters/...}
+\clearpage
+
+% --------------------------------------------------------
+% KI-Verzeichnis
+% --------------------------------------------------------
+\input{chapters/...}
+\clearpage
+
+% --------------------------------------------------------
+% Anhang
+% --------------------------------------------------------
+\input{chapters/...}
+
+\end{document}

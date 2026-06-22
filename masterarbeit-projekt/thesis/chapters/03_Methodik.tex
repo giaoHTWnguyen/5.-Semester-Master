@@ -1,0 +1,21 @@
+\chapter{Methodik}
+    
+\section{Forschungsdesign}
+\label{sec:forschungsdesign}
+
+Die vorliegende Arbeit verfolgt ein empirisch-experimentelles Forschungsdesign. Ziel ist es, die Zuverlässigkeit und 
+Datentreue von \gls{llm}-gestützter explorativer Datenanalyse unter kontrollierten Bedingungen systematisch zu untersuchen.
+Dazu werden die Ausgaben zweier \glspl{llm} mit einem rechnerisch ermittelten Referenzwert verglichen, der auf Basis denselben Eingabedaten mit etablierten statistischen Methoden berechnet wurde. Der experimentelle Ansatz ermöglicht es, Zusammenhänge zwischen der Art der Eingabedaten, der Gestaltung der Prompts sowie der Qualität der generierten Analyseergebnisse zu untersuchen.
+
+\section{Untersuchungsansatz}
+
+\subsection*{Experiment 1 -- Referenzanalyse}
+
+Das erste Experiment adressiert die Forschungsfragen 1 und 2 und bildet die Grundlage der gesamten Untersuchung. Zunächst werden auf Basis des gewählten Datensatzes mittels Python und der Bibliothek pandas statistisch korrekte Referenzwerte berechnet. Diese umfassen deskriptive Kennzahlen wie Mittelwert, Median und Standardabweichung zentraler Variablen sowie bivariate Zusammenhänge in Form von Korrelationskoeffizienten. Die so ermittelten Werten bilden den Richtwert, anhand dessen die \gls{llm}-Ausgaben bewertet werden.
+
+Im Anschluss werden beide \glspl{llm} identische Prompts sowie der vollständige Datensatz über die jeweilige Programmierschnittstelle übergeben. Die generierten Analyseergebnisse werden anschließend mit den Referenzwerten verglichen und anhand des in Abschnitt~\ref{sec:evaluation} beschriebenen Evaluationsframeworks bewertet.
+
+\section{Beschreibung des Analyse-Setups} 
+\section{Evaluationskriterien}
+\section{Datengrundlage}
+    

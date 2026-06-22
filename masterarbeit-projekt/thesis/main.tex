@@ -1,0 +1,128 @@
+\documentclass[
+  12pt,
+  a4paper,
+  twoside,
+  openright,
+  headsepline,
+  chapterprefix=true
+]{scrreprt}
+
+% ── Encoding & Sprache ──────────────────────────────────────
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[ngerman]{babel}
+\usepackage{parskip}
+
+
+% ── Schrift ─────────────────────────────────────────────────
+\usepackage{lmodern}
+\usepackage{csquotes}
+
+\usepackage{xcolor}
+\newcommand{\todo}[1]{\textbf{\textcolor{red}{[TODO: #1]}}}
+
+% ── Seitenlayout ────────────────────────────────────────────
+\usepackage[
+  a4paper,
+  left=3cm, right=2.5cm,
+  top=2.5cm, bottom=2.5cm
+]{geometry}
+
+% ── Zeilenabstand ───────────────────────────────────────────
+\usepackage{setspace}
+\onehalfspacing
+
+% ── Literatur ───────────────────────────────────────────────
+\usepackage[backend=biber, style=apa, sorting=nyt]{biblatex}
+\addbibresource{literatur.bib}
+
+% ── Grafiken & Farben ───────────────────────────────────────
+\usepackage{graphicx}
+\usepackage{xcolor}
+% \graphicspath{{figures/}}
+
+% ── Tabellen ────────────────────────────────────────────────
+\usepackage{booktabs}
+\usepackage{tabularx}
+
+% ── Links & PDF-Metadaten ───────────────────────────────────
+\usepackage[
+  hidelinks,
+  pdftitle={Untersuchung der Datenkonsistenz und Zuverlässigkeit
+            in interaktiver LLM-gestützter explorativer Datenanalyse},
+  pdfauthor={Giao Thien Nguyen},
+  pdfsubject={Masterarbeit HTW Berlin}
+]{hyperref}
+
+% ── Code-Listings ───────────────────────────────────────────
+\usepackage{listings}
+\usepackage{lstautogobble}
+\lstset{
+  basicstyle=\ttfamily\small,
+  breaklines=true,
+  frame=single,
+  autogobble=true
+}
+
+% ── Abkürzungsverzeichnis ───────────────────────────────────
+\usepackage[acronym, toc]{glossaries}
+\makeglossaries
+% Abkürzungen definieren:
+\newacronym{llm}{LLM}{Large Language Model}
+\newacronym{eda}{EDA}{Explorative Datenanalyse}
+\newacronym{nlp}{NLP}{Natural Language Processing}
+
+% ============================================================
+\begin{document}
+
+% ── Titelseite ──────────────────────────────────────────────
+%\input{chapters/00_titelseite}
+\cleardoublepage
+
+% ── Sperrvermerk (optional, auskommentieren wenn nicht nötig)
+% \input{chapters/00_sperrvermerk}
+% \cleardoublepage
+
+% ── Abstract ────────────────────────────────────────────────
+% \input{chapters/00_abstract}
+\cleardoublepage
+
+% ── Verzeichnisse ───────────────────────────────────────────
+\pagenumbering{Roman}
+
+\tableofcontents
+\cleardoublepage
+
+\listoffigures
+\cleardoublepage
+
+\listoftables
+\cleardoublepage
+
+\printglossary[type=\acronymtype, title=Abkürzungsverzeichnis]
+\cleardoublepage
+
+% ── Hauptteil ───────────────────────────────────────────────
+\pagenumbering{arabic}
+
+\input{chapters/01_Einleitung.tex}
+\input{chapters/02_TheoretischeGrundlagen.tex}
+\input{chapters/03_Methodik.tex}
+\input{chapters/04_Durchführung.tex}
+\input{chapters/05_Ergebnisse.tex}
+\input{chapters/06_Diskussion.tex}
+\input{chapters/07_Fazit.tex}
+
+% ── Literaturverzeichnis ────────────────────────────────────
+\cleardoublepage
+\printbibliography[heading=bibintoc, title={Literaturverzeichnis}]
+
+% ── Anhang ──────────────────────────────────────────────────
+\appendix
+%\input{chapters/anhang}
+
+% ── Eidesstattliche Erklärung ───────────────────────────────
+\cleardoublepage
+% \input{chapters/00_erklaerung}
+
+\end{document}
