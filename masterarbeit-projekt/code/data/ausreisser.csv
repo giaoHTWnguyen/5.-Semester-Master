@@ -1,0 +1,15 @@
+,anzahl,anteil_prozent,untere_grenze,obere_grenze
+TrainingTimesLastYear,238.0,16.19,0.5,4.5
+MonthlyIncome,114.0,7.76,-5291.0,16581.0
+YearsSinceLastPromotion,107.0,7.28,-4.5,7.5
+YearsAtCompany,104.0,7.07,-6.0,18.0
+TotalWorkingYears,63.0,4.29,-7.5,28.5
+NumCompaniesWorked,52.0,3.54,-3.5,8.5
+YearsInCurrentRole,21.0,1.43,-5.5,14.5
+YearsWithCurrManager,14.0,0.95,-5.5,14.5
+DistanceFromHome,0.0,0.0,-16.0,32.0
+DailyRate,0.0,0.0,-573.0,2195.0
+Age,0.0,0.0,10.5,62.5
+HourlyRate,0.0,0.0,-5.62,137.38
+MonthlyRate,0.0,0.0,-10574.75,39083.25
+PercentSalaryHike,0.0,0.0,3.0,27.0

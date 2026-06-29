@@ -1,0 +1,9 @@
+{
+  "datei": "ibm_original.csv",
+  "sha256": "a5c31e38bd7fafc9bc333884eb181b06b41b8e5e488e8f7ccb27199fb3be7659",
+  "zeilen_roh": 1470,
+  "spalten_roh": 35,
+  "pandas_version": "3.0.3",
+  "numpy_version": "2.4.6",
+  "erstellt_am": "2026-06-26"
+}
