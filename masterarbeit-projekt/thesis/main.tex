@@ -2,9 +2,7 @@
   12pt,
   a4paper,
   twoside,
-  openright,
-  headsepline,
-  chapterprefix=true
+  openright
 ]{scrreprt}
 
 % ── Encoding & Sprache ──────────────────────────────────────
@@ -31,6 +29,20 @@
 % ── Zeilenabstand ───────────────────────────────────────────
 \usepackage{setspace}
 \onehalfspacing
+
+% ── Kopfzeile mit Kapitel-/Abschnittsangabe ─────────────────
+\usepackage[headsepline]{scrlayer-scrpage}
+\pagestyle{scrheadings}
+\clearpairofpagestyles
+\automark{chapter}
+\lohead{\headmark}
+\lehead{\headmark}
+\cfoot[\pagemark]{\pagemark}   % Seitenzahl mittig im Fuß
+
+% ── Kapitelüberschrift verkleinern ──────────────────────────
+\addtokomafont{chapter}{\LARGE}
+\addtokomafont{section}{\Large}
+
 
 % ── Literatur ───────────────────────────────────────────────
 \usepackage[backend=biber, style=apa, sorting=nyt]{biblatex}
