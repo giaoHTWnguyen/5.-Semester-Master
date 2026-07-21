@@ -398,7 +398,7 @@
     "spalten": 34,
     "pandas_version": "3.0.3",
     "numpy_version": "2.4.6",
-    "erstellt_am": "2026-07-20 16:53:52",
+    "erstellt_am": "2026-07-21 22:26:24",
     "hinweis": "Ground Truth für Experiment 1. Referenzwerte auf der bereinigten Fassung berechnet, nicht auf dem an das Modell übergebenen Rohdatensatz."
   },
   "top_assoziationsregeln_attrition": {
@@ -416,40 +416,6 @@
       {
         "wenn": [
           "Age_bin_niedrig",
-          "YearsAtCompany_bin_niedrig",
-          "YearsInCurrentRole_bin_niedrig",
-          "YearsSinceLastPromotion_bin_kürzlich"
-        ],
-        "dann": "Attrition_Yes",
-        "support": 0.0503,
-        "confidence": 0.4181,
-        "lift": 2.5931
-      },
-      {
-        "wenn": [
-          "OverTime_Yes",
-          "YearsInCurrentRole_bin_niedrig"
-        ],
-        "dann": "Attrition_Yes",
-        "support": 0.0571,
-        "confidence": 0.4078,
-        "lift": 2.5292
-      },
-      {
-        "wenn": [
-          "Age_bin_niedrig",
-          "YearsAtCompany_bin_niedrig",
-          "YearsSinceLastPromotion_bin_kürzlich",
-          "YearsWithCurrManager_bin_niedrig"
-        ],
-        "dann": "Attrition_Yes",
-        "support": 0.0503,
-        "confidence": 0.4,
-        "lift": 2.481
-      },
-      {
-        "wenn": [
-          "Age_bin_niedrig",
           "MonthlyIncome_bin_niedrig",
           "YearsAtCompany_bin_niedrig"
         ],
@@ -457,43 +423,6 @@
         "support": 0.051,
         "confidence": 0.3989,
         "lift": 2.4744
-      },
-      {
-        "wenn": [
-          "Age_bin_niedrig",
-          "TotalWorkingYears_bin_niedrig",
-          "YearsAtCompany_bin_niedrig",
-          "YearsInCurrentRole_bin_niedrig",
-          "YearsWithCurrManager_bin_niedrig"
-        ],
-        "dann": "Attrition_Yes",
-        "support": 0.0565,
-        "confidence": 0.3934,
-        "lift": 2.4399
-      },
-      {
-        "wenn": [
-          "Age_bin_niedrig",
-          "TotalWorkingYears_bin_niedrig",
-          "YearsAtCompany_bin_niedrig",
-          "YearsInCurrentRole_bin_niedrig"
-        ],
-        "dann": "Attrition_Yes",
-        "support": 0.0578,
-        "confidence": 0.3917,
-        "lift": 2.4296
-      },
-      {
-        "wenn": [
-          "Age_bin_niedrig",
-          "MonthlyIncome_bin_niedrig",
-          "TotalWorkingYears_bin_niedrig",
-          "YearsInCurrentRole_bin_niedrig"
-        ],
-        "dann": "Attrition_Yes",
-        "support": 0.0503,
-        "confidence": 0.3915,
-        "lift": 2.4285
       },
       {
         "wenn": [
@@ -508,13 +437,78 @@
       },
       {
         "wenn": [
-          "OverTime_Yes",
-          "YearsWithCurrManager_bin_niedrig"
+          "Age_bin_niedrig",
+          "MaritalStatus_Single"
         ],
         "dann": "Attrition_Yes",
-        "support": 0.0544,
-        "confidence": 0.3902,
-        "lift": 2.4205
+        "support": 0.051,
+        "confidence": 0.3886,
+        "lift": 2.4103
+      },
+      {
+        "wenn": [
+          "Age_bin_niedrig",
+          "MonthlyIncome_bin_niedrig",
+          "YearsSinceLastPromotion_bin_kürzlich"
+        ],
+        "dann": "Attrition_Yes",
+        "support": 0.0537,
+        "confidence": 0.3835,
+        "lift": 2.3786
+      },
+      {
+        "wenn": [
+          "Age_bin_niedrig",
+          "TotalWorkingYears_bin_niedrig",
+          "YearsAtCompany_bin_niedrig"
+        ],
+        "dann": "Attrition_Yes",
+        "support": 0.0599,
+        "confidence": 0.3777,
+        "lift": 2.3426
+      },
+      {
+        "wenn": [
+          "MonthlyIncome_bin_niedrig",
+          "TotalWorkingYears_bin_niedrig",
+          "YearsAtCompany_bin_niedrig",
+          "YearsSinceLastPromotion_bin_kürzlich"
+        ],
+        "dann": "Attrition_Yes",
+        "support": 0.0531,
+        "confidence": 0.3714,
+        "lift": 2.3038
+      },
+      {
+        "wenn": [
+          "Age_bin_niedrig",
+          "YearsAtCompany_bin_niedrig"
+        ],
+        "dann": "Attrition_Yes",
+        "support": 0.0639,
+        "confidence": 0.3629,
+        "lift": 2.2511
+      },
+      {
+        "wenn": [
+          "Age_bin_niedrig",
+          "MonthlyIncome_bin_niedrig",
+          "TotalWorkingYears_bin_niedrig"
+        ],
+        "dann": "Attrition_Yes",
+        "support": 0.0551,
+        "confidence": 0.36,
+        "lift": 2.2329
+      },
+      {
+        "wenn": [
+          "MaritalStatus_Single",
+          "YearsAtCompany_bin_niedrig"
+        ],
+        "dann": "Attrition_Yes",
+        "support": 0.0503,
+        "confidence": 0.3592,
+        "lift": 2.2281
       }
     ],
     "typ": "rangfolge",
