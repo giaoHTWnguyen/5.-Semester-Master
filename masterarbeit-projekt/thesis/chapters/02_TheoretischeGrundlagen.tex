@@ -38,7 +38,7 @@ Zur strukturierten Durchführung beschreiben \textcite{rahmany_comparing_2020} s
             {iterative Wiederholung};
     \end{tikzpicture}
     \caption[Prozessschritte der explorativen Datenanalyse]{Sechs Schritte der explorativen Datenanalyse nach \textcite{rahmany_comparing_2020}. Der gestrichelte Pfeil kennzeichnet den iterativen Charakter des Prozesses.}
-    \label{fig:eda-prozess}
+\label{fig:eda-prozess}
 \end{figure}
 
 
@@ -50,7 +50,7 @@ Deskriptive Statistiken dienen der Zusammenfassung qualitativer wie quantitative
     \centering
     \includegraphics[width=0.8\textwidth]{figures/verteilung_monthlyincome.pdf}
     \caption[Rechtsschiefe Verteilung am Beispiel MonthlyIncome]{Verteilung der Variable \texttt{MonthlyIncome} im verwendeten Datensatz. Der Mittelwert liegt rechts vom Median, was für eine rechtsschiefe Verteilung charakteristisch ist.}
-    \label{fig:schiefe-monthlyincome}
+\label{fig:schiefe-monthlyincome}
 \end{figure}
 
 Die grafischen Methoden dienen der visuellen Aufbereitung der Daten mit dem Ziel, handlungsrelevante Erkenntnisse zu gewinnen. Die Wahl der Darstellung richtet sich dabei nach dem Datentyp; Histogramme und Boxplots kommen etwa sowohl für univariate als auch für bivariate Daten zum Einsatz \parencite{rahmany_comparing_2020}. 
@@ -101,6 +101,27 @@ Dass Halluzinationen messbar und modellabhängig sind, zeigt eine Untersuchung z
 
 Über die empirische Beobachtung hinaus wird die Unvermeidbarkeit von Halluzination theoretisch begründet. \textcite{xu_hallucination_2025} zeigen mit lerntheoretischen Mitteln, dass \glspl{llm} nicht alle berechenbaren Funktionen erlernen können und als allgemeine Problemlöser daher zwangsläufig halluzinieren. Für die Analysepraxis bedeutsam ist ihre Schlussfolgerung, dass sich Halluzination nicht allein durch veränderte Prompts beseitigen lässt und die Wirksamkeit des in Abschnitt \ref{sec:llm-analyse} beschriebenen Chain-of-Thought-Promptings somit auf bestimmte Aufgabentypen begrenzt bleibt. Als wirksamerer Ansatzpunkt gilt die Anreicherung mit externem Wissen, etwa durch Wissensdatenbanken oder Werkzeuge, da dem Modell so Information über die Zielfunktion zugeführt wird, die über die reinen Trainingsdaten hinausgeht \parencite{xu_hallucination_2025}. In dieselbe Richtung weist die Untersuchung von \textcite{zheng_reliable_2024} zur Verlässlichkeit von \glspl{llm} als Wissensbasis. Ein faktentreues Modell gibt bekanntes Wissen korrekt wieder und stellt zu unbekanntem keine Behauptungen auf, wobei sich die Überschätzung des eigenen Wissens besonders bei numerischen und zeitbezogenen Fragen zeigt. Konsistenz allein ist dabei kein hinreichendes Gütekriterium, da auch fehlerhafte Antworten konsistent wiederholt werden können \parencite{zheng_reliable_2024}.
 
-Besondere Bedeutung erhält in diesem Zusammenhang die in Abschnitt \ref{sec:llm} beschriebene rein parametrische Wissensrepräsentation. Ein Modell unterscheidet nicht zwischen erlerntem Vorwissen und den im Prompt bereitgestellten Daten \parencite{wang_generalization_2024} und kann einen bekannten Datensatz daher vermeintlich korrekt beschreiben, ohne die konkret bereitgestellten Werte praktisch zu verarbeiten. Dieser Konflikt zwischen datenbasierten und wissensbasierten Ausgaben markiert eine zentrale Grenze der Verlässlichkeit \gls{llm}-gestützter Datenanalyse.
+Besondere Bedeutung erhält in diesem Zusammenhang die in Abschnitt \ref{sec:llm} beschriebene rein parametrische Wissensrepräsentation. Ein Modell unterscheidet nicht zwischen erlerntem Vorwissen und den im Prompt bereitgestellten Daten \parencite{wang_generalization_2024} und kann einen bekannten Datensatz daher vermeintlich korrekt beschreiben, ohne die konkret bereitgestellten Werte praktisch zu verarbeiten. \autoref{fig:daten-vs-wissen} veranschaulicht dieses Zusammenwirken beider Wissensquellen. Dieser Konflikt zwischen datenbasierten und wissensbasierten Ausgaben markiert eine zentrale Grenze der Verlässlichkeit \gls{llm}-gestützter Datenanalyse.
+\begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}[
+        box/.style={draw, rounded corners, align=center, minimum height=1.1cm, text width = 3.2cm, font=\small},
+        modell/.style={draw, rounded corners, align=center, minimum height=1.6cm,
+                   text width=2.6cm, font=\small},
+        pfeil/.style={-{Stealth[length=2mm]}, thick}
+    ]
+        \node[box] (daten) {Bereitgestellte Daten\\(Prompt)};
+        \node[box, below=1.1cm of daten] (wissen) {Vortrainiertes Wissen\\(Modellparameter)};
+        \node[modell, right=3.0cm of $(daten)!0.5!(wissen)$] (llm) {\gls{llm}};
+        \node[box, right=1.6cm of llm] (ausgabe) {Generierte Aussage};
+        \draw[pfeil] (daten) -| ([xshift=-0.5cm] llm.west) |- (llm.west);
+        \draw[pfeil] (wissen) -| ([xshift=-0.5cm] llm.west) |- (llm.west);
+        \draw[pfeil] (llm) -- (ausgabe);
+        \node[below=0.35cm of ausgabe, font=\footnotesize, text width=3.4cm,
+          align=center] {Herkunft aus der Ausgabe\\nicht unterscheidbar};
+    \end{tikzpicture}
+    \caption[Datenbasierte und wissensbasierte Ausgaben]{Zusammenführung der im Prompt bereitgestellten Daten und des in den Modellparametern gespeicherten Wissens bei der Generierung einer Ausgabe.}
+    \label{fig:daten-vs-wissen}
+\end{figure}
 
 Zusammenfassend zeigen die dargestellten Eigenschaften, dass \glspl{llm} die benannten Anforderungen an Reproduzierbarkeit und Validität nur eingeschränkt erfüllen. Halluzinationen gefährden die Validität, indem sie inhaltlich nicht gedeckte Ausgaben erzeugen und ihre begründete Unvermeidbarkeit schließt eine vollständige Beseitigung aus \parencite{xu_hallucination_2025}. Hinzu kommt, dass ein Modell aufgrund seiner rein parametrischen Wissensrepräsentation dazu neigen kann, Ausgaben aus vortrainiertem Wissen statt aus den bereitgestellten Daten zu generieren. Für die \gls{llm}-gestützte explorative Datenanalyse folgt daraus, dass die Übereinstimmung der Modellausgaben mit dem tatsächlichen Dateninhalt nicht vorausgesetzt, sondern eigens geprüft werden muss. Im Kontext dieser Arbeit wird Datenkonsistenz als die Übereinstimmung zwischen einer generierten Aussage und dem zugrunde liegenden Datensatz verstanden. Sie stellt eine wesentliche Voraussetzung für die Beurteilung der Verlässlichkeit generierter Inhalte dar. 

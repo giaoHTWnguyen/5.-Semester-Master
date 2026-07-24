@@ -398,7 +398,7 @@
     "spalten": 34,
     "pandas_version": "3.0.3",
     "numpy_version": "2.4.6",
-    "erstellt_am": "2026-07-21 22:26:24",
+    "erstellt_am": "2026-07-24 12:50:24",
     "hinweis": "Ground Truth für Experiment 1. Referenzwerte auf der bereinigten Fassung berechnet, nicht auf dem an das Modell übergebenen Rohdatensatz."
   },
   "top_assoziationsregeln_attrition": {
@@ -411,29 +411,8 @@
         "dann": "Attrition_Yes",
         "support": 0.051,
         "confidence": 0.431,
+        "improvement": 0.1257,
         "lift": 2.6735
-      },
-      {
-        "wenn": [
-          "Age_bin_niedrig",
-          "MonthlyIncome_bin_niedrig",
-          "YearsAtCompany_bin_niedrig"
-        ],
-        "dann": "Attrition_Yes",
-        "support": 0.051,
-        "confidence": 0.3989,
-        "lift": 2.4744
-      },
-      {
-        "wenn": [
-          "Age_bin_niedrig",
-          "YearsAtCompany_bin_niedrig",
-          "YearsSinceLastPromotion_bin_kürzlich"
-        ],
-        "dann": "Attrition_Yes",
-        "support": 0.0524,
-        "confidence": 0.3909,
-        "lift": 2.4243
       },
       {
         "wenn": [
@@ -443,41 +422,8 @@
         "dann": "Attrition_Yes",
         "support": 0.051,
         "confidence": 0.3886,
+        "improvement": 0.1333,
         "lift": 2.4103
-      },
-      {
-        "wenn": [
-          "Age_bin_niedrig",
-          "MonthlyIncome_bin_niedrig",
-          "YearsSinceLastPromotion_bin_kürzlich"
-        ],
-        "dann": "Attrition_Yes",
-        "support": 0.0537,
-        "confidence": 0.3835,
-        "lift": 2.3786
-      },
-      {
-        "wenn": [
-          "Age_bin_niedrig",
-          "TotalWorkingYears_bin_niedrig",
-          "YearsAtCompany_bin_niedrig"
-        ],
-        "dann": "Attrition_Yes",
-        "support": 0.0599,
-        "confidence": 0.3777,
-        "lift": 2.3426
-      },
-      {
-        "wenn": [
-          "MonthlyIncome_bin_niedrig",
-          "TotalWorkingYears_bin_niedrig",
-          "YearsAtCompany_bin_niedrig",
-          "YearsSinceLastPromotion_bin_kürzlich"
-        ],
-        "dann": "Attrition_Yes",
-        "support": 0.0531,
-        "confidence": 0.3714,
-        "lift": 2.3038
       },
       {
         "wenn": [
@@ -487,18 +433,8 @@
         "dann": "Attrition_Yes",
         "support": 0.0639,
         "confidence": 0.3629,
+        "improvement": 0.1129,
         "lift": 2.2511
-      },
-      {
-        "wenn": [
-          "Age_bin_niedrig",
-          "MonthlyIncome_bin_niedrig",
-          "TotalWorkingYears_bin_niedrig"
-        ],
-        "dann": "Attrition_Yes",
-        "support": 0.0551,
-        "confidence": 0.36,
-        "lift": 2.2329
       },
       {
         "wenn": [
@@ -508,11 +444,139 @@
         "dann": "Attrition_Yes",
         "support": 0.0503,
         "confidence": 0.3592,
+        "improvement": 0.1039,
         "lift": 2.2281
+      },
+      {
+        "wenn": [
+          "Age_bin_niedrig",
+          "MonthlyIncome_bin_niedrig"
+        ],
+        "dann": "Attrition_Yes",
+        "support": 0.0612,
+        "confidence": 0.3371,
+        "improvement": 0.0759,
+        "lift": 2.0907
+      },
+      {
+        "wenn": [
+          "MonthlyIncome_bin_niedrig",
+          "YearsAtCompany_bin_niedrig"
+        ],
+        "dann": "Attrition_Yes",
+        "support": 0.0667,
+        "confidence": 0.3172,
+        "improvement": 0.0559,
+        "lift": 1.9671
+      },
+      {
+        "wenn": [
+          "Age_bin_niedrig",
+          "TotalWorkingYears_bin_niedrig"
+        ],
+        "dann": "Attrition_Yes",
+        "support": 0.0687,
+        "confidence": 0.3079,
+        "improvement": 0.057,
+        "lift": 1.9099
+      },
+      {
+        "wenn": [
+          "TotalWorkingYears_bin_niedrig",
+          "YearsAtCompany_bin_niedrig"
+        ],
+        "dann": "Attrition_Yes",
+        "support": 0.0755,
+        "confidence": 0.3066,
+        "improvement": 0.0557,
+        "lift": 1.9019
+      },
+      {
+        "wenn": [
+          "OverTime_Yes"
+        ],
+        "dann": "Attrition_Yes",
+        "support": 0.0864,
+        "confidence": 0.3053,
+        "improvement": 0.1441,
+        "lift": 1.8936
+      },
+      {
+        "wenn": [
+          "MonthlyIncome_bin_niedrig"
+        ],
+        "dann": "Attrition_Yes",
+        "support": 0.0871,
+        "confidence": 0.2612,
+        "improvement": 0.1,
+        "lift": 1.6203
+      },
+      {
+        "wenn": [
+          "Gender_Male",
+          "YearsAtCompany_bin_niedrig"
+        ],
+        "dann": "Attrition_Yes",
+        "support": 0.0639,
+        "confidence": 0.2568,
+        "improvement": 0.0956,
+        "lift": 1.593
+      },
+      {
+        "wenn": [
+          "MaritalStatus_Single"
+        ],
+        "dann": "Attrition_Yes",
+        "support": 0.0816,
+        "confidence": 0.2553,
+        "improvement": 0.0941,
+        "lift": 1.5836
+      },
+      {
+        "wenn": [
+          "YearsAtCompany_bin_niedrig",
+          "YearsSinceLastPromotion_bin_kürzlich"
+        ],
+        "dann": "Attrition_Yes",
+        "support": 0.0782,
+        "confidence": 0.2544,
+        "improvement": 0.0932,
+        "lift": 1.5781
+      },
+      {
+        "wenn": [
+          "TotalWorkingYears_bin_niedrig"
+        ],
+        "dann": "Attrition_Yes",
+        "support": 0.0891,
+        "confidence": 0.251,
+        "improvement": 0.0897,
+        "lift": 1.5566
+      },
+      {
+        "wenn": [
+          "Age_bin_niedrig"
+        ],
+        "dann": "Attrition_Yes",
+        "support": 0.0878,
+        "confidence": 0.25,
+        "improvement": 0.0888,
+        "lift": 1.5506
       }
     ],
     "typ": "rangfolge",
     "toleranz": "richtung",
-    "quelle": "mlxtend apriori, min support=0.05, Konsequenz Attrition_Yes, Top 10 nach Lift"
+    "quelle": "mlxtend apriori, min_support=0.05, Mindestkonfidenz=0.2500 (Median), Minimal IMprovement>=0.05, Konsequenz Attrition_Yes, sortiert nach Lift"
+  },
+  "_meta_assoziationsregeln": {
+    "regeln_nach_attrition_filter": 75,
+    "regeln_nach_mindestkonfidenz": 39,
+    "regeln_nach_minimal_improvement": 15,
+    "ausgeschlossene_variablen": [
+      "YearsInCurrentRole",
+      "YearsWithCurrManager"
+    ],
+    "ausschlussgrund": "redundant zu YearsAtCompany",
+    "basisquote": 0.1612
   }
 }
