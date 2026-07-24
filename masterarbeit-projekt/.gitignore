@@ -35,4 +35,5 @@
 Thumbs.db
 
 ## Optional: kompiliertes PDF auskommentieren, falls du es behalten willst
-# *.pdf
+*.pdf
+*.env
