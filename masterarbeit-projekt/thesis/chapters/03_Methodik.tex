@@ -1,5 +1,21 @@
 \chapter{Methodik}
-    
+
+\section{Datengrundlage}
+
+\subsection{Beschreibung des Datensatzes}
+
+Als empirische Grundlage der Untersuchung dient der Datensatz \textit{IBM HR Analytics Employee Attrition and Performance}. Es handelt sich um einen synthetisch erzeugten Datensatz, der von Data Scientists bei IBM erstellt wurde und keine realen Beschäftigungsdaten enthält. Bezogen wurde er über die Plattform Kaggle\footnote{\url{https://www.kaggle.com/datasets/pavansubhasht/ibm-hr-analytics-attrition-dataset}}. Der Datensatz umfasst 1470 Beobachtungen, die jeweils eine fiktive beschäftigte Person repräsentieren, und in der Rohfassung 35 Variablen.
+
+Die Zielvariable \texttt{Attrition} gibt an, ob eine Person das Unternehmen verlassen hat und ist binär ausgeprägt. Im Datensatz liegt der Kündigungen bei rund 16\,\%, sodass eine deutliche Ungleichverteilung zwischen verbliebenen und ausgeschiedenen Personen besteht. Die erklärenden Variablen lassen sich in drei Gruppen einteilen: 14 metrische Variablen wie Alter, Monatseinkommen oder Betriebszugehörigkeit, neun ordinal skalierte Variablen, deren Ausprägungen als numerische Codes vorliegen (etwa Zufriedenheits- und Bewertungsskalen wie \texttt{JobSatisfaction} oder \texttt{WorkLifeBalance}), sowie sieben nominal-kategoriale Variablen wie Geschlecht, Abteilung oder Tätigkeitsfeld. Hinzu kommt die Variable \texttt{EmployeeNumber}, die als reine Identifikationsnummer keine inhaltlichen Informationen trägt und daher nicht in die Analyse eingeht.
+
+\subsection{Zweistufiger Datensatzaufbau}
+
+Für die Untersuchung wird der Datensatz in zwei Fassungen vorgehalten, die unterschiedliche Funktionen erfüllen. Die erste Fassung entspricht den unveränderten Rohdaten und wird den Modellen als Eingabe vorgelegt. Die zweite Fassung ist eine bereinigte Version, die als Referenz für die Bewertung der Modellantworten dient.
+
+Bei der Bereinigung wurden drei Variablen entfernt, die über alle Beobachtungen hinweg einen konstanten Wert aufweisen und damit keine Varianz besitzen: \texttt{EmployeeCount}, \texttt{StandardHours} und \texttt{Over18}. Aus den 35 Variablen der Rohfassung ergeben sich so 32 inhaltlich verwertbare Variablen, auf deren Grundlage sämtliche Referenzwerte berechnet werden.
+
+Die Entscheidung, den Modellen die unbereinigte Rohfassung vorzulegen, ist bewusst getroffen. Sie ermöglicht die Prüfung, ob ein Modell die uniformativen Variablen selbstständig als solche erkennt, anstatt ihnen eine Bedeutung zuzuschreiben. Zugleich entspricht die Rohfassung der Ausgangslage einer realen explorativen Analyse, in der die Beurteilung und Bereinigung der Daten Teil der Analyseaufgabe ist und nicht bereits vorausgesetzt wird. Die bereinigte Fassung bildet demgegenüber den korrekte Sollzustand ab, gegen den die Modellausgaben geprüft werden.
+
 \section{Forschungsdesign}
 \label{sec:forschungsdesign}
 
@@ -15,7 +31,7 @@ Das erste Experiment adressiert die Forschungsfragen 1 und 2 und bildet die Grun
 
 Im Anschluss werden beide \glspl{llm} identische Prompts sowie der vollständige Datensatz über die jeweilige Programmierschnittstelle übergeben. Die generierten Analyseergebnisse werden anschließend mit den Referenzwerten verglichen und anhand des in Abschnitt~\ref{sec:evaluation} beschriebenen Evaluationsframeworks bewertet.
 
-\section{Beschreibung des Analyse-Setups} 
-\section{Evaluationskriterien}
-\section{Datengrundlage}
+\section{Bewertungsmethodik} 
+\section{Durchführung}
+
     
