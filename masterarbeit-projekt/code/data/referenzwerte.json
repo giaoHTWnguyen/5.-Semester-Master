@@ -398,7 +398,7 @@
     "spalten": 34,
     "pandas_version": "3.0.3",
     "numpy_version": "2.4.6",
-    "erstellt_am": "2026-07-29 12:01:25",
+    "erstellt_am": "2026-07-31 09:56:58",
     "hinweis": "Ground Truth für Experiment 1. Referenzwerte auf der bereinigten Fassung berechnet, nicht auf dem an das Modell übergebenen Rohdatensatz."
   },
   "top_assoziationsregeln_attrition": {
