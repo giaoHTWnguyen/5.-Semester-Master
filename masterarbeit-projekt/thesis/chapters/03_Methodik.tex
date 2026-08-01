@@ -16,6 +16,14 @@ Bei der Bereinigung wurden drei Variablen entfernt, die über alle Beobachtungen
 
 Die Entscheidung, den Modellen die unbereinigte Rohfassung vorzulegen, ist bewusst getroffen. Sie ermöglicht die Prüfung, ob ein Modell die uniformativen Variablen selbstständig als solche erkennt, anstatt ihnen eine Bedeutung zuzuschreiben. Zugleich entspricht die Rohfassung der Ausgangslage einer realen explorativen Analyse, in der die Beurteilung und Bereinigung der Daten Teil der Analyseaufgabe ist und nicht bereits vorausgesetzt wird. Die bereinigte Fassung bildet demgegenüber den korrekte Sollzustand ab, gegen den die Modellausgaben geprüft werden.
 
+\subsection{Referenzwertberechnung}
+
+Um die Antworten der Modelle bewerten zu können, wird für jede Analysefrage ein Referenzwert benötigt, der den korrekt Sollzustand abbildet. Diese Referenzwerte werden auf der bereinigten Fassung des Datensatzes berechnet und dienen als Vergleichsmaßstab, gegen den die Modellausgaben geprüft werden Berechnet werden deskriptive Kennzahlen, Zusammenhänge sowie Merkmalskombinationen, die mit der Zielvariable einhergehen.
+
+Als deskriptive Kennzahlen werden für die metrischen Variablen Lage- und Streuungsmaße bestimmt, insbesondere Mittelwert und Median. Ausreißer werden anhand des in Abschnitt~\ref{fig:eda-prozess} eingeführten Kriteriums des 1,5-fachen Interquartilsabstands bestimmt, wonach ein Wert als Ausreißer gilt, wenn er mehr als das Anderthalbfache des Interquartilsabstands unterhalb des ersten oder oberhalb des dritten Quartils liegt. Für die Zielvariable sowie für die nominal-kategorialen Variablen wird die jeweilige Kündigungsquote als Anteil der ausgeschiedenen Personen ermittelt.
+
+Als Zusammenhangsmaß wird der Pearson-\-Korre\-lations\-koeffi\-zient berechnet. In die Berechnung gehen neben den metrischen auch die ordinal skalierten Variablen ein, deren numerische Codes dabei wie intervallskalierte Werte behandelt werden. Diese Vereinfachung dient dazu, eine einfache Baseline für die Frage zu enthalten, welche Faktoren mit einer Kündigung zusammenhängen. Ihre Grenzen sind bekannt: Der Pearson-Koeffizient erfasst ausschließlich lineare, paarweise Zusammenhänge und setzt streng genommen intervallskalierte Variablen voraus, was bei ordinalen Skalen nicht gegeben ist. Um diese Einschränkungen auszugleichen, werden ergänzend Assoziationsregeln herangezogen, die Zusammenhänge zwischen Kombinationen mehrerer Merkmale erfassen und nicht auf paarweise lineare Beziehungen beschränkt sind. 
+
 \section{Forschungsdesign}
 \label{sec:forschungsdesign}
 
