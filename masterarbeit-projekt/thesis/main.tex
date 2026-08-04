@@ -1,8 +1,8 @@
 \documentclass[
-  12pt,
-  a4paper,
-  twoside,
-  openright
+    12pt,
+    a4paper,
+    oneside,
+    openany
 ]{scrreprt}
 
 % ── Encoding & Sprache ──────────────────────────────────────
@@ -11,20 +11,12 @@
 \usepackage[ngerman]{babel}
 \usepackage{parskip}
 
-
 % ── Schrift ─────────────────────────────────────────────────
 \usepackage{lmodern}
 \usepackage{csquotes}
 
 \usepackage{xcolor}
 \newcommand{\todo}[1]{\textbf{\textcolor{red}{[TODO: #1]}}}
-
-% ── Seitenlayout ────────────────────────────────────────────
-\usepackage[
-  a4paper,
-  left=3cm, right=2.5cm,
-  top=2.5cm, bottom=2.5cm
-]{geometry}
 
 % ── Zeilenabstand ───────────────────────────────────────────
 \usepackage{setspace}
@@ -35,8 +27,7 @@
 \pagestyle{scrheadings}
 \clearpairofpagestyles
 \automark{chapter}
-\lohead{\headmark}
-\lehead{\headmark}
+\ihead{\headmark}
 \cfoot[\pagemark]{\pagemark}   % Seitenzahl mittig im Fuß
 
 % ── Kapitelüberschrift verkleinern ──────────────────────────
@@ -99,7 +90,7 @@
 
 % ── Titelseite ──────────────────────────────────────────────
 %\input{chapters/00_titelseite}
-\cleardoublepage
+\clearpage
 
 % ── Sperrvermerk (optional, auskommentieren wenn nicht nötig)
 % \input{chapters/00_sperrvermerk}
@@ -107,22 +98,22 @@
 
 % ── Abstract ────────────────────────────────────────────────
 % \input{chapters/00_abstract}
-\cleardoublepage
+\clearpage
 
 % ── Verzeichnisse ───────────────────────────────────────────
 \pagenumbering{Roman}
 
 \tableofcontents
-\cleardoublepage
+\clearpage
 
 \listoffigures
-\cleardoublepage
+\clearpage
 
 \listoftables
-\cleardoublepage
+\clearpage
 
 \printglossary[type=\acronymtype, title=Abkürzungsverzeichnis]
-\cleardoublepage
+\clearpage
 
 % ── Hauptteil ───────────────────────────────────────────────
 \pagenumbering{arabic}
@@ -136,7 +127,7 @@
 \input{chapters/07_Fazit.tex}
 
 % ── Literaturverzeichnis ────────────────────────────────────
-\cleardoublepage
+\clearpage
 \printbibliography[heading=bibintoc, title={Literaturverzeichnis}]
 
 % ── Anhang ──────────────────────────────────────────────────
@@ -144,7 +135,7 @@
 %\input{chapters/anhang}
 
 % ── Eidesstattliche Erklärung ───────────────────────────────
-\cleardoublepage
+\clearpage
 % \input{chapters/00_erklaerung}
 
 \end{document}
