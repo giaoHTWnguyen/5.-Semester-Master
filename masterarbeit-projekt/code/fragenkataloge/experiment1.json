@@ -1,0 +1,20 @@
+[
+  {
+    "id": "E1_F01",
+    "frage": "How many rows (observations) does the dataset contain? Answer with the number only.",
+    "kategorie": "A",
+    "referenz_id": "anzahl_beobachtungen"
+  },
+  {
+    "id": "E1_F02",
+    "frage": "What is the average monthly income? Answer with the number only.",
+    "kategorie": "A",
+    "referenz_id": "monthlyincome_mittelwert"
+  },
+  {
+    "id": "E1_F03",
+    "frage": "Which factors are most strongly associated with employees leaving the company?",
+    "kategorie": "B",
+    "referenz_id": "top_korrelationen_attrition"
+  }
+]

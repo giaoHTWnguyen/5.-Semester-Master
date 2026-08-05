@@ -10,9 +10,13 @@ for p in (DATA, KATALOGE, ERGEBNISSE, FIGURES):
     p.mkdir(parents=True, exist_ok=True)
 
 MODELLE = {
-    'openai': 'gpt-4o',
+    'openai': 'gpt-5.6-luna',
     'google': 'gemini-2.5-flash'
 }
 
-TEMPERATURE = 0.7 # offene Entscheidung / default
-MAX_TOKENS = 2000 
+TEMPERATURE = 1 #default
+MAX_TOKENS = 1500 
+
+SYSTEM_PROMPT = "You are a data analyst answering questions about a dataset provided to you. Answer factually and precisely."
+
+SYSTEM_PROMPT_EXP0 = "You are a data analyst answerung questions about exploratory data analysis. Answer factually and precisely."
