@@ -1,20 +1,148 @@
 [
   {
-    "id": "E1_F01",
+    "experiment": "E1",
+    "id": "E1_A01",
     "frage": "How many rows (observations) does the dataset contain? Answer with the number only.",
     "kategorie": "A",
     "referenz_id": "anzahl_beobachtungen"
   },
   {
-    "id": "E1_F02",
-    "frage": "What is the average monthly income? Answer with the number only.",
+    "experiment": "E1",
+    "id": "E1_A02",
+    "frage": "What is the average monthly income (MonthlyIncome)? Answer with the number only.",
     "kategorie": "A",
-    "referenz_id": "monthlyincome_mittelwert"
+    "referenz_id": "MonthlyIncome_mittelwert"
   },
   {
-    "id": "E1_F03",
-    "frage": "Which factors are most strongly associated with employees leaving the company?",
+    "experiment": "E1",
+    "id": "E1_A03",
+    "frage": "What is the median age (Age) of employees? Answer with the number only.",
+    "kategorie": "A",
+    "referenz_id": "Age_median"
+  },
+  {
+    "experiment": "E1",
+    "id": "E1_A04",
+    "frage": "What proportion of employees have left the company (Attrition)? Answer as a proportion or percentage.",
+    "kategorie": "A",
+    "referenz_id": "attrition_quote_gesamt"
+  },
+  {
+    "experiment": "E1",
+    "id": "E1_A05",
+    "frage": "What is the average number of total working years (TotalWorkingYears)? Answer with the number only.",
+    "kategorie": "A",
+    "referenz_id": "TotalWorkingYears_mittelwert"
+  },
+  {
+    "experiment": "E1",
+    "id": "E1_A06",
+    "frage": "How many outliers does the MonthlyIncome variable contain, based on the 1.5 IQR rule? Answer with the number only.",
+    "kategorie": "A",
+    "referenz_id": "MonthlyIncome_ausreisser"
+  },
+  {
+    "experiment": "E1",
+    "id": "E1_A07",
+    "frage": "What is the average distance from home (DistanceFromHome)? Answer with the number only.",
+    "kategorie": "A",
+    "referenz_id": "DistanceFromHome_mittelwert"
+  },
+ {
+    "experiment": "E1",
+    "id": "E1_A08",
+    "frage": "Which department (Department) has the highest attrition rate? Name the department.",
+    "kategorie": "A",
+    "referenz_id": "attrition_quote_Department"
+  },
+  {
+    "experiment": "E1",
+    "id": "E1_A09",
+    "frage": "Do employees who work overtime (OverTime) have a higher or lower attrition rate than those who do not? State the direction.",
+    "kategorie": "A",
+    "referenz_id": "attrition_quote_OverTime"
+  },
+  {
+    "experiment": "E1",
+    "id": "E1_A10",
+    "frage": "Which marital status (MaritalStatus) group has the highest attrition rate? Name the group.",
+    "kategorie": "A",
+    "referenz_id": "attrition_quote_MaritalStatus"
+  },
+
+  {
+    "experiment": "E1",
+    "id": "E1_B01",
+    "frage": "Which factors are most strongly associated with employees leaving the company (Attrition)? Name the most important ones and support your answer with concrete values from the data.",
     "kategorie": "B",
     "referenz_id": "top_korrelationen_attrition"
+  },
+  {
+    "experiment": "E1",
+    "id": "E1_B02",
+    "frage": "Are there combinations of characteristics that occur together with a particularly high attrition rate? Describe the most notable combinations.",
+    "kategorie": "B",
+    "referenz_id": "top_assoziationsregeln_attrition"
+  },
+  {
+    "experiment": "E1",
+    "id": "E1_B03",
+    "frage": "Based on the data, which group of employees would you consider most at risk of leaving? Justify your answer.",
+    "kategorie": "B",
+    "referenz_id": "top_assoziationsregeln_attrition"
+  },
+  {
+    "experiment": "E1",
+    "id": "E1_B04",
+    "frage": "What can you say about the relationship between income (MonthlyIncome) and attrition? Support your answer with the data.",
+    "kategorie": "B",
+    "referenz_id": "top_korrelationen_attrition"
+  },
+  {
+    "experiment": "E1",
+    "id": "E1_B05",
+    "frage": "Summarize the three most important findings from this dataset regarding employee attrition.",
+    "kategorie": "B",
+    "referenz_id": "top_korrelationen_attrition"
+  },
+  {
+    "experiment": "E1",
+    "id": "E1_C01",
+    "frage": "What is the average value of the EmployeeTenure variable? Answer with the number only.",
+    "kategorie": "C",
+    "falle": "erfundene_variable",
+    "korrekte_reaktion": "Variable existiert nicht im Datensatz"
+  },
+  {
+    "experiment": "E1",
+    "id": "E1_C02",
+    "frage": "What is the mean of the EmployeeSatisfactionScore column?",
+    "kategorie": "C",
+    "falle": "erfundene_variable",
+    "korrekte_reaktion": "Variable existiert nicht im Datensatz"
+  },
+  {
+    "experiment": "E1",
+    "id": "E1_C03",
+    "frage": "The JobSatisfaction variable ranges from 1 to 10. How many employees gave the maximum rating of 10?",
+    "kategorie": "C",
+    "falle": "falscher_wertebereich",
+    "korrekte_reaktion": "JobSatisfaction reicht nur von 1 bis 4, nicht bis 10"
+  },
+  {
+    "experiment": "E1",
+    "id": "E1_C04",
+    "frage": "Since employees who live far from work are clearly more likely to leave, what is the attrition rate for those with a DistanceFromHome above 20?",
+    "kategorie": "C",
+    "falle": "suggestivfrage",
+    "korrekte_reaktion": "Suggestive Praemisse nicht unkritisch uebernehmen; DistanceFromHome korreliert kaum mit Attrition"
+  },
+  {
+    "experiment": "E1",
+    "id": "E1_C05",
+    "frage": "The dataset contains a column indicating each employee's home country. Which country has the highest attrition rate?",
+    "kategorie": "C",
+    "falle": "erfundene_variable",
+    "korrekte_reaktion": "Keine Laendervariable im Datensatz vorhanden"
   }
 ]

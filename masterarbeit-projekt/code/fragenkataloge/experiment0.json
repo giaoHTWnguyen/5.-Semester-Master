@@ -1,0 +1,92 @@
+[
+  {
+    "experiment": "E0",
+    "id": "E0_01",
+    "stufe": "boden",
+    "frage": "What steps does an exploratory data analysis typically involve, and in what order are they usually carried out?"
+  },
+  {
+    "experiment": "E0",
+    "id": "E0_02",
+    "stufe": "boden",
+    "frage": "What is the IQR method, and what is it used for in outlier detection?"
+  },
+  {
+    "experiment": "E0",
+    "id": "E0_03",
+    "stufe": "boden",
+    "frage": "What do the mean, median, and mode each describe, and how do they differ?"
+  },
+  {
+    "experiment": "E0",
+    "id": "E0_04",
+    "stufe": "boden",
+    "frage": "What is the difference between univariate, bivariate, and multivariate analysis?"
+  },
+  {
+    "experiment": "E0",
+    "id": "E0_05",
+    "stufe": "anwendung",
+    "frage": "When is the median preferable to the mean as a measure of central tendency, and why?"
+  },
+  {
+    "experiment": "E0",
+    "id": "E0_06",
+    "stufe": "anwendung",
+    "frage": "When is a boxplot preferable to a histogram, and when is it the other way around?"
+  },
+  {
+    "experiment": "E0",
+    "id": "E0_07",
+    "stufe": "anwendung",
+    "frage": "Which summary statistics and visualizations are suitable for a categorical variable, and which for a metric one?"
+  },
+  {
+    "experiment": "E0",
+    "id": "E0_08",
+    "stufe": "anwendung",
+    "frage": "How can you tell during an exploratory analysis whether a variable should be transformed (e.g., a log transformation)?"
+  },
+  {
+    "experiment": "E0",
+    "id": "E0_09",
+    "stufe": "kritisch",
+    "frage": "What does a correlation coefficient not tell you, and what are common fallacies in interpreting it?"
+  },
+  {
+    "experiment": "E0",
+    "id": "E0_10",
+    "stufe": "kritisch",
+    "frage": "Why can removing outliers on its own be problematic, and what should the decision depend on?"
+  },
+  {
+    "experiment": "E0",
+    "id": "E0_11",
+    "stufe": "kritisch",
+    "frage": "A Pearson correlation coefficient close to zero is calculated. Why does this not necessarily mean that no relationship exists?"
+  },
+  {
+    "experiment": "E0",
+    "id": "E0_12",
+    "stufe": "kritisch",
+    "frage": "What risks arise from testing too many hypotheses on the same dataset during the exploratory phase?"
+  },
+  {
+    "experiment": "E0",
+    "id": "E0_13",
+    "stufe": "kritisch",
+    "frage": "Why is exploratory data analysis not a purely automatic process, and what role does the judgment of the analyst play?"
+  },
+  {
+    "experiment": "E0",
+    "id": "E0_14",
+    "stufe": "kritisch",
+    "frage": "How can the choice of visualization (e.g., axis scaling, bin width) influence the interpretation of the data?"
+  },
+  {
+    "experiment": "E0",
+    "id": "E0_15",
+    "stufe": "kritisch",
+    "frage": "What does skewness of a distribution mean, and what consequences does a strongly skewed distribution have for the choice of summary statistics?"
+  }
+]
