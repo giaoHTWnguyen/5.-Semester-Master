@@ -1,0 +1,2 @@
+{"experiment": "E1", "frage_id": "E1_A01", "wiederholung": 1, "modell": "gpt-5.6-luna", "antwort": "1470", "input_tokens": 115644}
+{"experiment": "E1", "frage_id": "E1_A01", "wiederholung": 2, "modell": "gemini-2.5-flash", "antwort": "1470 Zeilen", "input_tokens": 138265}
