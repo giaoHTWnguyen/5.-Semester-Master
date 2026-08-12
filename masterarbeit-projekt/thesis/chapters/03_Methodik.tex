@@ -1,4 +1,4 @@
-\chapter{Methodik}
+\chapter{Methodik und Durchführung}
 
 \section{Datengrundlage}
 
@@ -24,9 +24,9 @@ Als deskriptive Kennzahlen werden für die metrischen Variablen Lage- und Streuu
 
 Als Zusammenhangsmaß wird der Pearson-\-Korre\-lations\-koeffi\-zient berechnet. In die Berechnung gehen neben den metrischen auch die ordinal skalierten Variablen ein, deren numerische Codes dabei wie intervallskalierte Werte behandelt werden. Diese Vereinfachung dient dazu, eine einfache Baseline für die Frage zu enthalten, welche Faktoren mit einer Kündigung zusammenhängen. Ihre Grenzen sind bekannt: Der Pearson-Koeffizient erfasst ausschließlich lineare, paarweise Zusammenhänge und setzt streng genommen intervallskalierte Variablen voraus, was bei ordinalen Skalen nicht gegeben ist. Um diese Einschränkungen auszugleichen, werden ergänzend Assoziationsregeln herangezogen, die Zusammenhänge zwischen Kombinationen mehrerer Merkmale erfassen und nicht auf paarweise lineare Beziehungen beschränkt sind. 
 
-Eine Assoziationsregeln beschreibt eine Wenn-Dann-Beziehung zwischen Mustern einer Datenbasis und wird über den Support, der die gemeinsame Häufigkeit zweier Muster angibt, sowie die Konfidenz, welche die Wahrscheinlichkeit der Konsequenz bei erfüllter Bedingung beschreibt, charakterisiert \parencite[206]{hammesfahr_identifikation_2021}. Für die vorliegende Fragestellung werden ausschließlich Regeln betrachtet, die \texttt{Attrition\_Yes} als alleinige Konsequenz aufweisen. Da Assoziationsregeln kategoriale Ausprägungen voraussetzen, werden die metrischen Variablen zuvor quartilsbasiert in drei Klassen (niedrig, mittel, hoch) eingeteilt.
+Eine Assoziationsregel beschreibt eine Wenn-Dann-Beziehung zwischen Mustern einer Datenbasis und wird über den Support, der die gemeinsame Häufigkeit zweier Muster angibt, sowie die Konfidenz, welche die Wahrscheinlichkeit der Konsequenz bei erfüllter Bedingung beschreibt, charakterisiert \parencite[206]{hammesfahr_identifikation_2021}. Für die vorliegende Fragestellung werden ausschließlich Regeln betrachtet, die \texttt{Attrition\_Yes} als alleinige Konsequenz aufweisen. Da Assoziationsregeln kategoriale Ausprägungen voraussetzen, werden die metrischen Variablen zuvor quartilsbasiert in drei Klassen (niedrig, mittel, hoch) eingeteilt.
 
-Ein bekanntes Problem solcher Verfahren besteht darin, dass sie eine für die Analyse zu große Zahl an Regeln erzeugen \parencite[202]{hammesfahr_identifikation_2021}. Zur Reduktion wird das Verfahren des Minimal Imrpovement nach \textcite[207]{hammesfahr_identifikation_2021} angewendet, das eine spezifische Regel nur dann beibehält, wenn ihre Konfidenz die jeder allgemeineren Regeln um einen Schwellenwert übersteigt. Andernfalls gilt das zusätzliche Merkmal als redundant. In Anlehnung an das dort beschriebene Verfahren werden zunächst ein Mindestsupport und eine Mindestkonfidenz angewendet und anschließend das Minimal Improvement, sodass bereits gefilterte Regeln nicht mehr in den Vergleich eingehen \parencite[213]{hammesfahr_identifikation_2021}.
+Ein bekanntes Problem solcher Verfahren besteht darin, dass sie eine für die Analyse zu große Zahl an Regeln erzeugen \parencite[202]{hammesfahr_identifikation_2021}. Zur Reduktion wird das Verfahren des Minimal Improvement nach \textcite[207]{hammesfahr_identifikation_2021} angewendet, das eine spezifische Regel nur dann beibehalten wird, wenn ihre Konfidenz die der jeweiligen allgemeineren Regel um einen Schwellenwert übersteigt. Andernfalls gilt das zusätzliche Merkmal als redundant. In Anlehnung an das dort beschriebene Verfahren werden zunächst ein Mindestsupport und eine Mindestkonfidenz angewendet und anschließend das Minimal Improvement, sodass bereits gefilterte Regeln nicht mehr in den Vergleich eingehen \parencite[213]{hammesfahr_identifikation_2021}.
 
 
 \section{Forschungsdesign}
@@ -38,13 +38,27 @@ Dazu werden die Ausgaben zweier \glspl{llm} mit einem rechnerisch ermittelten Re
 
 \section{Untersuchungsansatz}
 
+Die Untersuchung gliedert sich in vier aufeinander bezogene Experimente, die jeweils unterschiedliche Aspekte der Zuverlässigkeit \gls{llm}-gestützter explorativer Datenanalyse adressieren und den vier Forschungsfragen zugeordnet sind. Alle Experimente greifen auf denselben Datensatz und dieselben Referenzwerte zurück, unterscheiden sich jedoch in der Art der Aufgabenstellung und der Interaktionsform.
+
+\subsection*{Experiment 0 -- Methodisches Vorwissen}
+
+Das nullte Experiment adressiert Forschungsfrage~4 und prüft, welches methodisches Wissen zur explorativen Datenanalyse die Modelle unabhängig von einem konkreten Datensatz verfügen. Den Modellen werden fünfzehn konzeptionelle Fragen ohne Datenbezug vorgelegt, zum Beispiel zur Bedeutung der Interquartilsregel, zur Untersuchung von Lagemaßen oder zu den Grenzen der Korrelationskoeffizienten. Die Fragen sind in drei Schwierigkeitsstufen mit steigender Trennschärfe gegliedert, sodass sich unterschiedliche Kompetenzniveaus der Modelle sichtbar machen lassen. Die Antworten werden anhand einer Bewertungsrubrik mit einer Skala von null bis drei Punkten kodiert, die für jede Frage die erwarteten Kernpunkte festlegt. Dieses Experiment bildet die Grundlage für die Einordnung der übrigen Ergebnisse, da es zeigt, ob fehlerhafte Analysen auf mangelndem Methodenwissen oder auf einer unzureichenden Verarbeitung der bereitgestellten Daten beruhen.
+
 \subsection*{Experiment 1 -- Referenzanalyse}
 
-Das erste Experiment adressiert die Forschungsfragen 1 und 2 und bildet die Grundlage der gesamten Untersuchung. Zunächst werden auf Basis des gewählten Datensatzes mittels Python und der Bibliothek pandas statistisch korrekte Referenzwerte berechnet. Diese umfassen deskriptive Kennzahlen wie Mittelwert, Median und Standardabweichung zentraler Variablen sowie bivariate Zusammenhänge in Form von Korrelationskoeffizienten. Die so ermittelten Werten bilden den Richtwert, anhand dessen die \gls{llm}-Ausgaben bewertet werden.
+Das erste Experiment adressiert die Forschungsfragen~1 und ~2 und bildet die Grundlage der datenbezogenen Untersuchung. Zunächst werden auf Basis des Datensatzes  mittels Python und der Bibliothek \texttt{pandas} statistisch korrekte Referenzwerte berechnet, die deskriptive Kennzahlen, bivariate Zusammenhänge in Form von Korrelationskoeffizienten sowie Merkmalskombinationen in Form von Assoziationsregeln umfassen. Anschließend werden beide Modelle identische Prompts sowie der vollständige Datensatz über die jeweilige Programmierschnittstelle übergeben. Die Fragen gliedern sich in drei Kategorien: faktische Fragen mit eindeutig bestimmbaren Referenzwerten, interpretative Fragen nach Zusammenhängen und Merkmalskombinationen sowie gezielt gestellte Fragen, die eine Halluzination provozieren, etwa durch die Nennung nicht existenter Variablen. Die generierten Antworten werden mit den Referenzwerten verglichen und anhand des in Abschnitt~\ref{sec:evaluation} beschriebenen Bewertungsschemas beurteilt.
 
-Im Anschluss werden beide \glspl{llm} identische Prompts sowie der vollständige Datensatz über die jeweilige Programmierschnittstelle übergeben. Die generierten Analyseergebnisse werden anschließend mit den Referenzwerten verglichen und anhand des in Abschnitt~\ref{sec:evaluation} beschriebenen Evaluationsframeworks bewertet.
+\subsection*{Experiment 2 -- Manipulierter Datensatz}
+
+Das zweite Experiment vertieft Forschungsfrage~1 und prüft, ob die Modelle ihre Aussagen tatsächlich aus den bereitgestellten Daten ableiten oder auf vortrainiertes Wissen zurückgreifen. Hierzu wird eine gezielt veränderte Fassung des Datensatzes erzeugt, in der ein bekannter Zusammenhang umgekehrt wird, sodass er dem allgemein erwarteten Muster widerspricht. Für diese Fassung werden eigene Referenzwerte berechnet und über einen eigenen Prüfwert identifiziert. Den Modellen werden dieselben Fragen wie in Experiment~1 vorgelegt. Weicht eine Antwort von den veränderten Daten ab und entspricht stattdessen dem ursprünglich erwarteten Zusammenhang, deutet dies darauf hin, dass die Ausgabe nicht auf einer Verarbeitung der bereitgestellten Daten beruht.
+
+\subsection*{Experiment 3 -- Iterative Interaktion}
+
+Das dritte Experiment adressiert Forschungsfrage~3 und untersucht den Einfluss einer iterativen Mensch-Modell-Interaktion auf die Konsistenz und Qualität der Analyseergebnisse. Anders als in den vorangegangen Experimenten, in denen jede Frage in einem eigenständigen Kontext gestellt wird, bauen diese Anfragen hier aufeinander auf und bilden einen mehrstufigen Analyseverlauf ab. Auf diese Weise lässt sich beobachten, ob frühere Ungenauigkeiten in späteren Schritten fortgeführt oder korrigiert werden und wie sich die Einbeziehung der Interaktionshistorie auf die Verlässlichkeit der Ergebnisse auswirkt.
 
 \section{Bewertungsmethodik} 
+\label{sec:evaluation}
+
 \section{Durchführung}
 
     

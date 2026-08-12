@@ -9,7 +9,7 @@ from pathlib import Path
 load_dotenv()
 
 def ask_openai(prompt, system_prompt=None, model= 'gpt-5.6-luna',
-               temperature=1.0, max_completion_tokens=1500):
+               temperature=0.7, max_completion_tokens=1500):
     client = OpenAI(api_key=os.environ['OPENAI_API_KEY'])
     messages = []
     if system_prompt:
