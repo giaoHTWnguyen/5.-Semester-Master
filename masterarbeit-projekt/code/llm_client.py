@@ -52,6 +52,21 @@ def ask_google(prompt, system_prompt, model='gemini-3.6-flash',
         contents=prompt,
         config=config,
     )
+
+    # finish_reason aus dem ersten Candidate ziehen (Enum -> Name, z.B. "STOP", "MAX_TOKENS")
+    finish_reason = None
+    candidate = r.candidates[0] if r.candidates else None
+    if candidate is not None and candidate.finish_reason is not None:
+        fr = candidate.finish_reason
+        finish_reason = fr.name if hasattr(fr, 'name') else str(fr)
+
+    # answer defensiv lesen: bei abgeschnittener Antwort sind Textteile vorhanden,
+    # bei blockierter oder leerer Antwort kann r.text fehlschlagen --> dann None
+    if candidate is not None and candidate.content is not None and candidate.content.parts:
+        answer = r.text
+    else:
+        answer = None
+
     return {
         'answer': r.text,
         'model_requested': model,
@@ -59,6 +74,6 @@ def ask_google(prompt, system_prompt, model='gemini-3.6-flash',
         'input_tokens': r.usage_metadata.prompt_token_count,
         'output_tokens': r.usage_metadata.candidates_token_count,
         'temperature': temperature,
-        'finish_reason': None,
+        'finish_reason': finish_reason,
         'timestamp': datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
     }
