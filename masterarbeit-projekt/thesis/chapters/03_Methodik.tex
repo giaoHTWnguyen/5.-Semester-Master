@@ -66,26 +66,142 @@ Alle Antworten werden unabhängig von ihrer Kategorie auf einer einheitlichen Ru
 
 \subsection{Kategorie A: Faktische Fragen und Toleranzbänder}
 
-Faktische Fragen besitzen einen eindeutig bestimmbaren Referenzwerte, etwa einen Mittelwert, einen Median, eine Kündigungsquote oder einen Korrelationskoeffizienten. Ihre Bewertung beruht auf dem numerischen Vergleich zwischen dem in der Antwort genannten und dem berechneten Wert. Da eine sprachlich formulierte Antwort selten exakt mit dem Referenzwert übereinstimmt und Rundungen sowie unterschiedliche Nachkommastellen zu erwarten sind, wird die Übereinstimmung nicht als exakte Gleichheit, sondern über Toleranzbänder bestimmt. Ein enges Toleranzband kennzeichnet eine Abweichung, die sich allein durch Rundung ergibt und die inhaltliche Korrektheit nicht berührt. Ein weites Toleranzband umfasst Abweichungen, die über die Rundungen hinausgehen, die Größenordnung und die Richtung der Aussage jedoch unberührt lassen. Die Breite der Bänder richtet sich nach dem Typ der Kennzahl und ist in folgender Tabelle~ref{tab:toleranz} zusammengefasst.
+Faktische Fragen besitzen einen eindeutig bestimmbaren Referenzwerte, etwa einen Mittelwert, einen Median, eine Kündigungsquote oder einen Korrelationskoeffizienten. Ihre Bewertung beruht auf dem numerischen Vergleich zwischen dem in der Antwort genannten und dem berechneten Wert. Da eine sprachlich formulierte Antwort selten exakt mit dem Referenzwert übereinstimmt und Rundungen sowie unterschiedliche Nachkommastellen zu erwarten sind, wird die Übereinstimmung nicht als exakte Gleichheit, sondern über die relative Abweichung vom Referenzwert bestimmt. Zwei Punkte werden vergeben, wenn die genannte Angabe um höchstens 5\,\% vom Referenzwert abweicht, ein Punkt bei einer Abweichung von mehr als 5\,\% bis 20\,\%. Null Punkte werden vergeben, wenn die Angabe um mehr als 20\,\% abweicht, frei erfunden ist oder die Antwort verweigert wird.
 
-% TODO: Die Breiten der Toleranzbänder mit den fixierten Referenzwerten abgleichen und bei Bedarf anpassen.
+Die zulässige Toleranz ist dabei nach der Art der Kennzahl zu definieren, da nicht jede Größe eine Abweichung sinnvoll zulässt. Bei stetigen Kennzahlen wie Mittelwert oder Median ist eine Toleranz vertretbar, weil Rundungen über geringfügige Unterschiede in der Berechnung die inhaltliche Aussage nicht berühren. Zählwerte wie die Anzahl der Beobachtungen oder der Variablen müssen demnach gegenüber exakt getroffen werden, da hier bereits eine Abweichung um eine Einheit eine falsche Angabe darstellt. Für solche Zählwerte gilt daher die exakte Übereinstimmung als Voraussetzung für die volle Punktzahl, ohne dass eine Zwischenstufe vergeben wird. Tabelle~ref{tab:rubrik-a} fasst die Vorgabe zusammen.
+
 \begin{table}[htbp]
     \centering
     \small
-    \caption[Toleranzbänder für faktische Fragen]{Toleranzbänder für die Bewertung faktischer Fragen nach Kennzahltyp. Die angegebenen Breiten sind als vorläufige Festlegung zu verstehen und werden vor der Auswertung anhand der berechneten Referenzwerte überprüft.}
-    \label{tab:toleranz}
-    \begin{tabular}{p{4.3cm} p{4.3cm} p{4.3cm}}
-        \hline
-        \textbf{Kennzahltyp} & \textbf{Enges Band (3 Punkte)} & \textbf{Weites Band (2 Punkte)} \\
-        \hline
-        Lagemaße (Mittelwert, Median) & relative Abweichung bis 1\,\% & relative Abweichung bis 5\,\% \\
-        Anteile und Quoten & bis 0,5 Prozentpunkte & bis 2 Prozentpunkte \\
-        Korrelationskoeffizient & bis 0,02 & bis 0,05 \\
-        Zählwerte (Anzahl) & exakte Übereinstimmung & Abweichung um einen Wert \\
-        \hline
-    \end{tabular}
+    \caption[Bewertung faktischer Fragen (Kategorie A)]%
+    {Bewertung faktischer Fragen der Kategorie~A nach Art der Kennzahl. 
+    Die Skala reicht von null bis zwei Punkten; die relative Abweichung 
+    bezieht sich auf den berechneten Referenzwert.}
+    \label{tab:rubrik-a}
+    
+    \renewcommand{\arraystretch}{1.2}
+    \begin{tabularx}{\textwidth}{
+        >{\raggedright\arraybackslash}p{0.8cm}
+        >{\raggedright\arraybackslash}X
+        >{\raggedright\arraybackslash}X
+    }
+        \toprule
+        \textbf{Pkt.} &
+        \textbf{Stetige Kennzahlen (Mittelwert, Median, Anteil)} &
+        \textbf{Zählwerte (Anzahl)} \\
+        \midrule
+        
+        2 & 
+        relative Abweichung bis 5\,\% &
+        exakte Übereinstimmung \\
+        
+        1 & 
+        relative Abweichung über 5\,\% bis 20\,\% &
+        nicht vergeben \\
+        
+        0 & 
+        relative Abweichung über 20\,\%, erfunden oder verweigert &
+        jede Abweichung, erfunden oder verweigert \\
+        
+        \bottomrule
+    \end{tabularx}
 \end{table}
 
-\section{Durchführung}
+\subsection{Kategorie B: Interpretative Fragen}
 
+Interpretative Fragen zielen auf Zusammenhänge und Merkmalskombinationen, etwa auf die Faktoren, die mit einer Kündigung einhergehen. Für sie existiert kein einzelner Referenzwert, wohl aber ein referenzieller Rahmen aus den berechneten Korrelationskoeffizienten und Assoziationsregeln, an dem sich Richtung und Stärke eines behaupteten Zusammenhangs prüfen lassen. Über die sachliche Richtigkeit hinaus wird die Interpretationsqualität herangezogen. In Anlehnung an \textcite{koesten_talking_2021} gilt eine Interpretation dann als gehaltvoll, wenn sie ihre Aussagen einordnet, anstatt Kennzahlen nur wiederzugeben und die Grenzen ihrer Aussagekraft benennt (Abschnitt~\ref{sec:eda}). Dazu zählt der Vorbehalt, dass sich aus einer Korrelation kein kausaler Zusammenhang ableiten lässt \parencite[178--189]{boslaugh_statistics_2012}.
+
+Zwei Punkte werden vergeben, wenn Richtung und Stärke des Zusammenhangs zutreffend wiedergegeben unt mit einem angemessenen Vorbehalt versehen sind, zum Beispiel mit dem Hinweis, dass eine Korrelation keine Kausalität begründet. Ein Punkt wird vergeben, wenn die Richtung des Zusammenhangs zwar zutrifft, die Antwort ihn aber überinterpretiert oder ohne die gebotene Einordnung darstellt. Null Punkte werden vergeben, wenn die Interpretation falsch oder irreführend ist. Tabelle~\ref{tab:rubrik-b} fasst die Vergabe zusammen.
+
+\begin{table}[htbp]
+    \centering
+    \small
+    \caption[Bewertung interpretativer Fragen (Kategorie B)]%
+    {Bewertung interpretativer Fragen der Kategorie~B. Die Skala reicht von
+    null bis zwei Punkten und bemisst die Interpretationsqualität.}
+    \label{tab:rubrik-b}
+ 
+    \renewcommand{\arraystretch}{1.2}
+    \begin{tabularx}{\textwidth}{
+        >{\raggedright\arraybackslash}p{0.8cm}
+        >{\raggedright\arraybackslash}X
+    }
+        \toprule
+        \textbf{Pkt.} &
+        \textbf{Interpretationsqualität} \\
+        \midrule
+ 
+        2 &
+        Richtung und Stärke korrekt, mit angemessenem Vorbehalt (etwa dem Hinweis, dass eine Korrelation keine Kausalität begründet) \\
+ 
+        1 &
+        Richtung korrekt, aber Überinterpretation oder fehlende Einordnung \\
+ 
+        0 &
+        falsch oder irreführend \\
+ 
+        \bottomrule
+    \end{tabularx}
+\end{table}
+
+\subsection{Kategorie C: Halluzinationsfallen}
+
+Die dritte Kategorie umfasst Fragen, die eine Halluzination provozieren, indem sie eine nicht zutreffende Prämisse enthalten, etwa die Nennung einer im Datensatz nicht vorhandenen Variable oder eines unterstellten Zusammenhangs. Eine faktentreue Antwort gibt nach \textcite{zheng_reliable_2024} bekanntes Wissen korrekt wieder und stellt zu Unbekanntem keine Behauptungen auf. Übertragen auf diese Kategorie besteht die angemessene Reaktion darin, die falsche Prämisse zu erkennen und zurückzuweisen, anstatt sie aufzugreifen und mit einer erfundenen Angabe zu beantworten.
+
+Anders als bei den faktischen und interpretativen Fragen wird für diese Kategorie kein Punktwert vergeben. Da eine Halluzination auf der Ebene einzelner Behauptung nicht eindeutig als richtig oder falsch einzuordnen ist \parencite{agrawal_language_2024}, wird stattdessen für jede Antwort die Anzahl der nicht durch die Daten gedeckten Behaupten ausgezählt. Als nicht gedeckt gelten erfundene Variablen, erfundene Zahlenwerte sowie behauptete Zusammenhänge, die im Datensatz nicht bestehen. Jede dieser Angaben entspricht einer faktischen Halluzination im Sinne von \textcite{bai_hallucination_2025}, da sie eine im Datensatz nicht vorhandene Größe als gegen darstellt. Aus den ausgezählten Werten wird je Modell die mittlere Anzahl der Halluzination je Antwort bestimmt, sodass sich die Modelle vergleichen lassen.
+
+Ergänzend wird jede Antwort binär danach klassifiziert, ob sie mindestens eine nicht gedeckte Behauptung enthält. Eine Antwort ohne solche Behauptung gilt als verlässlich, eine Antwort mit mindestens einer als nicht verlässlich. Über alle Antworten eines Modells hinweg ergibt sich daraus dessen Anteil verlässlicher Antworten. Diese Einordnung knüpft unmittelbar an das in der vorliegenden Arbeit zugrunde gelegte Verständnis der Datenkonsistenz an, wonach eine generierte Aussage mit dem Datensatz übereinstimmen muss. Tabelle~\ref{tab:hallu} fasst die beiden Maßen zusammen.
+
+\begin{table}[htbp]
+    \centering
+    \small
+    \caption[Halluzinationsmaße für Kategorie C]%
+    {Maße zur Bewertung der Halluzinationsfallen (Kategorie~C). Beide Maße werden
+    für jede Antwort blind bestimmt und anschließend je Modell aggregiert.}
+    \label{tab:hallu}
+ 
+    \renewcommand{\arraystretch}{1.2}
+    \begin{tabularx}{\textwidth}{
+        >{\raggedright\arraybackslash}p{3.2cm}
+        >{\raggedright\arraybackslash}X
+        >{\raggedright\arraybackslash}X
+    }
+        \toprule
+        \textbf{Maß} &
+        \textbf{Bestimmung je Antwort} &
+        \textbf{Aggregation je Modell} \\
+        \midrule
+ 
+        Halluzinations\-zählung &
+        Anzahl der nicht durch die Daten gedeckten Behauptungen (erfundene Variablen, Zahlenwerte oder Zusammenhänge) &
+        mittlere Anzahl der Halluzinationen je Antwort \\
+   
+        Verlässlichkeits\-klassifikation &
+        verlässlich bei keiner, nicht verlässlich bei mindestens einer nicht gedeckten Behauptung &
+        Anteil verlässlicher Antworten \\
+ 
+        \bottomrule
+    \end{tabularx}
+\end{table}
+
+\subsection{Aggregation der Bewertung}
+
+Aus den Einzelbewertungen der Antworten werden je Modell zusammenfassende Kennzahlen gebildet. Für die faktischen und interpretativen Fragen wird jeder Antwort ein Punktwert nach der beschriebenen Rubrik zugewiesen; da beide Kategorien dieselbe Skala von null bis zwei Punkten verwenden, sind ihre Ergebnisse unmittelbar vergleichbar. Für die Halluzinationsfallen werden je Modell die mittlere Anzahl der Halluzinationen je Antwort sowie der ANteil verlässlicher Antworten ausgewiesen. Da jede Frage mehrfach gestellt wird, wie in Abschnitt~\ref{sec:durchfuehrung} beschrieben, werden zwei Anforderungen getrennt betrachtet, die \textcite{bornschlegl_towards_2024} als Validität und Reproduzierbarkeit benennt. Die Validität wird über die erreichten Punktwerte und die Halluzinationsmaße im Vergleich zu den Referenzwerten erfasst, während Reproduzierbarkeit über die Streuung der Ergebnisse einer Frage bei wiederholter Stellung beurteilt wird. Weil eine Antwort wiederholt konsistent und dennoch unzutreffend sein kann, ist diese Trennung erforderlich. \textcite{zheng_reliable_2024} beschreiben eben diesen Fall, in dem auch fehlerhafte Antworten konsistent wiederholt werden, sodass Konsistenz allein kein hinreichendes Gütekriterium darstellt.
+
+\section{Durchführung}
+\label{sec:durchfuehrung}
     
+% STUB: noch auszuformulieren, sobald die Experimente 1 bis 3 durchgeführt sind.
+% Aus der Bewertungsmethodik hierher verschoben (gehört zur Durchführung):
+%
+% - Anzahl der Wiederholungen je Frage und Modell (Durchführungsparameter).
+%
+% - Behandlung fehlender Antworten:
+%   Fehlende Antworten, die auf technische Fehler der Programmierschnittstelle
+%   zurückgehen, werden nicht als inhaltliches Ergebnis gewertet, sondern erneut
+%   erhoben. Auf diese Weise wird vermieden, dass Uebertragungsfehler die
+%   Auswertung verzerren und als inhaltliches Versagen des Modells fehlgedeutet
+%   werden.
+%
+% - Verwendete Modelle und Parameter (GPT und Gemini), Prompt- und
+%   Runner-Infrastruktur, Ablauf der Experimente, Stand der Durchfuehrung.
