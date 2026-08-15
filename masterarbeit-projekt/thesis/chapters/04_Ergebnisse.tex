@@ -1,0 +1,56 @@
+\chapter{Ergebnisse}
+
+\section{Experiment 0: Methodisches Vorwissen}
+\label{sec:ergebnisse-e0}
+
+Experiment~0 dient als Kontrollbedingung und prüft das methodische Vorwissen der beiden Modelle unabhängig von einem konkreten Datensatz (Forschungsfrage~4). Vorgelegt wurden fünfzehn konzeptionelle Fragen zur explorativen Datenanalyse, die jedem Modell dreimal gestellt wurden, sodass insgesamt 90 Antworten vorliegen. Die Bewertung erfolgte blind anhand der in Abschnitt~\ref{sec:evaluation} beschriebenen Rubrik von null bis drei Punkten, wobei für jede Frage die erwartete Kernpunkte vorab festgelegt waren. Zwei Antworten des Modells Gemini wurden gemäß dem in Abschnitt~\ref{sec:durchfuehrung} beschriebenen Vorgehen nachträglich erhoben, eine wegen eines Übertragungsfehler der Programmierschnittstelle und eine wegen einer am Ausgabelimit abgeschnittenen Antwort. Kodiert wurde jeweils die vollständige Antwort.\footnote{Die beiden untersuchten Modelle sind \texttt{gpt-5.6-luna} (im Folgenden GPT) und \texttt{gemini-3.6-flash} (im Folgenden Gemini).}
+
+Über alle 90 Antworten hinweg erreichten die Modelle ein hohes Niveau. 84 Fragen wurden mit der vollen Punktzahl bewertet, fünf mit zwei Punkten und eine mit einem Punkt. Im Mittel erreichte GPT 2,93 und Gemini 2,91 von drei möglichen Punkten, über beide Modelle zusammen 2,92. Bei dreizehn der fünfzehn Fragen erhielten beide Modelle in allen drei Wiederholungen die volle Punktzahl. Das Ergebnis bestätigt die erwartete Funktion des Experiments als Kontrollbedingung, da beide Modelle über ein solides methodisches Grundwissen zur explorativen Datenanalyse verfügen.
+
+Die Abweichungen von der vollen Punktzahl beschränken sich auf genau zwei Fragen und zwar bei jeweils einem MOdell über alle drei Wiederholungen hinweg. Tabelle~\ref{tab:e0-abweichungen} fasst sie zusammen.
+
+\begin{table}[htbp]
+    \centering
+    \small
+    \caption[Abweichungen von der vollen Punktzahl in Experiment 0]%
+    {Antworten in Experiment~0, die nicht die volle Punktzahl erreichten. Alle
+    übrigen dreizehn Fragen wurden von beiden Modellen in allen drei Läufen mit
+    drei Punkten bewertet.}
+    \label{tab:e0-abweichungen}
+
+    \renewcommand{\arraystretch}{1.2}
+    \begin{tabularx}{\textwidth}{
+        >{\raggedright\arraybackslash}p{2.6cm}
+        >{\raggedright\arraybackslash}p{1.5cm}
+        c c c c
+        >{\raggedright\arraybackslash}X
+    }
+        \toprule
+        \textbf{Thema der Frage} &
+        \textbf{Modell} &
+        \textbf{It.\,1} &
+        \textbf{It.\,2} &
+        \textbf{It.\,3} &
+        \textbf{Mittel} &
+        \textbf{Fehlender Kernpunkt} \\
+        \midrule
+
+        Schritte der EDA &
+        gemini-3.6-flash & 2 & 2 & 1 & 1,67 &
+        späte Schritte der Analysekette, insbesondere Feature Engineering, teils auch multivariate Betrachtung und Ausreißererkennung \\
+
+        Mittelwert, Median, Modus &
+        gpt-5.6-luna & 2 & 2 & 2 & 2,00 &
+        Bezug der Lagemaße zu den Skalenniveaus \\
+
+        \bottomrule
+    \end{tabularx}
+\end{table}
+
+Bei der Frage nach den Schritten der explorativen Datenanalyse und ihrer Reihenfolge blieb Gemini in unterschiedlichem Ausmaß unvollständig. Ein Lauf brach die Aufzählung bereits bei der univariaten Analyse an und ließ damit die späteren Schritte aus (ein Punkt), die beiden anderen Läufe gaben den überwiegenden Teil des Ablaufs wieder, ließen aber das Feature Engineering und teilweise die multivariate Betrachtung sowie die Ausreißererkennung aus (je zwei Punkte). Gemessen an den sechs Schritten nach \textcite{rahmany_comparing_2020}, die in Abschnitt~\ref{sec:eda} dargestellt sind, fehlen damit systematisch die hinteren Schritte der Analysekette. GPT nannte den Ablauf demgegenüber in allen drei Läufen vollständig.
+
+Bei der Frage nach Mittelwert, Median und Modus verhielt es sich umgekehrt. Hier blieb GPT in allen drei Läufen bei zwei Punkten, weil durchgängig der Bezug zu den Skalenniveaus fehlte, also die Zuordnung, welches Lagemaß für welches Skalenniveau angemessen ist. Im Gegensatz dazu beantwortete Gemini diese Frage in allen drei Läufen vollständig.
+
+Die beiden Lücken sind damit komplementär und themenspezifisch. Kein Modell ist durchgehend überlegen, jedes weist an anderer Stelle eine Schwäche auf. Zudem sind die Abweichungen über die Wiederholungen hinweg stabil. Bei GPT tritt die Lücke in allen drei Läufen in gleicher Form auf, bei Gemini mit leichter Streuung zwischen einem und zwei Punkten. Beides deutet darauf hin, dass es sich nicht um zufällige Ausfälle, sondern um systematische Eigenheiten der Modelle handelt.
+
+Für die weitere Untersuchung erfüllt Experiment~0 damit seine Kontrollfunktion. Da beide Modelle das methodische Grundwissen weitgehend beherrschen, lasse sich Fehler, die in den datenbezogenen Experimenten auftreten, eher auf die Verarbeitung der bereitgestellten Daten als auf ein fehlendes Methodenwissen zurückführen. Die vergleichende Einordnung über alle Experimente hinweg erfolgt im Anschluss an die datenbezogenen Experimente.
