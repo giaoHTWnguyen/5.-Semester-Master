@@ -5,8 +5,40 @@ from google.genai import types
 from openai import OpenAI
 import json
 from pathlib import Path
+import time
 
 load_dotenv()
+
+
+# Retry mit Backoff um die API-AUfrufe, um bei TPM-Limit den Lauf nochmal zu starten
+
+_RETRYABLE = {408, 409, 429, 500, 502, 503, 529}
+
+def _status_code(e):
+    for attr in ("status_code", "code", "http_status"):
+        v = getattr(e, attr, None)
+        if isinstance(v, int):
+            return v
+        return None
+
+def _is_retryable(e):
+    if _status_code(e) in _RETRYABLE:
+        return True
+    msg = str(e).lower()
+    return any(s in msg for s in ("rate limit", "overloaded", "unavailable", "timeout", "429", "503"))
+
+def _call_with_retry(fn, retries=6, base_delay=0.8, max_delay=60.0):
+    attempt = 0
+    while True:
+        try:
+            return fn()
+        except Exception as e:
+            if attempt >= retries or not _is_retryable(e):
+                raise
+            delay = min(base_delay * (2 ** attempt), max_delay)
+            print(f"    retry in {delay:.0f}s ({str(e)[:100]})")
+            time.sleep(delay)
+            attempt += 1
 
 # Reuse one client per provider instead of creating one per request
 
@@ -41,13 +73,13 @@ def ask_openai(prompt, system_prompt=None, model= 'gpt-5.6-luna',
     if prompt_cache_key:
         extra['prompt_cache_key'] = prompt_cache_key
 
-    r = client.chat.completions.create(
+    r = _call_with_retry(lambda: client.chat.completions.create(
         model = model,
         messages=messages,
         temperature=used_temp,
         max_completion_tokens=max_completion_tokens,
         **extra,
-    )
+    ))
 
     usage = r.usage
     cached = 0
@@ -110,11 +142,11 @@ def ask_google(prompt, system_prompt, model='gemini-3.6-flash',
 
     config = types.GenerateContentConfig(**cfg)
 
-    r = client.models.generate_content(
+    r = _call_with_retry(lambda: client.models.generate_content(
         model=model,
         contents=prompt,
         config=config,
-    )
+    ))
 
     # finish_reason aus dem ersten Candidate ziehen (Enum -> Name, z.B. "STOP", "MAX_TOKENS")
     finish_reason = None
