@@ -59,7 +59,7 @@ def _get_google():
 
 
 def ask_openai(prompt, system_prompt=None, model= 'gpt-5.6-luna',
-               temperature=0.7, max_completion_tokens=1500, prompt_cache_key=None):
+               temperature=1.0, max_completion_tokens=8000, prompt_cache_key=None):
     client = _get_openai()
     messages = []
     if system_prompt:
@@ -130,7 +130,7 @@ Einzige Gemini Generation
 """
 
 def ask_google(prompt, system_prompt, model='gemini-3.6-flash',
-                temperature=1.0, max_tokens=2000, cached_content=None):
+                temperature=1.0, max_tokens=8000, cached_content=None):
     
     client = _get_google()
 
