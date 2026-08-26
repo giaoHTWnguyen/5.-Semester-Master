@@ -1,6 +1,6 @@
 \chapter{Ergebnisse}
 
-\section{Experiment 0: Methodisches Vorwissen}
+\section{Auswertung Experiment 0: Methodisches Vorwissen}
 \label{sec:ergebnisse-e0}
 
 Experiment~0 dient als Kontrollbedingung und prüft das methodische Vorwissen der beiden Modelle unabhängig von einem konkreten Datensatz (Forschungsfrage~4). Vorgelegt wurden fünfzehn konzeptionelle Fragen zur explorativen Datenanalyse, die jedem Modell dreimal gestellt wurden, sodass insgesamt 90 Antworten vorliegen. Die Bewertung erfolgte blind anhand der in Abschnitt~\ref{sec:evaluation} beschriebenen Rubrik von null bis drei Punkten, wobei für jede Frage die erwarteten Kernpunkte vorab festgelegt waren. Zwei Antworten des Modells Gemini wurden gemäß dem in Abschnitt~\ref{sec:durchfuehrung} beschriebenen Vorgehen nachträglich erhoben, eine wegen eines Übertragungsfehlers der Programmierschnittstelle und eine wegen einer am Ausgabelimit abgeschnittenen Antwort. Kodiert wurde jeweils die vollständige Antwort.\footnote{Die beiden untersuchten Modelle sind \texttt{gpt-5.6-luna} (im Folgenden GPT) und \texttt{gemini-3.6-flash} (im Folgenden Gemini).}
@@ -54,3 +54,123 @@ Bei der Frage nach Mittelwert, Median und Modus verhielt es sich umgekehrt. Hier
 Die beiden Lücken sind damit komplementär und themenspezifisch. Kein Modell ist durchgehend überlegen, jedes weist an anderer Stelle eine Schwäche auf. Zudem sind die Abweichungen über die Wiederholungen hinweg stabil. Bei GPT tritt die Lücke in allen drei Läufen in gleicher Form auf, bei Gemini mit leichter Streuung zwischen einem und zwei Punkten. Beides deutet darauf hin, dass es sich nicht um zufällige Ausfälle, sondern um systematische Eigenheiten der Modelle handelt.
 
 Für die weitere Untersuchung erfüllt Experiment~0 damit seine Kontrollfunktion. Da beide Modelle das methodische Grundwissen weitgehend beherrschen, lassen sich Fehler, die in den datenbezogenen Experimenten auftreten, eher auf die Verarbeitung der bereitgestellten Daten als auf ein fehlendes Methodenwissen zurückführen. Die vergleichende Einordnung über alle Experimente hinweg erfolgt im Anschluss an die datenbezogenen Experimente.
+
+\section{Auswertung Experiment 1 -- Referenzanalyse}
+
+\subsection{Faktische Fragen (Kategorie A)}
+\label{subsec:ergebnisse-a}
+
+Die faktischen Fragen der Kategorie~A umfassen zehn Frage mit eindeutig bestimmbarem Referenzwert, die je Modell in fünft Wiederholungen gestellt wurden. Bewertet wurde auf einer Skala von null bis zwei Punkten nach der in Tabelle~\ref{tab:rubrik-a} festgelegten Rubrik. Tabelle~\ref{tab:ergebnisse-a} weist für jede Frage den mittleren Punktwert über die fünf Wiederholungen sowie dessen Standardabweichung aus. Über alle Fragen erreicht GPT einen mittleren Punktwert von 1,96, Gemini einen mittleren Punktwert von 1,38. 
+
+\begin{table}[htbp]
+    \centering
+    \small
+    \caption[Ergebnisse der faktischen Fragen (Kategorie A)]%
+    {Mittlerer Punktwert und Standardabweichung über fünf Wiederholungen je
+    Frage und Modell für die faktischen Fragen der Kategorie~A. Die Skala reicht
+    von null bis zwei Punkten.}
+    \label{tab:ergebnisse-a}
+    \renewcommand{\arraystretch}{1.2}
+    \begin{tabularx}{\textwidth}{
+        >{\raggedright\arraybackslash}p{2.2cm}
+        >{\raggedright\arraybackslash}X
+        >{\centering\arraybackslash}p{2.2cm}
+        >{\centering\arraybackslash}p{2.2cm}
+        >{\centering\arraybackslash}p{2.2cm}
+        >{\centering\arraybackslash}p{2.2cm}
+    }
+        \toprule
+        & &
+        \multicolumn{2}{c}{\textbf{gpt-5.6-luna}} &
+        \multicolumn{2}{c}{\textbf{gemini-3.6-flash}} \\
+        \cmidrule(lr){3-4}\cmidrule(lr){5-6}
+        \textbf{Frage} & \textbf{Ergebnistyp} &
+        \textbf{Mittel} & \textbf{SD} &
+        \textbf{Mittel} & \textbf{SD} \\
+        \midrule
+        A01 & Zählwert        & 2,00 & 0,00 & 0,40 & 0,89 \\
+        A02 & Mittelwert      & 2,00 & 0,00 & 2,00 & 0,00 \\
+        A03 & Median          & 2,00 & 0,00 & 1,60 & 0,89 \\
+        A04 & Anteil          & 2,00 & 0,00 & 0,80 & 0,45 \\
+        A05 & Mittelwert      & 2,00 & 0,00 & 2,00 & 0,00 \\
+        A06 & Zählwert        & 1,60 & 0,89 & 0,00 & 0,00 \\
+        A07 & Mittelwert      & 2,00 & 0,00 & 1,80 & 0,45 \\
+        A08 & Kategorial      & 2,00 & 0,00 & 1,20 & 1,10 \\
+        A09 & Kategorial      & 2,00 & 0,00 & 2,00 & 0,00 \\
+        A10 & Kategorial      & 2,00 & 0,00 & 2,00 & 0,00 \\
+        \midrule
+        \textbf{Gesamt} & & \textbf{1,96} & &
+        \textbf{1,38} & \\
+        \bottomrule
+    \end{tabularx}
+\end{table}
+
+GPT erreicht in neun der zehn Fragen den vollen mittleren Punktwert bei einer Standardabweichung von null und beantwortet diese Fragen damit über alle fünf Wiederholungen hinweg korrekt. Die einzige Abweichung betrifft die Ausreißerzählung in Frage~A06 mit einem mittleren Punktwert von 1,60 und einer Standardabweichung von 0,89. Vier der fünf Wiederholungen nennen den korrekten Wert von 114 Ausreißern, eine Wiederholung nennt abweichend 88. Es handelt sich damit um eine einzelne Abweichung innerhalb einer ansonsten stabilen Antwortfolge.
+
+Gemini zeigt ein nach dem Ergebnistyp differenziertes Muster. Die Mittelwerte in den Fragen~A02 und A05 werden in allen Wiederholungen innerhalb der festgelegten Toleranz beantwortet. Auch bei A07 liegen vier der fünf Antworten im Bereich für den vollen Punktwert. Beim Median in Frage~A03 sind vier der fünf Antworten korrekt, während eine Wiederholung deutlich abweicht. Besonders niedrige Punktwerte treten dagegen bei den beiden Zählwerten auf. In Frage~A01, die nach der Anzahl der Beobachtungen fragt, nennt nur eine der fünf Wiederholungen den korrekten Wert von 1470. Drei Wiederholungen nennen 500 Beobachtungen und eine weitere Antwort wird vor der Ausgabe eines verwertbaren Ergebnisses abgeschnitten. In Frage~A06 erreicht keine der fünf Wiederholungen den korrekten Wert von 114 Ausreißern. Drei Wiederholungen nennen mit 50, 56 und 33 deutlich niedrigere Zählwerte, während zwei Antworten vor der Ausgabe eines abschließenden Ergebnisses aufgrund des Ausgabelimits abbrechen. Zudem variieren die berechneten Quartile und Ausreißergrenzen zwischen den Wiederholungen. In einer der abgebrochenen Antworten wird die Berechnung ausdrücklich auf 500 Beobachtungen bezogen, obwohl der bereitgestellte Datensatz 1470 Beobachtungen umfasst.
+
+Ein ähnliches Muster zeigt sich in Frage~A04. Die vier bewertbaren numerischen Antworten liegen mit Werten zwischen 15,4\,\% und 16,76\,\% vergleichsweise nahe am Referenzwert von 16,12\,\%. Die Antworten weisen jedoch teilweise ausdrücklich wesentlich geringere Beobachtungszahlen als die 1470 Datensätze aus. Dadurch entstehen zwar teilweise plausible Anteilswerte, diese beruhen jedoch nicht auf der vollständigen Datengrundlage. Eine weitere Wiederholung wird während der manuellen Auszählung abgeschnitten.
+
+Bei den kategorialen Fragen fällt das Ergebnis weniger einheitlich aus. Die Richtung des Zusammenhangs zwischen Überstunden und Kündigungsrate in Frage~A10 werden von beiden Modellen in allen fünf Wiederholungen korrekt bestimmt. Bei Gemini treten dagegen in Frage~A08 Abweichungen auf: Drei Wiederholungen bestimmten Sales korrekt als Abteilung mit der höchsten Kündigungsrate, eine Wiederholung nennt fälschlicherweise Human Resources und eine weitere liefert aufgrund des Abbruchs kein verwertbares Ergebnis.
+
+Die Standardabweichung in Tabelle~\ref{tab:ergebnisse-a} geben zusätzlich Aufschluss über die Reproduzierbarkeit der Bewertungen über die fünf Wiederholungen. Bei GPT beträgt die Standardabweichung mit Ausnahme von Frage~A06 durchgehend null. Bei Gemini ist sie in den Fragen~A01, A03, A04, A07 und A08 von null verschieden und erreicht in Frage~A08 mit 1,10 den höchsten Wert. Gleichzeitig zeigt Frage~A06, dass eine Standardabweichung von null nicht zwangsläufig eine hohe faktische Korrektheit bedeutet: Das Modell erreicht hier in allen fünf Wiederholungen null Punkte. Eine geringe Streuung kann somit sowohl auf reproduzierbar korrekte als auch reproduzierbar fehlerhafte Ergebnisse hinweisen.
+
+Zusammenfassend erreicht GPT in Kategorie~A ein über die Fragen und Wiederholungen hinweg nahezu konstantes Ergebnis. Gemini erreicht bei mehreren Mittelwerten sowie den kategorialen Fragen A09 und A10 hohe und reproduzierbare Bewertungen, weist jedoch insbesondere bei den Zählaufgaben A01 und A06 deutliche Abweichungen auf. Auffällig ist dabei die wiederholte Verarbeitung einer offenbar unvollständigen Anzahl von Beobachtungen. Die mögliche Bedeutung dieses Musters für die Zuverlässigkeit der datenbasierten Analyse wird in der Diskussion näher eingeordnet.
+
+\subsection{Interpretative Fragen (Kategorie B)}
+\label{subsec:ergebnisse-b}
+
+Die interpretativen Fragen der Kategorie~B umfassen fünf Fragen nach Zusammenhängen und Merkmalskombinationen, die je Modell in fünf Wiederholungen gestellt wurden. Bewertet wurde die Interpretationsqualität auf einer Skala von null bis zwei Punkten nach der in Tabelle~\ref{tab:rubrik-b} festgelegten Rubrik. Tabelle~\ref{tab:ergebnisse-b} weist für jede Frage den mittleren Punktwert über die fünf Wiederholungen sowie dessen Standardabweichung aus. Über alle Fragen erreicht GPT einen mittleren Punktwert von 2,00, Gemini einen mittleren Punktwert von 1,00.
+
+\begin{table}[htbp]
+    \centering
+    \small
+    \caption[Ergebnisse der interpretativen Fragen (Kategorie B)]%
+    {Mittlerer Punktwert und Standardabweichung über fünf Wiederholungen je
+    Frage und Modell für die interpretativen Fragen der Kategorie~B. Die Skala
+    reicht von null bis zwei Punkten.}
+    \label{tab:ergebnisse-b}
+    \renewcommand{\arraystretch}{1.2}
+    \begin{tabularx}{\textwidth}{
+        >{\raggedright\arraybackslash}p{2.6cm}
+        >{\centering\arraybackslash}X
+        >{\centering\arraybackslash}X
+        >{\centering\arraybackslash}X
+        >{\centering\arraybackslash}X
+    }
+        \toprule
+        &
+        \multicolumn{2}{c}{\textbf{gpt-5.6-luna}} &
+        \multicolumn{2}{c}{\textbf{gemini-3.6-flash}} \\
+        \cmidrule(lr){2-3}\cmidrule(lr){4-5}
+        \textbf{Frage} &
+        \textbf{Mittel} & \textbf{SD} &
+        \textbf{Mittel} & \textbf{SD} \\
+        \midrule
+        B01 & 2,00 & 0,00 & 1,00 & 0,71 \\
+        B02 & 2,00 & 0,00 & 1,00 & 0,00 \\
+        B03 & 2,00 & 0,00 & 1,00 & 0,00 \\
+        B04 & 2,00 & 0,00 & 1,00 & 0,00 \\
+        B05 & 2,00 & 0,00 & 1,00 & 0,00 \\
+        \midrule
+        \textbf{Gesamt} & \textbf{2,00} & &
+        \textbf{1,00} & \\
+        \bottomrule
+    \end{tabularx}
+\end{table}
+
+Die grundlegende Richtung der untersuchten Zusammenhänge wird von beiden Modellen überwiegend zutreffend erfasst. So werden unter anderem eine höhere Kündigungsquote bei Mehrarbeit sowie höhere Kündigungsquoten bei geringerer Betriebszugehörigkeit und niedrigeren Einkommen erkannt. Unterschiede zeigen sich vor allem darin, wie vollständig die relevanten Zusammenhänge erfasst, durch konkrete Datenwerte gestützt und gegenüber weitergehenden Interpretationen abgegrenzt werden.
+
+GPT erreicht bei allen fünf Fragen und in sämtlichen Wiederholungen den vollen Punktwert. Entsprechend beträgt die Standardabweichung für jede Frage null. Die Interpretationen werden durchgängig mit konkreten aggregierten Kennzahlen gestützt und entsprechend der Bewertungsrubrik eingeordnet. In Frage~B01 werden beispielsweise die Kündigungsquoten für Beschäftigte mit Überstunden mit 30,5~\% (127 von 416) gegenüber 10,4~\% (110 von 1054) für Beschäftigte ohne Überstunden quantifiziert. Neben Überstunden werden weitere relevante Merkmale wie Joblevel, Aktienoptionslevel, Geschäftsreisen, Familienstand und Betriebszugehörigkeit anhand aggregierter Werte eingeordnet. Auch bei den übrigen Fragen verbindet das Modell die Interpretation mit konkreten Kennzahlen, anstatt den Zusammenhang ausschließlich verbal zu beschreiben.
+
+Darüber hinaus grenzt GPT die deskriptiven Ergebnisse wiederholt von kausalen Schlussfolgerungen ab. So wird bei der Interpretation der Kündigungsfaktoren ausdrücklich darauf hingewiesen, dass die beobachteten Zusammenhänge keinen kausalen Einfluss nachweisen. Die Antworten beschränken sich damit überwiegend auf Aussagen, die sich aus den bereitgestellten Daten ableiten lassen. Der maximale mittlere Punktwert von 2,00 resultiert somit nicht allein aus der zutreffenden Bestimmung der Richtung, sondern auch aus der quantitativen Begründung und der vorsichtigen Einordnung der Ergebnisse.
+
+Bei Gemini beträgt der mittlere Punktwert dagegen bei allen fünf Fragen 1,00. Trotz dieses einheitlichen Mittelwerts unterscheiden sich die Antwortmuster zwischen den Fragen. Besonders deutlich wird dies bei Frage~B01, für die mit 0,71 die einzige von null verschiedene Standardabweichung vorliegt. Einzelne Wiederholungen identifizieren die zentralen Zusammenhänge zutreffend und stützen diese teilweise mit konkreten Kennahlen. In einer Wiederholung werden die relevanten Faktoren beispielsweise umfassend erkannt und hinsichtlich ihrer Richtung und Stärke eingeordnet. Demgegenüber basiert die fünfte Wiederholung fälschlicherweise auf 500 statt auf den vollständig bereitgestellten 1470 Beobachtungen. Die daraus berichteten Kennzahlen beziehen sich folglich nicht auf den vollständigen Datensatz. Diese Antwort wurde mit null Punkten bewertet. Der Fragemittelwert von 1,00 verdeckt somit eine im Vergleich zu den übrigen Fragen erhöhte Variation der Antwortqualität.
+
+Über die Kategorie hinweg zeigt Gemini zudem eine schwächere quantitative Belegbindung. Teilweise werden einzelne Beschäftigte als Beispiele für einen Zusammenhang angeführt, anstatt diesen durch einen Vergleich der entsprechenden Gruppen quantitativ zu belegen. In anderen Antworten wird zwar die zutreffende Richtung eines Zusammenhangs genannt, dessen Stärke jedoch nicht oder nur unzureichend durch konkrete Datenwerte gestützt. Die Antworten erfüllen damit häufig die grundlegende inhaltliche Interpretation, jedoch nicht sämtliche Anforderungen der höchsten Bewertungsstufe.
+
+Eine weitere Auffälligkeit betrifft die Abgrenzung zwischen deskriptiver Interpretation und weitgehender Erklärung. Einzelne Antworten von Gemini verwenden kausal anmutende Formulierungen, indem Zusammenhänge beispielweise als ``drivers'' bezeichnet oder mit ``Workplace Burnout'' verknüpft werden. Teilweise werden daraus auch Handlungsempfehlungen abgeleitet. Ebenso treten Erklärungen auf, die sich nicht unmittelbar anhand des Datensatzes überprüfen lassen, etwa die Begründung einer höheren Kündigungsneigung jüngerer Beschäftigter mit einer vermeintlich höheren beruflichen Mobilität. Die grundlegenden datenbasierten Zusammenhänge können dabei zutreffend sein; die darüber hinausgehende Erklärungen ist jedoch nicht durch die vorliegenden Daten selbst gedeckt. Eine Abgrenzung zwischen Assoziation und kausaler Interpretation erfolgt damit weniger konsistent als bei GPT.
+
+Hinsichtlich der Reproduzierbarkeit zeigt sich ebenfalls ein Unterschied zwischen den Modellen. Für GPT beträgt die Standardabweichung in allen fünf Fragen null, sodass sämtliche Wiederholungen derselben höchsten Bewertungsstufe zugeordnet werden. Bei Gemini beträgt die Standardabweichung für Fragen~B02 bis B05 ebenfalls null. Sämtliche Wiederholungen erreichen jeweils einen Punkt. Die konstante Punktbewertung bedeutet dabei nicht, dass die Antworten inhaltlich oder sprachlich identisch sind, sondern dass ihre Interpretationsqualität nach der verwendeten Rubrik jeweils derselben Bewertungsstufe entspricht. Frage~B01 bildet mit einer Standardabweichung von 0,71 die Ausnahme und zeigt, dass die Qualität zwischen den Wiederholungen stärker variiert.
+
+Zusammenfassend zeigt sich in Kategorie~B ein deutlicher Unterschied in der Qualität und Stabilität der datenbasierten Interpretation. GPT erreicht über sämtliche 25 Antworten hinweg die höchste Bewertungsstufe und verbindet die zutreffende Interpretation mit konkreten aggregierten Kennzahlen sowie einer überwiegend vorsichtigen Abgrenzung gegenüber kausalen Schlussfolgerungen. Gemini erkennt die grundlegende Richtung der untersuchten Zusammenhänge überwiegend, erreicht jedoch aufgrund unvollständiger quantitativer Belege und weitergehender Interpretationen durchgehend eine niedrigeren mittleren Punktwert. Hinzu kommt bei Frage~B01 eine erhöhte Variation zwischen den Wiederholungen, die unter anderem auf die Verarbeitung einer unvollständigen Datengrundlage in einer Antwort zurückzuführen ist.
