@@ -1,0 +1,588 @@
+{
+  "anzahl_beobachtungen": {
+    "wert": 1470,
+    "typ": "zahl",
+    "toleranz": "exakt",
+    "quelle": "df_referenz.shape[0]"
+  },
+  "anzahl_variablen_bereinigt": {
+    "wert": 34,
+    "typ": "zahl",
+    "toleranz": "exakt",
+    "quelle": "df_referenz.shape[1]"
+  },
+  "attrition_quote_gesamt": {
+    "wert": 0.1612,
+    "typ": "zahl",
+    "toleranz": "prozent_5",
+    "quelle": "Attrition_num.mean()"
+  },
+  "Age_mittelwert": {
+    "wert": 36.92,
+    "typ": "zahl",
+    "toleranz": "prozent_5",
+    "quelle": "Age.mean()"
+  },
+  "Age_median": {
+    "wert": 36.0,
+    "typ": "zahl",
+    "toleranz": "prozent_5",
+    "quelle": "Age.median()"
+  },
+  "Age_ausreisser": {
+    "wert": 0,
+    "typ": "zahl",
+    "toleranz": "exakt",
+    "quelle": "ausreisser_df, 1.5*IQR"
+  },
+  "MonthlyIncome_mittelwert": {
+    "wert": 6502.93,
+    "typ": "zahl",
+    "toleranz": "prozent_5",
+    "quelle": "MonthlyIncome.mean()"
+  },
+  "MonthlyIncome_median": {
+    "wert": 4919.0,
+    "typ": "zahl",
+    "toleranz": "prozent_5",
+    "quelle": "MonthlyIncome.median()"
+  },
+  "MonthlyIncome_ausreisser": {
+    "wert": 114,
+    "typ": "zahl",
+    "toleranz": "exakt",
+    "quelle": "ausreisser_df, 1.5*IQR"
+  },
+  "DailyRate_mittelwert": {
+    "wert": 802.49,
+    "typ": "zahl",
+    "toleranz": "prozent_5",
+    "quelle": "DailyRate.mean()"
+  },
+  "DailyRate_median": {
+    "wert": 802.0,
+    "typ": "zahl",
+    "toleranz": "prozent_5",
+    "quelle": "DailyRate.median()"
+  },
+  "DailyRate_ausreisser": {
+    "wert": 0,
+    "typ": "zahl",
+    "toleranz": "exakt",
+    "quelle": "ausreisser_df, 1.5*IQR"
+  },
+  "MonthlyRate_mittelwert": {
+    "wert": 14313.1,
+    "typ": "zahl",
+    "toleranz": "prozent_5",
+    "quelle": "MonthlyRate.mean()"
+  },
+  "MonthlyRate_median": {
+    "wert": 14235.5,
+    "typ": "zahl",
+    "toleranz": "prozent_5",
+    "quelle": "MonthlyRate.median()"
+  },
+  "MonthlyRate_ausreisser": {
+    "wert": 0,
+    "typ": "zahl",
+    "toleranz": "exakt",
+    "quelle": "ausreisser_df, 1.5*IQR"
+  },
+  "HourlyRate_mittelwert": {
+    "wert": 65.89,
+    "typ": "zahl",
+    "toleranz": "prozent_5",
+    "quelle": "HourlyRate.mean()"
+  },
+  "HourlyRate_median": {
+    "wert": 66.0,
+    "typ": "zahl",
+    "toleranz": "prozent_5",
+    "quelle": "HourlyRate.median()"
+  },
+  "HourlyRate_ausreisser": {
+    "wert": 0,
+    "typ": "zahl",
+    "toleranz": "exakt",
+    "quelle": "ausreisser_df, 1.5*IQR"
+  },
+  "DistanceFromHome_mittelwert": {
+    "wert": 9.19,
+    "typ": "zahl",
+    "toleranz": "prozent_5",
+    "quelle": "DistanceFromHome.mean()"
+  },
+  "DistanceFromHome_median": {
+    "wert": 7.0,
+    "typ": "zahl",
+    "toleranz": "prozent_5",
+    "quelle": "DistanceFromHome.median()"
+  },
+  "DistanceFromHome_ausreisser": {
+    "wert": 0,
+    "typ": "zahl",
+    "toleranz": "exakt",
+    "quelle": "ausreisser_df, 1.5*IQR"
+  },
+  "TotalWorkingYears_mittelwert": {
+    "wert": 11.28,
+    "typ": "zahl",
+    "toleranz": "prozent_5",
+    "quelle": "TotalWorkingYears.mean()"
+  },
+  "TotalWorkingYears_median": {
+    "wert": 10.0,
+    "typ": "zahl",
+    "toleranz": "prozent_5",
+    "quelle": "TotalWorkingYears.median()"
+  },
+  "TotalWorkingYears_ausreisser": {
+    "wert": 63,
+    "typ": "zahl",
+    "toleranz": "exakt",
+    "quelle": "ausreisser_df, 1.5*IQR"
+  },
+  "YearsAtCompany_mittelwert": {
+    "wert": 7.01,
+    "typ": "zahl",
+    "toleranz": "prozent_5",
+    "quelle": "YearsAtCompany.mean()"
+  },
+  "YearsAtCompany_median": {
+    "wert": 5.0,
+    "typ": "zahl",
+    "toleranz": "prozent_5",
+    "quelle": "YearsAtCompany.median()"
+  },
+  "YearsAtCompany_ausreisser": {
+    "wert": 104,
+    "typ": "zahl",
+    "toleranz": "exakt",
+    "quelle": "ausreisser_df, 1.5*IQR"
+  },
+  "YearsInCurrentRole_mittelwert": {
+    "wert": 4.23,
+    "typ": "zahl",
+    "toleranz": "prozent_5",
+    "quelle": "YearsInCurrentRole.mean()"
+  },
+  "YearsInCurrentRole_median": {
+    "wert": 3.0,
+    "typ": "zahl",
+    "toleranz": "prozent_5",
+    "quelle": "YearsInCurrentRole.median()"
+  },
+  "YearsInCurrentRole_ausreisser": {
+    "wert": 21,
+    "typ": "zahl",
+    "toleranz": "exakt",
+    "quelle": "ausreisser_df, 1.5*IQR"
+  },
+  "YearsSinceLastPromotion_mittelwert": {
+    "wert": 2.19,
+    "typ": "zahl",
+    "toleranz": "prozent_5",
+    "quelle": "YearsSinceLastPromotion.mean()"
+  },
+  "YearsSinceLastPromotion_median": {
+    "wert": 1.0,
+    "typ": "zahl",
+    "toleranz": "prozent_5",
+    "quelle": "YearsSinceLastPromotion.median()"
+  },
+  "YearsSinceLastPromotion_ausreisser": {
+    "wert": 107,
+    "typ": "zahl",
+    "toleranz": "exakt",
+    "quelle": "ausreisser_df, 1.5*IQR"
+  },
+  "YearsWithCurrManager_mittelwert": {
+    "wert": 4.12,
+    "typ": "zahl",
+    "toleranz": "prozent_5",
+    "quelle": "YearsWithCurrManager.mean()"
+  },
+  "YearsWithCurrManager_median": {
+    "wert": 3.0,
+    "typ": "zahl",
+    "toleranz": "prozent_5",
+    "quelle": "YearsWithCurrManager.median()"
+  },
+  "YearsWithCurrManager_ausreisser": {
+    "wert": 14,
+    "typ": "zahl",
+    "toleranz": "exakt",
+    "quelle": "ausreisser_df, 1.5*IQR"
+  },
+  "NumCompaniesWorked_mittelwert": {
+    "wert": 2.69,
+    "typ": "zahl",
+    "toleranz": "prozent_5",
+    "quelle": "NumCompaniesWorked.mean()"
+  },
+  "NumCompaniesWorked_median": {
+    "wert": 2.0,
+    "typ": "zahl",
+    "toleranz": "prozent_5",
+    "quelle": "NumCompaniesWorked.median()"
+  },
+  "NumCompaniesWorked_ausreisser": {
+    "wert": 52,
+    "typ": "zahl",
+    "toleranz": "exakt",
+    "quelle": "ausreisser_df, 1.5*IQR"
+  },
+  "PercentSalaryHike_mittelwert": {
+    "wert": 15.21,
+    "typ": "zahl",
+    "toleranz": "prozent_5",
+    "quelle": "PercentSalaryHike.mean()"
+  },
+  "PercentSalaryHike_median": {
+    "wert": 14.0,
+    "typ": "zahl",
+    "toleranz": "prozent_5",
+    "quelle": "PercentSalaryHike.median()"
+  },
+  "PercentSalaryHike_ausreisser": {
+    "wert": 0,
+    "typ": "zahl",
+    "toleranz": "exakt",
+    "quelle": "ausreisser_df, 1.5*IQR"
+  },
+  "TrainingTimesLastYear_mittelwert": {
+    "wert": 2.8,
+    "typ": "zahl",
+    "toleranz": "prozent_5",
+    "quelle": "TrainingTimesLastYear.mean()"
+  },
+  "TrainingTimesLastYear_median": {
+    "wert": 3.0,
+    "typ": "zahl",
+    "toleranz": "prozent_5",
+    "quelle": "TrainingTimesLastYear.median()"
+  },
+  "TrainingTimesLastYear_ausreisser": {
+    "wert": 238,
+    "typ": "zahl",
+    "toleranz": "exakt",
+    "quelle": "ausreisser_df, 1.5*IQR"
+  },
+  "attrition_quote_Gender": {
+    "wert": {
+      "Male": 0.1701,
+      "Female": 0.148
+    },
+    "typ": "quote_vergleich",
+    "toleranz": "richtung",
+    "quelle": "groupby(Gender).Attrition_num.mean()"
+  },
+  "attrition_quote_Department": {
+    "wert": {
+      "Sales": 0.2063,
+      "Human Resources": 0.1905,
+      "Research & Development": 0.1384
+    },
+    "typ": "quote_vergleich",
+    "toleranz": "richtung",
+    "quelle": "groupby(Department).Attrition_num.mean()"
+  },
+  "attrition_quote_JobRole": {
+    "wert": {
+      "Sales Representative": 0.3976,
+      "Laboratory Technician": 0.2394,
+      "Human Resources": 0.2308,
+      "Sales Executive": 0.1748,
+      "Research Scientist": 0.161,
+      "Manufacturing Director": 0.069,
+      "Healthcare Representative": 0.0687,
+      "Manager": 0.049,
+      "Research Director": 0.025
+    },
+    "typ": "quote_vergleich",
+    "toleranz": "richtung",
+    "quelle": "groupby(JobRole).Attrition_num.mean()"
+  },
+  "attrition_quote_MaritalStatus": {
+    "wert": {
+      "Single": 0.2553,
+      "Married": 0.1248,
+      "Divorced": 0.1009
+    },
+    "typ": "quote_vergleich",
+    "toleranz": "richtung",
+    "quelle": "groupby(MaritalStatus).Attrition_num.mean()"
+  },
+  "attrition_quote_BusinessTravel": {
+    "wert": {
+      "Travel_Frequently": 0.2491,
+      "Travel_Rarely": 0.1496,
+      "Non-Travel": 0.08
+    },
+    "typ": "quote_vergleich",
+    "toleranz": "richtung",
+    "quelle": "groupby(BusinessTravel).Attrition_num.mean()"
+  },
+  "attrition_quote_EducationField": {
+    "wert": {
+      "Human Resources": 0.2593,
+      "Technical Degree": 0.2424,
+      "Marketing": 0.2201,
+      "Life Sciences": 0.1469,
+      "Medical": 0.1358,
+      "Other": 0.1341
+    },
+    "typ": "quote_vergleich",
+    "toleranz": "richtung",
+    "quelle": "groupby(EducationField).Attrition_num.mean()"
+  },
+  "attrition_quote_OverTime": {
+    "wert": {
+      "No": 0.1935,
+      "Yes": 0.0793
+    },
+    "typ": "quote_vergleich",
+    "toleranz": "richtung",
+    "quelle": "groupby(OverTime).Attrition_num.mean()"
+  },
+  "top_korrelationen_attrition": {
+    "wert": {
+      "TotalWorkingYears": -0.1711,
+      "JobLevel": -0.1691,
+      "YearsInCurrentRole": -0.1605,
+      "MonthlyIncome": -0.1598,
+      "Age": -0.1592
+    },
+    "typ": "rangfolge",
+    "toleranz": "richtung",
+    "quelle": "Pearson corr mit Attrition_num, Top 5 nach Betrag"
+  },
+  "alle_korrelationen_attrition": {
+    "wert": {
+      "TotalWorkingYears": -0.1711,
+      "JobLevel": -0.1691,
+      "YearsInCurrentRole": -0.1605,
+      "MonthlyIncome": -0.1598,
+      "Age": -0.1592,
+      "YearsWithCurrManager": -0.1562,
+      "OverTime_num": -0.1399,
+      "StockOptionLevel": -0.1371,
+      "YearsAtCompany": -0.1344,
+      "JobInvolvement": -0.13,
+      "JobSatisfaction": -0.1035,
+      "EnvironmentSatisfaction": -0.1034,
+      "DistanceFromHome": 0.0779,
+      "WorkLifeBalance": -0.0639,
+      "TrainingTimesLastYear": -0.0595,
+      "DailyRate": -0.0567,
+      "RelationshipSatisfaction": -0.0459,
+      "NumCompaniesWorked": 0.0435,
+      "YearsSinceLastPromotion": -0.033,
+      "Education": -0.0314,
+      "MonthlyRate": 0.0152,
+      "PercentSalaryHike": -0.0135,
+      "EmployeeNumber": -0.0106,
+      "HourlyRate": -0.0068,
+      "PerformanceRating": 0.0029
+    },
+    "typ": "rangfolge",
+    "toleranz": "richtung",
+    "quelle": "Pearson corr mit Attrition_num, alle Variablen nach Betrag sortiert"
+  },
+  "_meta": {
+    "datensatz": "ibm_manipuliert.csv",
+    "datensatz_sha256": "4d7c2b78b3b288116942f700bba4f41c8a81af3efa6676705ca12e6ca7f0b3f6",
+    "berechnet_auf": "df_referenz (bereinigt, 32 Variablen)",
+    "zeilen": 1470,
+    "spalten": 34,
+    "pandas_version": "3.0.3",
+    "numpy_version": "2.4.6",
+    "erstellt_am": "2026-08-30 18:05:33",
+    "hinweis": "Ground Truth für Experiment 2. OverTime-Spalte permutiert, Zusammenhang OverTime<->Attrition umgekehrt; OverTime-Randverteilung und Attrition unverändert. Alle übrigen Referenzwerte identisch zu Experiment 1."
+  },
+  "top_assoziationsregeln_attrition": {
+    "wert": [
+      {
+        "wenn": [
+          "Age_bin_niedrig",
+          "OverTime_No",
+          "YearsAtCompany_bin_niedrig"
+        ],
+        "dann": "Attrition_Yes",
+        "support": 0.0571,
+        "confidence": 0.42,
+        "improvement": 0.0571,
+        "lift": 2.6051
+      },
+      {
+        "wenn": [
+          "Age_bin_niedrig",
+          "MonthlyIncome_bin_niedrig",
+          "OverTime_No"
+        ],
+        "dann": "Attrition_Yes",
+        "support": 0.0537,
+        "confidence": 0.401,
+        "improvement": 0.0639,
+        "lift": 2.4873
+      },
+      {
+        "wenn": [
+          "Age_bin_niedrig",
+          "MaritalStatus_Single"
+        ],
+        "dann": "Attrition_Yes",
+        "support": 0.051,
+        "confidence": 0.3886,
+        "improvement": 0.1333,
+        "lift": 2.4103
+      },
+      {
+        "wenn": [
+          "Age_bin_niedrig",
+          "YearsAtCompany_bin_niedrig"
+        ],
+        "dann": "Attrition_Yes",
+        "support": 0.0639,
+        "confidence": 0.3629,
+        "improvement": 0.2017,
+        "lift": 2.2511
+      },
+      {
+        "wenn": [
+          "MaritalStatus_Single",
+          "YearsAtCompany_bin_niedrig"
+        ],
+        "dann": "Attrition_Yes",
+        "support": 0.0503,
+        "confidence": 0.3592,
+        "improvement": 0.1039,
+        "lift": 2.2281
+      },
+      {
+        "wenn": [
+          "Age_bin_niedrig",
+          "MonthlyIncome_bin_niedrig"
+        ],
+        "dann": "Attrition_Yes",
+        "support": 0.0612,
+        "confidence": 0.3371,
+        "improvement": 0.0759,
+        "lift": 2.0907
+      },
+      {
+        "wenn": [
+          "MonthlyIncome_bin_niedrig",
+          "YearsAtCompany_bin_niedrig"
+        ],
+        "dann": "Attrition_Yes",
+        "support": 0.0667,
+        "confidence": 0.3172,
+        "improvement": 0.0559,
+        "lift": 1.9671
+      },
+      {
+        "wenn": [
+          "MaritalStatus_Single",
+          "OverTime_No"
+        ],
+        "dann": "Attrition_Yes",
+        "support": 0.0707,
+        "confidence": 0.3171,
+        "improvement": 0.0618,
+        "lift": 1.9667
+      },
+      {
+        "wenn": [
+          "Age_bin_niedrig",
+          "TotalWorkingYears_bin_niedrig"
+        ],
+        "dann": "Attrition_Yes",
+        "support": 0.0687,
+        "confidence": 0.3079,
+        "improvement": 0.1467,
+        "lift": 1.9099
+      },
+      {
+        "wenn": [
+          "TotalWorkingYears_bin_niedrig",
+          "YearsAtCompany_bin_niedrig"
+        ],
+        "dann": "Attrition_Yes",
+        "support": 0.0755,
+        "confidence": 0.3066,
+        "improvement": 0.1454,
+        "lift": 1.9019
+      },
+      {
+        "wenn": [
+          "Age_bin_niedrig",
+          "OverTime_No"
+        ],
+        "dann": "Attrition_Yes",
+        "support": 0.0776,
+        "confidence": 0.3,
+        "improvement": 0.1388,
+        "lift": 1.8608
+      },
+      {
+        "wenn": [
+          "OverTime_No",
+          "YearsAtCompany_bin_niedrig"
+        ],
+        "dann": "Attrition_Yes",
+        "support": 0.0844,
+        "confidence": 0.2938,
+        "improvement": 0.1326,
+        "lift": 1.8225
+      },
+      {
+        "wenn": [
+          "OverTime_No",
+          "TotalWorkingYears_bin_niedrig"
+        ],
+        "dann": "Attrition_Yes",
+        "support": 0.0769,
+        "confidence": 0.2905,
+        "improvement": 0.1293,
+        "lift": 1.8018
+      },
+      {
+        "wenn": [
+          "Age_bin_niedrig",
+          "YearsSinceLastPromotion_bin_kürzlich"
+        ],
+        "dann": "Attrition_Yes",
+        "support": 0.0667,
+        "confidence": 0.2613,
+        "improvement": 0.1001,
+        "lift": 1.6209
+      },
+      {
+        "wenn": [
+          "MonthlyIncome_bin_niedrig"
+        ],
+        "dann": "Attrition_Yes",
+        "support": 0.0871,
+        "confidence": 0.2612,
+        "improvement": 0.1,
+        "lift": 1.6203
+      }
+    ],
+    "typ": "rangfolge",
+    "toleranz": "richtung",
+    "quelle": "mlxtend apriori, min_support=0.05, Mindestkonfidenz=0.2527 (Median), Minimal IMprovement>=0.05, Konsequenz Attrition_Yes, sortiert nach Lift"
+  },
+  "_meta_assoziationsregeln": {
+    "regeln_nach_attrition_filter": 112,
+    "regeln_nach_mindestkonfidenz": 56,
+    "regeln_nach_minimal_improvement": 18,
+    "ausgeschlossene_variablen": [
+      "YearsInCurrentRole",
+      "YearsWithCurrManager"
+    ],
+    "ausschlussgrund": "redundant zu YearsAtCompany",
+    "basisquote": 0.1612
+  }
+}

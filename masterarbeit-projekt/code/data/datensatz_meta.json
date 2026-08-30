@@ -1,9 +1,9 @@
 {
-  "datei": "ibm_original.csv",
-  "sha256": "a5c31e38bd7fafc9bc333884eb181b06b41b8e5e488e8f7ccb27199fb3be7659",
+  "datei": "ibm_manipuliert.csv",
+  "sha256": "4d7c2b78b3b288116942f700bba4f41c8a81af3efa6676705ca12e6ca7f0b3f6",
   "zeilen_roh": 1470,
   "spalten_roh": 35,
   "pandas_version": "3.0.3",
   "numpy_version": "2.4.6",
-  "erstellt_am": "2026-08-07 11:29:06"
+  "erstellt_am": "2026-08-30 18:05:33"
 }
