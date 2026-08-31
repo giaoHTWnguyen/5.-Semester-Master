@@ -144,5 +144,11 @@
     "category": "C",
     "trap": "erfundene_variable",
     "correct_reaction": "Keine Laendervariable im Datensatz vorhanden"
+  },
+  {
+    "experiment": "D1",
+    "id": "E2_D01",
+    "question": "What is the attrition rate for employees with OverTime = Yes? Give the percentage.",
+    "category": "D"
   }
 ]
