@@ -19,7 +19,7 @@ Die Entscheidung, den Modellen die unbereinigte Rohfassung vorzulegen, ist bewus
 \subsection{Referenzwertberechnung}
 \label{subsec:referenzwerte}
 
-Die explorative Untersuchung des Datensatzes orientiert sich an dem in Abschnitt~\ref{sec:eda} dargestellten sechsstufigen Vorgehen nach \textcite{rahmany_comparing_2020}, das von der formalen Erfassung der Daten über die uni- und bivariate Betrachtung bis zur Identifikation auffälliger Muster reicht. Auf dieser Grundlage werden die Kennzahlen bestimmt, die anschließend als Referenzwerte für die Bewertung der Modellantworten dienen. Berechnet werden deskriptive Kennzahlen, Zusammenhänge sowie Merkmalskombinationen, die mit der Zielvariable einhergehen. Um die Reproduzierbarkeit der Referenzwerte sicherzustellen, wird für den verwendeten Datensatz ein kryptografischer Prüfwert nach dem SHA-256-Verfahren berechnet und gemeinsam mit den Referenzwerten gespeichert. Dieser Prüfwert identifiziert die zugrunde liegende Datenfassung eindeutig, damit sich die berechneten Referenzwerte einer konkreten Version des Datensatzes zuordnen lassen. Für den in Experiment~2 verwendeten veränderten Datensatz wird ein eigener Prüfwert bestimmt, sodass beide Fassungen zweifelsfrei unterscheidbar sind.
+Die explorative Untersuchung des Datensatzes orientiert sich an dem in Abschnitt~\ref{sec:eda} dargestellten sechsstufigen Vorgehen nach \textcite{rahmany_comparing_2020}, das von der formalen Erfassung der Daten über die uni- und bivariate Betrachtung bis zur Identifikation auffälliger Muster reicht. Auf dieser Grundlage werden die Kennzahlen bestimmt, die anschließend als Referenzwerte für die Bewertung der Modellantworten dienen. Berechnet werden deskriptive Kennzahlen, Zusammenhänge sowie Merkmalskombinationen, die mit der Zielvariable einhergehen.
 
 Als deskriptive Kennzahlen werden für die metrischen Variablen Lage- und Streuungsmaße bestimmt, insbesondere Mittelwert und Median. Ausreißer werden anhand des in Abschnitt~\ref{fig:eda-prozess} eingeführten Kriteriums des 1,5-fachen Interquartilsabstands bestimmt, wonach ein Wert als Ausreißer gilt, wenn er mehr als das Anderthalbfache des Interquartilsabstands unterhalb des ersten oder oberhalb des dritten Quartils liegt. Für die Zielvariable sowie für die nominal-kategorialen Variablen wird die jeweilige Kündigungsquote als Anteil der ausgeschiedenen Personen ermittelt.
 
@@ -36,7 +36,7 @@ Ein bekanntes Problem solcher Verfahren besteht darin, dass sie eine für die An
 Die vorliegende Arbeit verfolgt ein empirisch-experimentelles Forschungsdesign mit dem Ziel, die Zuverlässigkeit und 
 Datentreue \gls{llm}-gestützter explorativer Datenanalyse unter kontrollierten Bedingungen systematisch zu untersuchen.
 
-Dazu werden die Ausgaben zweier \glspl{llm} mit einem rechnerisch ermittelten Referenzwerten verglichen, die auf Grundlage derselben Eingabedaten mit etablierten statistischen Methoden bestimmt werden. Durch unterschiedliche Aufgabenstellungen und Datenfassungen werden dabei verschiedene Aspekte der Datenanalyse gezielt geprüft.
+Dazu werden die Ausgaben zweier \glspl{llm} mit rechnerisch ermittelten Referenzwerten verglichen, die auf Grundlage derselben Eingabedaten mit etablierten statistischen Methoden bestimmt werden. Durch unterschiedliche Aufgabenstellungen und Datenfassungen werden dabei verschiedene Aspekte der Datenanalyse gezielt geprüft.
 
 \section{Untersuchungsansatz}
 
@@ -127,7 +127,7 @@ Zusätzliche Ausführungen führen nicht zu einem Punktabzug, sofern die geforde
 
 \subsection{Kategorie B: Interpretative Fragen}
 
-Interpretative Fragen zielen auf Zusammenhänge und Merkmalskombinationen, etwa auf die Faktoren, die mit einer Kündigung einhergehen. Für sie existiert kein einzelner Referenzwert, wohl aber ein referenzieller Rahmen aus den berechneten Korrelationskoeffizienten und Assoziationsregeln, an dem sich Richtung und Stärke eines behaupteten Zusammenhangs prüfen lassen. Über die sachliche Richtigkeit hinaus wird die Interpretationsqualität herangezogen. In Anlehnung an \textcite{koesten_talking_2021} gilt eine Interpretation dann als gehaltvoll, wenn sie ihre Aussagen einordnet, anstatt Kennzahlen lediglich wiederzugeben und die Grenzen ihrer Aussagekraft benennt (Abschnitt~\ref{sec:eda}). Dazu zählt der Vorbehalt, dass sich aus einer Korrelation kein kausaler Zusammenhang ableiten lässt \parencite[178--189]{boslaugh_statistics_2012}.
+Interpretative Fragen zielen auf Zusammenhänge und Merkmalskombinationen, etwa auf die Faktoren, die mit einer Kündigung einhergehen. Für sie existiert kein einzelner Referenzwert, wohl aber ein referenzieller Rahmen aus den berechneten Korrelationskoeffizienten und Assoziationsregeln, an dem sich Richtung und Stärke eines behaupteten Zusammenhangs prüfen lassen. Über die sachliche Richtigkeit hinaus wird die Interpretationsqualität herangezogen. In Anlehnung an \textcite{koesten_talking_2021} gilt eine Interpretation dann als gehaltvoll, wenn sie ihre Aussagen einordnet, Kennzahlen nicht lediglich wiederzugeben und die Grenzen ihrer Aussagekraft benennt (Abschnitt~\ref{sec:eda}). Dazu zählt der Vorbehalt, dass sich aus einer Korrelation kein kausaler Zusammenhang ableiten lässt \parencite[178--189]{boslaugh_statistics_2012}.
 
 Die Bewertung erfolgt auf einer Skala von null bis zwei Punkten. Zwei Punkte werden vergeben, wenn die Antwort die für die Fragestellung wesentlichen Zusammenhänge hinsichtlich Richtung und Stärke datenbasiert zutreffend interpretiert, mit geeigneten Kennzahlen oder aggregierten Datenwerten stützt und angemessen einordnet. Einzelne Beobachtungen gelten dabei nicht als hinreichender Beleg für einen Zusammenhang auf Gruppen- oder Variablenebene.
 
@@ -222,12 +222,10 @@ Für Kategorie~C wird aufgrund des abweichenden Bewertungsverfahrens kein mittle
 
 Neben der inhaltlichen Güte wird die Reproduzierbarkeit der Antworten über die wiederholten Durchläufe betrachtet. Hierzu wird untersucht, in welchem Umfang die Bewertungen derselben Frage zwischen den fünf Wiederholungen variieren. Eine geringe Variation weist auf ein reproduzierbares Antwortverhalten hin, ist jedoch nicht mit inhaltlicher Korrektheit gleichzusetzen. Ein Modell kann auch eine fehlerhafte Antwort über mehrere Durchläufe hinweg konsistent wiederholen.
 
-\subsection{Bewertung des manipulierten Datensatzes}
+\subsection{Bewertung in Experiment 2}
 \label{subsec:evaluation-e2}
 
-Ausgangspunkt der Auswertung ist die gezielte Umkehrung des Zusammenhangs zwischen \texttt{OverTime} und \texttt{Attrition}. Im ursprünglichen Datensatz liegt die Kündigungsquote bei \texttt{OverTime = Yes} deutlich höher als bei \texttt{OverTime = No}, während im manipulierten Datensatz \texttt{OverTime = Yes} die niedrigere Quote aufweist. Hierzu wird die Zuordnung der Werte von \texttt{OverTime} verändert, während dessen Randverteilung, die Verteilung von \texttt{Attrition} sowie sämtliche übrigen Variablen unverändert bleiben. Dadurch kann untersucht werden, ob die Antworten die veränderte Richtung des Zusammenhangs berücksichtigen oder weiterhin die in Experiment~1 beobachtete Richtung wiedergeben.
-
-Für die Auswertung werden die Antworten systematisch nach Modell, Frage und Wiederholung betrachtet. Einbezogen wird Frage~A09 als direkte Frage zum Zusammenhang zwischen \texttt{OverTime} und \texttt{Attrition}. Ergänzend werden die interpretativen Fragen~B01, B02, B03 und B05 betrachtet, da \texttt{OverTime} in den Antworten auf diese Fragen bereits in Experiment~1 regelmäßig als relevanter Faktor für Attrition aufgegriffen wurde. Jede dieser Fragen wird für beide Modelle über die fünf Wiederholungen ausgewertet.
+Ausgangspunkt der Auswertung ist die gezielte Umkehrung des Zusammenhangs zwischen \texttt{OverTime} und \texttt{Attrition}. Während im ursprünglichen Datensatz  die Kündigungsquote bei \texttt{OverTime = Yes} deutlich höher als bei \texttt{OverTime = No} liegt, weist der manipulierten Datensatz die entgegengesetzte Richtung auf. Die konkrete Erzeugung und Validierung des manipulierten Datensatzes wird in Abschnitt~\ref{exec:experiment2} beschrieben. Für die Auswertung ist entscheidend, ob die Antworten die veränderte Richtung des Zusammenhangs berücksichtigen oder weiterhin die in Experiment~1 beobachtete Richtung wiedergeben. Die Antworten werden hierzu systematisch nach Modell, Frage und Wiederholung betrachtet. Einbezogen wird Frage~A09 als direkte Frage zum Zusammenhang zwischen \texttt{OverTime} und \texttt{Attrition}. Ergänzend werden die interpretativen Fragen~B01, B02, B03 und B05 betrachtet, da \texttt{OverTime} in den Antworten auf diese Fragen bereits in Experiment~1 regelmäßig als relevanter Faktor für Attrition aufgegriffen wurde. Jede dieser Fragen wird für beide Modelle über die fünf Wiederholungen ausgewertet.
 
 Um die Beobachtung des Antwortverhaltens von dessen Bewertung zu trennen, wird jede Antwort entlang der in Tabelle~\ref{tab:kodierung-e2} dargestellten Merkmale kodiert. Zunächst wird festgehalten, ob \texttt{OverTime} überhaupt als relevanter Faktor genannt wird und welche Richtung des Zusammenhangs aus der Antwort hervorgeht. Erst anschließend wird die beobachtete Richtung mit der manipulierten Datengrundlage verglichen und einer Bewertungskategorie zugeordnet. Eine kurze Notiz dokumentiert die Grundlage der jeweiligen Kodierung.
 
@@ -275,35 +273,66 @@ Die Klassifikation folgt einer eindeutigen Entscheidungsregel. Wird \texttt{Over
 
 Die Nichtnennung von \texttt{OverTime} wird dabei nicht als \emph{folgt den Daten} gewertet. Insbesondere bei den interpretativen Fragen können auch andere Variablen als relevante Faktoren ausgewählt werden, ohne dass daraus eine Aussage über den Zusammenhang zwischen \texttt{OverTime} und \texttt{Attrition} hervorgeht. Eine solche Antwort wird für die richtungsbezogene Auswertung daher als \emph{uneindeutig} klassifiziert. Gleiches gilt, wenn \texttt{OverTime} zwar genannt wird, aus der Antwort jedoch keine eindeutige Richtung des Zusammenhangs hervorgeht.
 
-Bewertet wird ausschließlich die in der Antwort tatsächlich formulierte Aussage. Enthält eine Antwort einzelne Beobachtungen oder Werten aus denen sich eine bestimmte Richtung ableiten ließe, formuliert diese Richtung jedoch nicht selbst, wird sie nicht entsprechend interpretiert, sondern als \emph{uneindeutig} kodiert. Bei den interpretativen Fragen genügt dagegen eine eindeutige Einordnung von \texttt{OverTime = Yes} als Merkmal einer Gruppe mit erhöhter beziehungsweise verringerter Kündigungsneigung, um die entsprechende Richtung zu kodieren. Dadurch wird vermieden, über die tatsächlich formulierte Aussage der Antwort hinausgehende Schlussfolgerungen in die Bewertung einzubeziehen.
+Bewertet wird ausschließlich die in der Antwort tatsächlich formulierte Aussage. Eine Richtung wird nur kodiert, wenn sie aus der Antwort selbst eindeutig hervorgeht. Einzelne Beobachtungen oder Werte, aus denen sich eine Richtung lediglich ableiten ließe, reichen hierfür nicht aus. Bei den interpretativen Fragen genügt dagegen eine eindeutige Einordnung von \texttt{OverTime = Yes} als Merkmal einer Gruppe mit erhöhter oder verringerter Kündigungsneigung, um die entsprechende Richtung zu kodieren. Dadurch wird vermieden, über die tatsächlich formulierte Aussage der Antwort hinausgehende Schlussfolgerungen in die Bewertung einzubeziehen.
 
 Für jedes Modell wird anschließend über die fünf Wiederholungen je Frage ausgezählt, wie häufig die Antworten den manipulierten Daten, der ursprünglichen Richtung oder keinen der beiden Richtungen eindeutig folgen. Zusätzlich wird bei den interpretativen Fragen erfasst, wie häufig \texttt{OverTime} überhaupt als relevanter Faktor genannt wird. Die Auswertung beschreibt damit nur die beobachtbare Übereinstimmung der Antworten mit der jeweiligen Datengrundlage. Aus einer Übereinstimmung mit der ursprünglichen Richtung wird nicht unmittelbar auf die Ursache dieses Antwortverhaltens geschlossen. Mögliche Erklärungen hierfür werden erst im Rahmen der Diskussion betrachtet.
 
 \section{Durchführung}
 \label{sec:durchfuehrung}
-    
-% STUB: noch auszuformulieren, sobald die Experimente 0 bis 2 durchgeführt sind.
-% Aus der Bewertungsmethodik hierher verschoben (gehört zur Durchführung):
-%
-% - Anzahl der Wiederholungen je Frage und Modell (Durchführungsparameter).
-%
-% - Behandlung fehlender Antworten:
-%   Fehlende Antworten, die auf technische Fehler der Programmierschnittstelle
-%   zurückgehen, werden nicht als inhaltliches Ergebnis gewertet, sondern erneut
-%   erhoben. Auf diese Weise wird vermieden, dass Uebertragungsfehler die
-%   Auswertung verzerren und als inhaltliches Versagen des Modells fehlgedeutet
-%   werden.
-%
-% - Verwendete Modelle und Parameter (GPT und Gemini), Prompt- und
-%   Runner-Infrastruktur, Ablauf der Experimente, Stand der Durchfuehrung.
 
-% E0-Fakten (bereits durchgefuehrt, hier festhalten):
-% - Modelle: gpt-5.6-luna (GPT) und gemini-3.6-flash (Gemini); System-Prompt
-%   neutral und englisch.
-% - 15 Konzeptfragen ohne Datenbezug, je Modell 3 Wiederholungen, also 90 Antworten.
-% - Temperatur 1 (GPT erzwingt 1, Gemini ebenfalls auf 1 gesetzt).
-% - Blindkodierung ueber anonymisierte IDs.
-% - Zwei Gemini-Antworten zur Transformations-Frage (E0_08) nacherhoben: eine nach
-%   einem 503-Fehler der Programmierschnittstelle, eine am Ausgabelimit
-%   abgeschnitten und mit hoeherem max_tokens erneut erhoben; kodiert wurde jeweils
-%   die vollstaendige Antwort.
+Die Experimente wurden über die Programmierschnittstellen (APIs) von OpenAI und Google durchgeführt. Verwendet wurden die Modelle \texttt{gpt-5.6-luna} (OpenAI) und\\ \texttt{gemini-3.6-flash} (Google) mit einem neutralen, englischen System-Prompt und einer Temperatur von~1, die bei GPT vorgegeben ist und bei Gemini entsprechend gesetzt wurde. Jede Anfrage wurde in einem eigenständigen Kontext gestellt. Die Antworten wurden sofort nach ihrer Erzeugung gespeichert, jeweils mit Modell, Frage-Kennung, Iteration, Token-Zahlen, Abschlussgrund und Zeitstempel. Ein Ausführungsskript mit Wiederaufnahme übersprang bei einem Neustart bereits erfolgreich beantwortete Kombinationen. Antworten, die auf technische Fehler der API zurückgingen, wurden nicht als inhaltliches Ergebnis gewertet, sondern erneut erhoben, um Übertragungsfehler nicht als inhaltliches Versagen des Modells irrtümlich zu interpretieren.
+
+In den datenbezogenen Experimenten wurde der Datensatz als CSV-Text übergeben. Für GPT wurde er jeder Anfrage vorangestellt, für Gemini über einen Kontext-Cache bereitgestellt, sodass bei den einzelnen Anfragen nur die jeweilige Frage erneut gesendet werden musste. Inhaltlich stand damit beiden Modellen bei jeder Anfrage derselbe vollständige Datensatz zur Verfügung; die Verfahren unterschieden sich lediglich in der technischen Bereitstellung des wiederverwendeten Kontexts. Das Prompt-Caching erfolgte bei OpenAI automatisch als Präfix-Cache, bei Google über einen explizit angelegten Kontext-Cache. Dessen Lebensdauer wurde bei längeren Läufen auf 7200~Sekunden gesetzt, da ein vorzeitiges Ablaufen sonst zu einem Fehler wegen eines nicht mehr verfügbaren Caches während des Laufs führte. Die Übergabe des vollständigen Datensatzes umfasste rund 115.000~Token je Anfrage, die Antwortlänge war auf 8000~Token begrenzt.
+
+\subsection{Experiment 0}
+\label{exec:experiment0}
+
+Experiment~0 wurde ohne Datensatz durchgeführt. Den beiden Modellen wurden 15~konzeptionelle Fragen in jeweils drei Wiederholungen vorgelegt, sodass insgesamt 90~Antworten entstanden. Die Kodierung erfolgte blind über anonymisierte Kennungen, also ohne Kenntnis des Modells und der Wiederholung. Zwei Antworten von Gemini zur Transformationsfrage (E0\_08) wurden erneut erhoben: eine nach einem 503-Fehler der API sowie eine, die am Ausgabelimit abgeschnitten und mit erhöhtem Token-Limit erneut erhoben wurde. Die technisch fehlerhaften oder unvollständigen Antworten wurden durch die erneut erhobenen Antworten ersetzt und nicht als zusätzliche Beobachtungen berücksichtigt. Kodiert wurde jeweils die vollständige nacherhobene Antwort.
+
+\subsection{Experiment 1}
+\label{exec:experiment1}
+
+In Experiment~1 wurde der Datensatz \textit{IBM HR Analytics} mit 1470~Beobachtungen in der Rohfassung übergeben. Der Fragenkatalog (Datei \texttt{experiment1.json}) mit den englischen Feldern \texttt{question}, \texttt{category} und \texttt{reference\_id} umfasst 20~Fragen, davon zehn faktische (Kategorie~A), fünf interpretative (Kategorie~B) und fünf Halluzinationsfallen (Kategorie~C). Bei fünf Wiederholungen je Frage und zwei Modellen ergeben sich 200~Antworten. Die protokollierten Abschlussgründe zeigen, dass GPT alle 100~Antworten regulär beendete (\texttt{stop}), während Gemini 89~Antworten regulär beendete und 11 am Token-Limit abbrach (\texttt{MAX\_TOKENS}). Diese 11~Antworten wurden nicht erneut erhoben, sondern in der tatsächlich erzeugten Form in die Bewertung einbezogen. Bewertet wurde jeweils der bis zum Abbruch erzeugte Inhalt.
+
+\subsection{Experiment 2}
+\label{exec:experiment2}
+
+In Experiment~2 wurde eine manipulierte Fassung desselben Datensatzes verwendet. Sie entstand als Kopie der Rohfassung, in der ausschließlich die Spalte \texttt{OverTime} neu zugeordnet wurde. \texttt{Attrition} und alle übrigen Spalten blieben unverändert, und die Randverteilung von \texttt{OverTime} mit 416~Ausprägungen \texttt{Yes} und 1054~Ausprägungen \texttt{No} blieb erhalten. Mit einem festen Zufalls-Seed von~42 wurden 33~der ausgeschiedenen Personen der Gruppe mit Überstunden zugeordnet. Dadurch kehrte sich die im Originaldatensatz beobachtete Beziehung um: Während die Kündigungsquote ursprünglich 30,5~\% bei \texttt{OverTime = Yes} und 10,4~\% bei \texttt{OverTime = No} betrug, lag sie in der manipulierten Fassung bei 7,9~\% beziehungsweise 19,4~\%. Der feste Seed und die Zielgröße von 33~Personen sind dokumentiert, sodass die Erzeugung der neuen Verteilung exakt reproduzierbar ist.
+
+Vor der Verwendung wurde die manipulierte Fassung technisch validiert: Die Zahl der Ausprägungen \texttt{Yes} beträgt weiterhin 416, die Spalte \texttt{Attrition} ist mit dem Original identisch, alle übrigen Spalten sind unverändert und allein die Zuordnung von \texttt{OverTime} wurde verändert. Tabelle~\ref{tab:e2-crosstab} zeigt die Kreuztabelle von \texttt{OverTime} und \texttt{Attrition} vor und nach der Manipulation.
+
+\begin{table}[htbp]
+    \centering
+    \small
+    \caption[Kreuztabelle vor und nach der Manipulation]%
+    {Absolute Häufigkeiten von \texttt{OverTime} und \texttt{Attrition} im
+    Original und in der manipulierten Fassung. Die Randverteilungen sind in
+    beiden Fassungen identisch; verändert wurde ausschließlich die gemeinsame Verteilung.}
+    \label{tab:e2-crosstab}
+    \renewcommand{\arraystretch}{1.2}
+    \begin{tabularx}{\textwidth}{
+        >{\raggedright\arraybackslash}p{2.2cm}
+        >{\centering\arraybackslash}X
+        >{\centering\arraybackslash}X
+        >{\centering\arraybackslash}X
+        >{\centering\arraybackslash}X
+        >{\centering\arraybackslash}p{1.8cm}
+    }
+        \toprule
+        & \multicolumn{2}{c}{\textbf{Original}} & \multicolumn{2}{c}{\textbf{Manipuliert}} & \\
+        \cmidrule(lr){2-3}\cmidrule(lr){4-5}
+        \textbf{OverTime} & Attrition No & Attrition Yes & Attrition No & Attrition Yes & \textbf{Summe} \\
+        \midrule
+        No     & 944  & 110 & 850  & 204 & 1054 \\
+        Yes    & 289  & 127 & 383  & 33  & 416  \\
+        \midrule
+        \textbf{Summe} & 1233 & 237 & 1233 & 237 & 1470 \\
+        \bottomrule
+    \end{tabularx}
+\end{table}
+
+Die Referenzwerte wurden mit derselben Pipeline wie in Abschnitt~\ref{subsec:referenzwerte} auf der manipulierten Fassung neu berechnet. Eine Kontrollrechnung ergab, dass sich von 54~Kennzahlen nur drei änderten, sämtlich mit Bezug zu \texttt{OverTime}: die Kündigungsquote je \texttt{OverTime}, die Korrelation von \texttt{OverTime} mit \texttt{Attrition} sowie die Assoziationsregeln, in denen \texttt{OverTime} vorkommt. Dieselbe Pipeline reproduzierte die Referenzwerte der Originalfassung exakt. Damit konnten die beobachteten Änderungen auf die gezielte Neuzuordnung von \texttt{OverTime} zurückgeführt werden.
+
+Anschließend wurden dieselben 20~Fragen unter denselben technischen Bedingungen wie in Experiment~1 gestellt, also mit denselben Modellen, Prompts und Parametern sowie fünf Wiederholungen je Frage, woraus sich erneut 200~Antworten ergeben. Die Antworten wurden wie zuvor mit Modell, Frage-Kennung und Iteration gespeichert. Die nicht von \texttt{OverTime} abhängigen Fragen wurden als Kontrolle auf unerwartete Abweichungen gegenüber Experiment~1 geprüft.
+
+Ergänzend wurde GPT in einer gesonderten Kontrollabfrage in drei Wiederholungen direkt aufgefordert, die Kündigungsquote für die Gruppe mit Überstunden zu berechnen.
