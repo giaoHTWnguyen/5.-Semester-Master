@@ -215,6 +215,7 @@ Ergänzend wird jede Antwort binär danach klassifiziert, ob sie mindestens eine
 \end{table}
 
 \subsection{Aggregation der Bewertung}
+\label{subsec:aggregation}
 
 Die Einzelbewertungen werden für jede Frage zunächst über die fünf Wiederholungen eines Modells zusammengefasst. Für die Kategorien~A und ~B wird hierzu der mittlere Punktwert je Frage bestimmt. Abschließend wird aus den Fragemittelwerten der mittlere Punktwert der jeweiligen Kategorie je Modell gebildet. Dadurch geht jede Frage unabhängig von der Anzahl ihrer Wiederholungen mit gleichem Gewicht in das Kategorieergebnis ein.
 
@@ -227,15 +228,59 @@ Neben der inhaltlichen Güte wird die Reproduzierbarkeit der Antworten über die
 \subsection{Bewertung des manipulierten Datensatzes}
 \label{subsec:evaluation-e2}
 
-Für Experiment~2 wird gezielt der Zusammenhang zwischen der Variable \texttt{OverTime} und der Zielvariable \texttt{Attrition} verändert. Die Wahl von \texttt{OverTime} erfolgt, da die Variable in Experiment~1 von beiden Modellen wiederholt als relevanter Faktor für Attrition aufgegriffen wurde und aufgrund ihrer binären Ausprägung eine eindeutige Veränderung der Richtung ermöglicht. Im Originaldatensatz beträgt die Attritionsquote bei Beschäftigten mit \texttt{OverTime = Yes} 30,5~\%, gegenüber 10,4~\% bei \texttt{OverTime = No}. Im manipulierten Datensatz wird die Richtung dieses Zusammenhangs umgekehrt, sodass Beschäftigte ohne Überstunden die höhere Attritionsquote aufweisen.
+Ausgangspunkt der Auswertung ist die gezielte Umkehrung des Zusammenhangs zwischen \texttt{OverTime} und \texttt{Attrition}. Im ursprünglichen Datensatz liegt die Kündigungsquote bei \texttt{OverTime = Yes} deutlich höher als bei \texttt{OverTime = No}, während im manipulierten Datensatz \texttt{OverTime = Yes} die niedrigere Quote aufweist. Hierzu wird die Zuordnung der Werte von \texttt{OverTime} verändert, während dessen Randverteilung, die Verteilung von \texttt{Attrition} sowie sämtliche übrigen Variablen unverändert bleiben. Dadurch kann untersucht werden, ob die Antworten die veränderte Richtung des Zusammenhangs berücksichtigen oder weiterhin die in Experiment~1 beobachtete Richtung wiedergeben.
 
-Die Manipulation erfolgt durch eine Neuzuordnung der Werte der Spalte \texttt{OverTime}. Dabei bleiben sowohl die Randverteilung von \texttt{OverTime} als auch die Zielvariable \texttt{Attrition} und sämtliche übrigen Variablen gegenüber dem Originaldatensatz unverändert. Verändert wird ausschließlich die gemeinsame Verteilung von \texttt{OverTime} und \texttt{Attrition}. Dieses Vorgehen wird einer Veränderung der Kündigungslabels vorgezogen, da eine solche auch die Zusammenhänge zwischen \texttt{Attrition} und weiteren Variablen beeinflussen würde. Durch die Neuzuordnung von \texttt{OverTime} bleiben demgegenüber die Referenzwerte derjenigen Fragen unverändert, deren Beantwortung nicht von dieser Variable abhängt. Die Manipulation ist damit gezielt auf den zu untersuchenden Zusammenhang beschränkt.
+Für die Auswertung werden die Antworten systematisch nach Modell, Frage und Wiederholung betrachtet. Einbezogen wird Frage~A09 als direkte Frage zum Zusammenhang zwischen \texttt{OverTime} und \texttt{Attrition}. Ergänzend werden die interpretativen Fragen~B01, B02, B03 und B05 betrachtet, da \texttt{OverTime} in den Antworten auf diese Frage bereits in Experiment~1 regelmäßig als relevanter Faktor für Attrition aufgegriffen wurde. Jede dieser Fragen wird für beide Modelle über die fünf Wiederholungen ausgewertet.
 
-Für die Auswertung wird zwischen Analyse- und Kontrollfragen unterschieden. Frage~A09 bildet die direkte Prüfgröße, da sie explizit nach der Richtung des Zusammenhangs zwischen \texttt{OverTime} und \texttt{Attrition} fragt. Ergänzend werden die interpretativen Fragen~B01, B02, B03 und B05 betrachtet, in deren Antworten \texttt{OverTime} bereits in Experiment~1 regelmäßig als relevanter Faktor aufgegriffen wurde. Frage~B04 wird ergänzend betrachtet, da \texttt{OverTime} dort in Experiment~1 seltener thematisiert wurde. Die übrigen Fragen dienen als Kontrollfragen, da ihre für die Beantwortung relevanten Datengrundlagen durch die Manipulation unverändert bleiben.
+Um die Beobachtung des Antwortverhaltens von dessen Bewertung zu trennen, wird jede Antwort entlang der in Tabelle~\ref{tab:kodierung-e2} dargestellten Merkmale kodiert. Zunächst wird festgehalten, ob \texttt{OverTime} überhaupt als relevanter Faktor genannt wird und welche Richtung des Zusammenhangs aus der Antwort hervorgeht. Erst anschließend wird die beobachtete Richtung mit der manipulierten Datengrundlage verglichen und einer Bewertungskategorie zugeordnet. Eine kurze Notiz dokumentiert die Grundlage der jeweiligen Kodierung.
 
-Für die Analysefragen wird kein Punktwert vergeben. Stattdessen wird jede Antwort ihrer Aussage zum Zusammenhang zwischen \texttt{OverTime} und \texttt{Attrition} einer von drei Kategorien zugeordnet. Als \emph{folgt den Daten} gilt eine Antwort, deren Aussage der Richtung im manipulierten Datensatz entspricht. Als \emph{folgt der ursprünglichen Richtung} wird eine Antwort klassifiziert, die weiterhin den in Experiment~1 beobachteten Zusammenhang wiedergibt und damit der manipulierten Datengrundlage widerspricht. Antworten, aus denen keine eindeutige Aussage zur Richtung des Zusammenhangs hervorgeht, werden als \emph{uneindeutig} klassifiziert. Bei den interpretativen Fragen der Kategorie~B wird zusätzlich erfasst, ob \texttt{OverTime} überhaupt als relevanter Faktor genannt wird.
+\begin{table}[htbp]
+    \centering
+    \small
+    \caption[Kodierschema für Experiment 2]%
+    {Kodierschema für die Antworten in Experiment~2.}
+    \label{tab:kodierung-e2}
+    \renewcommand{\arraystretch}{1.3}
+    \begin{tabularx}{\textwidth}{
+        >{\raggedright\arraybackslash}p{2.5cm}
+        >{\raggedright\arraybackslash}p{2.5cm}
+        >{\raggedright\arraybackslash}X
+    }
+        \toprule
+        \textbf{Ebene} & \textbf{Merkmal} & \textbf{Bedeutung} \\
+        \midrule
+        Beobachtung
+        & OverTime genannt?
+        & Ob \texttt{OverTime} in der Antwort als relevanter Faktor
+        aufgegriffen wird (ja/nein). \\
 
-Die Kategorien beziehen sich ausschließlich auf die beobachtbare Übereinstimmung der Antworten mit der jeweiligen Datengrundlage. Aus einem Festhalten an der ursprünglichen Richtung kann nicht unmittelbar geschlossen werden, ob dieses Verhalten auf ein Auswendiglernen des konkreten Datensatzes, allgemeinem Domänenwissen oder anderen Einflüssen beruht. Die Bewertung beschränkt sich daher auf das beobachtbare Antwortverhalten; die Einordnung möglicher Ursachen erfolgt in der Diskussion. Für jedes Modell wird über die fünf Wiederholungen erfasst, wie häufig die Antworten den manipulierten Daten, der ursprünglichen Richtung oder keiner der beiden Richtungen eindeutig folgen.
+        Beobachtung
+        & Richtung
+        & Beschriebene Beziehung: \texttt{Yes} $\rightarrow$ höhere
+        Kündigung, \texttt{Yes} $\rightarrow$ niedrigere Kündigung oder
+        keine eindeutige Richtung. \\
+
+        Bewertung
+        & Klassifikation
+        & Vergleich der beschriebenen Richtung mit der manipulierten
+        Datengrundlage: \emph{folgt den Daten},
+        \emph{folgt der ursprünglichen Richtung} oder \emph{uneindeutig}. \\
+
+        Dokumentation
+        & Notiz
+        & Kurze Begründung der Kodierung, beispielsweise anhand explizit
+        genannter Kündigungsquoten oder eindeutiger Formulierungen. \\
+        \bottomrule
+    \end{tabularx}
+\end{table}
+
+Die Klassifikation folgt einer eindeutigen Entscheidungsregel. Wird \texttt{OverTime = Yes} mit einer niedrigeren Kündigungsquote oder einer geringeren Kündigungsneigung verbunden, wird die Antwort als \emph{folgt den Daten} klassifiziert, da diese Richtung dem manipulierten Datensatz entspricht. Wird \texttt{OverTime = Yes} dagegen mit einer höheren Kündigungsquote oder einer erhöhten Kündigungsneigung verbinden, wird die Antwort als \emph{folgt der ursprünglichen Richtung} klassifiziert. Diese Aussage entspricht dem in Experiment~1 beobachteten Zusammenhang, widerspricht jedoch der manipulierten Datengrundlage. Lässt sich aus der Antwort keine eindeutige Richtung erkennen, wird sie als \emph{uneindeutig} kodiert.
+
+Die Nichtnennung von \texttt{OverTime} wird dabei nicht als emph{folgt den Daten} gewertet. Insbesondere bei den interpretativen Fragen können auch andere Variablen als relevante Faktoren ausgewählt werden, ohne dass daraus eine Aussage über den Zusammenhang zwischen \texttt{OverTime} und \texttt{Attrition} hervorgeht. EIne solche Antwort wird für die richtungsbezogene Auswertung daher als \emph{uneindeutig} klassifiziert. Gleiches gilt, wenn \texttt{OverTime} zwar genannt wird, aus der Antwort jedoch keine eindeutige Richtung des Zusammenhangs hervorgeht.
+
+Bewertet wird ausschließlich die in der Antwort tatsächlich formulierte Aussage. Enthält eine Antwort einzelne Beobachtungen oder Wertem aus denen sich eine bestimmte Richtung ableiten ließe, formuliert diese Richtung jedoch nicht selbst, wird sie nicht entsprechend interpretiert, sondern als \emph{uneindeutig} kodiert. Bei den interpretativen Fragen genügt dagegen eine eindeutige Einordnung von \texttt{OverTime = Yes} als Merkmal einer Gruppe mit erhöhter beziehungsweise verringerter Kündigungsneigung, um die entsprechende Richtung zu kodieren. Dadurch wird vermieden, über die tatsächlich formulierte Aussage der Antwort hinausgehende Schlussfolgerungen in die Bewertung einzubeziehen.
+
+Für jedes Modell wird anschließend über die fünf Wiederholungen je Fragen ausgezählt, wie häufig die Antworten den manipulierten Daten, der ursprünglichen Richtung oder keinen der beiden Richtungen eindeutig folgen. Zusätzlich wird bei den interpretativen Fragen erfasst, wie häufig \texttt{OverTime} überhaupt als relevanter Faktor genannt wird. Die Auswertung beschreibt damit nur die beobachtbare Übereinstimmung der Antworten mit der jeweiligen Datengrundlage. Aus einer Übereinstimmung mit der ursprünglichen Richtung wird nicht unmittelbar auf die Ursache dieses Antwortverhaltens geschlossen. Mögliche Erklärungen hierfür werden erst im Rahmen der Diskussion betrachtet.
 
 \section{Durchführung}
 \label{sec:durchfuehrung}

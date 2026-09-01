@@ -243,3 +243,102 @@ Die Berechnung der in C04 erfragten Attritionsquote stellt daher für sich genom
 Der Vergleich der beiden ausgewiesenen Maße verdeutlicht zudem, dass der Anteil verlässlicher Antworten und die mittlere Anzahl nicht gedeckter Behauptungen unterschiedliche Eigenschaften der Antworten erfassen. Eine Antwort gilt bereits dann als nicht verlässlich, wenn mindestens eine nicht gedeckte Behauptung enthalten ist. Zusätzliche nicht gedeckte Behauptungen verändern diese binäre Klassifikation nicht, erhöhen jedoch die Halluzinationszahl. Bei Frage~C01 erreicht Gemini mit 20~\% einen höheren Anteil verlässlicher Antworten als GPT mit 0~\%, weist mit durchschnittlich 1,2 gegenüber 1,0 zugleich jedoch eine höhere Anzahl nicht gedeckter Behauptungen pro Antworten auf. In einer einzelnen Antwort von Gemini treten drei solcher Behauptungen gleichzeitig auf: Die nicht vorhandene Variable \texttt{EmployeeTenure} wird ohne Grundlage mit \texttt{YearsAtCompany} gleichgesetzt, die Anzahl der Beobachtungen wird mit 718 statt 1470 angegeben und auf dieser abweichenden Datengrundlage eine Summe von 5038 für \texttt{YearsAtCompany} ausgewiesen. Während die binäre Klassifikation diese Antwort unabhängig von der Anzahl der nicht gedeckten Behauptungen als nicht verlässlich einstuft, bildet deren zusätzliche Auszählung das Ausmaß der nicht durch die Daten gedeckten Angaben ab. 
 
 Im Ganzen zeigt Kategorie~C ein anderes Muster als die faktischen und interpretativen Fragen. Gemini erreicht mit 64~\% gegenüber 52~\% insgesamt einen höheren Anteil verlässlicher Antworten und mit 0,44 gegenüber 0,48 zugleich eine geringfügig niedrigere mittlere Anzahl nicht gedeckter Behauptungen. Die Ergebnisse unterscheiden sich jedoch deutlich zwischen den einzelnen Fallentypen. Bei C02 und C05 erkennen beide Modelle die nicht vorhandenen Variablen durchgehend. Bei C01 führt die inhaltlich ähnliche Variable \texttt{YearsAtCompany} dagegen häufig zur Beantwortung der Frage, obwohl \texttt{EmployeeTenure} selbst nicht im Datensatz vorhanden ist. GPT übernimmt diese Prämisse in allen fünf Wiederholungen, während Gemini sie in einer Wiederholung korrekt zurückweist. Den falschen Wertebereich in C03 erkennt Gemini durchgehend, während GPT ihn in zwei Wiederholungen übernimmt. Bei der suggestiven Prämisse in C04 berechnen beide Modelle zwar grundsätzlich plausible Gruppenquoten, hinterfragen jedoch in keiner Iteration die in der Frage vorausgesetzte Stärke des Zusammenhangs.
+
+\subsection{Ergebnisse zu Experiment 2}
+\label{subsec:ergebnisse-e2}
+
+Für die fünf Analysefragen ergeben sich je Modell 25 Antworten. Die an die Modelle übermittelte manipulierte Datenfassung weist für Beschäftigte mit \texttt{OverTime = Yes} eine Attritionsquote von 7,9~\% und für Beschäftigte mit \texttt{OverTime = No} eine Attritionsquote von 19,4\% auf. Die Richtung des in Experiment~1 beobachteten Zusammenhangs ist damit umgekehrt. Tabelle~\ref{tab:ergebnisse-e2} fasst die Klassifikationen der Antworten zusammen.
+
+\begin{table}[htbp]
+    \centering
+    \small
+    \caption[Ergebnisse zu Experiment 2]%
+    {Klassifikation der 25 Analyseantworten je Modell über die Fragen
+    A09, B01, B02, B03 und B05 mit jeweils fünf Wiederholungen.}
+    \label{tab:ergebnisse-e2}
+    \renewcommand{\arraystretch}{1.15}
+
+    \begin{tabular}{
+        l
+        c
+        c
+        c
+    }
+        \toprule
+        \textbf{Modell} &
+        \shortstack{\textbf{folgt den}\\\textbf{Daten}} &
+        \shortstack{\textbf{folgt ursprünglicher}\\\textbf{Richtung}} &
+        \textbf{uneindeutig} \\
+        \midrule
+
+        \texttt{gpt-5.6-luna}
+        & \shortstack{0/25\\(0~\%)}
+        & \shortstack{25/25\\(100~\%)}
+        & \shortstack{0/25\\(0~\%)} \\
+
+        \texttt{gemini-3.6-flash}
+        & \shortstack{0/25\\(0~\%)}
+        & \shortstack{23/25\\(92~\%)}
+        & \shortstack{2/25\\(8~\%)} \\
+
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+Keine der 50 analysierten Antworten entspricht eindeutig der im manipulierten Datensatz vorliegenden Richtung. Bei GPT ist das Antwortverhalten über alle Analysefragen und Wiederholungen einheitlich: Alle 25 Antworten geben weiterhin die in Experiment~ beobachtete Richtung wieder. Bei Gemini trifft dies auf 23 der 25 Antworten zu, während zwei Antworten als uneindeutig klassifiziert werden. Eine Antwort auf Frage~B02 bricht nach der Auflistung einzelner Beobachtungen ab, bevor eine eindeutige Richtung des Zusammenhangs formuliert wird. In einer Antwort auf Frage~B05 wird \texttt{OverTime} unter den drei genannten zentralen Ergebnissen nicht aufgegriffen. 
+
+Die Aufschlüsselung nach einzelnen Fragen in Tabelle~\ref{tab:ergebnisse-e2-fragen} zeigt, dass dieses Muster nicht auf eine einzelne Fragestellung beschränkt ist. Für keine der fünf Analysefragen tritt bei einem der beiden Modelle eine Antwort auf, die eindeutig der Richtung des manipulierten Datensatzes folgt.
+
+\begin{table}[htbp]
+    \centering
+    \small
+    \caption[Ergebnisse von Experiment 2 nach Analysefrage]%
+    {Klassifikation der jeweils fünf Wiederholungen nach Analysefrage.}
+    \label{tab:ergebnisse-e2-fragen}
+    \renewcommand{\arraystretch}{1.2}
+    \setlength{\tabcolsep}{5pt}
+
+    \begin{tabular}{
+        l
+        ccc
+        ccc
+    }
+        \toprule
+        & \multicolumn{3}{c}{\textbf{gpt-5.6-luna}}
+        & \multicolumn{3}{c}{\textbf{gemini-3.6-flash}} \\
+        \cmidrule(lr){2-4}
+        \cmidrule(lr){5-7}
+
+        \textbf{Frage}
+        & \shortstack{\textbf{folgt}\\\textbf{Daten}}
+        & \shortstack{\textbf{ursprüngliche}\\\textbf{Richtung}}
+        & \textbf{uneindeutig}
+        & \shortstack{\textbf{folgt}\\\textbf{Daten}}
+        & \shortstack{\textbf{ursprüngliche}\\\textbf{Richtung}}
+        & \textbf{uneindeutig} \\
+        \midrule
+
+        A09 & 0 & 5 & 0 & 0 & 5 & 0 \\
+        B01 & 0 & 5 & 0 & 0 & 4 & 1 \\
+        B02 & 0 & 5 & 0 & 0 & 5 & 0 \\
+        B03 & 0 & 5 & 0 & 0 & 5 & 0 \\
+        B05 & 0 & 5 & 0 & 0 & 4 & 1 \\
+
+        \midrule
+        \textbf{Gesamt}
+        & \textbf{0} & \textbf{25} & \textbf{0}
+        & \textbf{0} & \textbf{23} & \textbf{2} \\
+
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+Auch die gesonderte erfasste Nennung von \texttt{OverTime} zeigt, dass die Variable in den Antworten weiterhin regelmäßig eingegangen wird. GPT nennt \texttt{OverTime} in allen 25 Analyseantworten, Gemini in 24 von 25 Antworten. Die beiden uneindeutigen Klassifikationen bei Gemini entstehen damit aus unterschiedlichen Gründen: Bei Frage~B01 wird \texttt{OverTime} zwar genannt, jedoch keine eindeutige Richtung formuliert. Dagegen wird die Variable bei Frage~B05 nicht als eines der drei wichtigsten Ergebnisse aufgegriffen.
+
+Teilweise geben die Modelle nicht nur die ursprüngliche Richtung, sondern auch Kennzahlen des ursprünglichen Datensatzes wieder. Gemini nennt in mehreren interpretativen Antworten eine Attritionsquote von etwa 30,5~\% bei \texttt{OverTime = Yes} gegenüber 10,4~\% bei \texttt{OverTime = No}. Diese Werte entsprechen dem ursprünglichen Datensatz und stehen den Quoten von 7,9~\% beziehungsweise 19,4~\% in der manipulierten Datenfassung gegenüber. Gemini nennt in Frage~A09 ebenfalls Quoten von etwa 30~\% gegenüber 10~\%. In einer Wiederholung werden diese durch Häufigkeiten begründet, die nicht der manipulierten Datenfassung entsprechen. In einer weiteren Wiederholung wird ausdrücklich auf einen Wert von 30,5~\% aus einem \enquote{full dataset standard benchmark} verwiesen.
+
+Ergänzend wurde für GPT geprüft, welche Attritionsquote das Modell bei einer direkten Aufforderung zur Berechnung für die Gruppe mit \texttt{OverTime = Yes} bestimmt. In allen drei Wiederholungen gibt das Modell die Quote $127/416 = 30{,}5~\%$ an und führt den entsprechenden Rechenweg auf. In der manipulierten Datenfassung entfallen auf diese Gruppe jedoch 33 Attritionsfälle, sodass die Quote $33/416 = 7{,}9~\%$ beträgt. Der Nenner von 416 ist in beiden Datenfassungen identisch, da die Randverteilung von \texttt{OverTime} durch die Manipulation erhalten bleibt. Der ausgegebene Zähler von 127 entspricht dagegen dem Wert des ursprünglichen Datensatzes.
+
+Die Kontrollfragen, deren für die Beantwortung relevanter Datengrundlagen durch die Manipulation unverändert bleiben, zeigen keine zusätzlichen systematischen Abweichungen gegenüber Experiment~1. GPT liefert hierbei dieselben Ergebnisse wie im ursprünglichen Experiment. Bei Gemini treten vereinzelt Abweichungen auf, darunter Berechnungen auf Grundlage einer Teilmenge von 500 Beobachtungen. Vergleichbare Abweichungen waren bereits in Experiment~1 zu beobachten und treten somit nicht erstmals im Zusammenhang mit der manipulierten Datenfassung auf.
+
+Zusammenfassend entspricht keine der 50 analysierten Antworten eindeutig der im manipulierten Datensatz vorliegenden Richtung des Zusammenhangs zwischen \texttt{OverTime} und \texttt{Attrition}. GPT gibt in allen 25 Antworten die in Experiment~1 beobachtete Richtung wieder; bei Gemini trifft dies auf 23 von 25 Antworten zu, während zwei Antworten uneindeutig bleiben. Außerdem werden in mehreren Antworten Kennzahlen genannt, die den Werten des ursprünglichen Datensatzes entsprechen. Dieses Antwortverhalten trifft auf, obwohl den Modellen die manipulierte Datenfassung übermittelt wurde.

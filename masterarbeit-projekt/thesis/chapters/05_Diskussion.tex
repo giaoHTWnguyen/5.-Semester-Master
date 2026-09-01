@@ -1,0 +1,29 @@
+% =====================================================================
+% DISKUSSION -- STUB: Werkzeuggestuetzt vs. nativ (noch auszuformulieren)
+% ---------------------------------------------------------------------
+% - Beobachtung: ChatGPT-Weboberflaeche mit hochgeladener manipulierter CSV
+%   rechnet die korrekten 7,9 % aus; der API-Lauf (Luna) liefert die
+%   memorisierten 30,5 %.
+% - Haupthebel: Weboberflaeche nutzt den Code-Interpreter (Advanced Data
+%   Analysis), fuehrt echten Python-Code (groupby('OverTime')['Attrition']
+%   .mean()) auf der Datei aus -> deterministisch aus den Daten, kann nicht
+%   memorisieren.
+% - Gegenstueck API: Datensatz als In-Context-Text, kein Werkzeug. Modell
+%   muesste ueber 1470 Zeilen selbst aggregieren, tut das nicht zuverlaessig
+%   (E1-Teilmengenbefund) und fuellt die Luecke mit der memorisierten Statistik.
+% - Sekundaerfaktoren, gleiche Richtung: anderes Produkt/Modellversion,
+%   werkzeugfoerdernder System-Prompt, Datei als Anhang statt Prompt-Text,
+%   evtl. Reasoning-Modus. Haupthebel bleibt die Werkzeugnutzung.
+% - Korroboration: Web-Ergebnis 7,9 % bestaetigt, dass der manipulierte
+%   Datensatz sauber ist und die API-30,5 % Memorisierung sind, kein Datenfehler.
+% - Geltungsbereich praezisieren: Befund gilt fuer die native, werkzeuglose
+%   In-Context-Verarbeitung, nicht fuer werkzeuggestuetzte EDA-Systeme, die
+%   intern Code ausfuehren. Praezise: ohne externes Rechenwerkzeug geben die
+%   Modelle die memorisierte Beziehung wieder; mit Code-Werkzeug verschiebt
+%   sich das Bild.
+% - Ausblick: Grenze zwischen nativer Modellzuverlaessigkeit und werkzeug-
+%   gestuetzter Berechnung. Die Experimente isolieren bewusst die native Seite.
+% - Merker: Web-Beobachtung nicht als kontrolliertes Ergebnis fuehren, nur als
+%   Illustration in der Diskussion. Noch gegenpruefen, ob die Weboberflaeche
+%   einen sichtbaren Code-/Analyseschritt gezeigt hat.
+% =====================================================================
