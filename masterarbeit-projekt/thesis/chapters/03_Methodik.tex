@@ -43,9 +43,76 @@ Dazu werden die Ausgaben zweier \glspl{llm} mit rechnerisch ermittelten Referenz
 
 Die Untersuchung gliedert sich in drei aufeinander bezogene Experimente, die jeweils unterschiedliche Aspekte der Zuverlässigkeit \gls{llm}-gestützter explorativer Datenanalyse adressieren und den drei Forschungsfragen zugeordnet sind. Die Experimente bauen inhaltlich aufeinander auf, unterscheiden sich jedoch hinsichtlich ihrer Fragestellung und der jeweils verwendeten Datengrundlage.
 
+Der Zusammenhang zwischen den beiden Datenfassungen, den drei Experimenten und der anschließenden Auswertung ist in Abbildung~\ref{fig:untersuchungsaufbau} dargestellt.
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[
+  box/.style   = {draw, rounded corners=2pt, align=center,
+                  text width=2.7cm, inner sep=4pt, font=\scriptsize,
+                  minimum height=1.1cm},
+  data/.style  = {box, minimum height=1.5cm},
+  light/.style = {data, draw=black!45, dashed, text=black!60},
+  span/.style  = {draw, rounded corners=2pt, align=center,
+                  text width=6.5cm, inner sep=4pt, font=\scriptsize},
+  wide/.style  = {draw, rounded corners=2pt, align=center,
+                  text width=9.5cm, inner sep=4pt, font=\scriptsize},
+  pfeil/.style = {-{Stealth[length=4pt]}},
+  gestr/.style = {-{Stealth[length=4pt]}, dashed, draw=black!60}
+]
+
+% Spalten: -3.8 | 0 | 3.8 | 7.4 (Referenz)
+% Zeilen:   0 | -2.3 | -4.3 | -6.1 | -7.7
+
+% Zeile 1: Datengrundlage
+\node[light] (nodata) at (-3.8, 0) {ohne\\Datensatz};
+\node[data]  (d1)     at ( 0.0, 0) {Originaldatensatz:\\1470 Beobachtungen\\35 Variablen};
+\node[data]  (d2)     at ( 3.8, 0) {Manipulierte Fassung:\\Zusammenhang \texttt{OverTime}\\auf \texttt{Attrition}\\umgekehrt};
+\node[data]  (ref)    at ( 7.4, 0) {Referenzwerte\\je Datenfassung\\eigener Prüfwert};
+
+% Zeile 2: Experimente
+\node[box] (e0) at (-3.8, -2.3) {Experiment~0\\Methodisches\\Vorwissen};
+\node[box] (e1) at ( 0.0, -2.3) {Experiment~1\\Referenzanalyse};
+\node[box] (e2) at ( 3.8, -2.3) {Experiment~2\\Manipulierter\\Datensatz};
+
+% Zeile 3: Fragen
+\node[box]  (q0)  at (-3.8, -4.3) {15 konzeptionelle\\Fragen};
+\node[span] (q12) at ( 1.9, -4.3) {20 Fragen in Experiment~1 und~2\\
+  A: 10 faktisch \quad B: 5 interpretativ\\
+  C: 5 Halluzinationsfallen};
+
+% Zeile 4 und 5
+\node[wide] (erh) at (0, -6.1) {\textbf{Erhebung:} GPT und Gemini; je Frage drei Wiederholungen in
+  Experiment~0 bzw.\ fünf Wiederholungen in Experiment~1 und~2; jede Antwort einzeln gespeichert};
+\node[wide] (aus) at (0, -7.7) {\textbf{Auswertung:} Experiment~0 anhand Bewertungsrubrik;
+  Experiment~1 anhand Referenzwerten und Kategorien; Experiment~2 anhand der beobachteten Richtung};
+
+% durchgezogene Pfeile (alle senkrecht)
+\draw[pfeil] (nodata.south) -- (e0.north);
+\draw[pfeil] (d1.south)     -- (e1.north);
+\draw[pfeil] (d2.south)     -- (e2.north);
+\draw[pfeil] (e0.south) -- (q0.north);
+\draw[pfeil] (e1.south) -- ([xshift=-1.9cm]q12.north);
+\draw[pfeil] (e2.south) -- ([xshift= 1.9cm]q12.north);
+\draw[pfeil] (q0.south)  -- ([xshift=-3.8cm]erh.north);
+\draw[pfeil] (q12.south) -- ([xshift= 1.9cm]erh.north);
+\draw[pfeil] (erh.south) -- (aus.north);
+
+% gestrichelt: Referenzwerte
+\draw[gestr] (d1.north) -- ++(0,0.55) -| (ref.north);
+\draw[gestr] (d2.east)  -- (ref.west);
+\draw[gestr] (ref.south) -- (7.4,-7.7) -- (aus.east);
+
+\end{tikzpicture}
+\caption[Aufbau der Untersuchung]{Aufbau der Untersuchung. Experiment~0 prüft das methodische Vorwissen ohne Datenbezug. Experiment~1 verwendet den unveränderten Datensatz, Experiment~2 eine manipulierte Fassung mit umgekehrtem Zusammenhang zwischen \texttt{OverTime} und \texttt{Attrition}. Für beide Datenfassungen werden eigene Referenzwerte berechnet und über einen Prüfwert identifiziert.}
+\label{fig:untersuchungsaufbau}
+\end{figure}
+
+Die Untersuchung setzt an zwei Datenfassungen an. Experiment~1 verwendet den unveränderten Datensatz, Experiment~2 die manipulierte Fassung, in der die Beziehung zwischen \texttt{OverTime} und \texttt{Attrition} umgekehrt ist. Für beide Fassungen werden getrennt Referenzwerte berechnet und über einen eigenen Prüfwert eindeutig identifiziert, sodass jede Modellantwort gegen die Referenzwerte genau der Fassung geprüft wird, die auch übergeben wurde. Experiment~0 steht demgegenüber ohne Datenbezug und dient als Kontrollbedingung für die Einordnung der übrigen Ergebnisse.
+
 \subsection*{Experiment 0 -- Methodisches Vorwissen}
 
-Das nullte Experiment adressiert Forschungsfrage~3 und prüft, welches methodisches Wissen zur explorativen Datenanalyse die Modelle unabhängig von einem konkreten Datensatz aufweisen. Den Modellen werden fünfzehn konzeptionelle Fragen ohne Datenbezug vorgelegt, zum Beispiel zur Bedeutung der Interquartilsregel, zur Untersuchung von Lagemaßen oder zu den Grenzen der Korrelationskoeffizienten. Die Fragen sind in drei Schwierigkeitsstufen mit steigender Trennschärfe gegliedert, sodass sich unterschiedliche Kompetenzniveaus der Modelle sichtbar machen lassen. Die Antworten werden anhand einer Bewertungsrubrik mit einer Skala von null bis drei Punkten kodiert, die für jede Frage die erwarteten Kernpunkte festlegt. Dieses Experiment bildet die Grundlage für die Einordnung der übrigen Ergebnisse, da es zeigt, ob fehlerhafte Analysen auf mangelndem Methodenwissen oder auf einer unzureichenden Verarbeitung der bereitgestellten Daten beruhen.
+Das nullte Experiment adressiert Forschungsfrage~3 und prüft, welches methodisches Wissen zur explorativen Datenanalyse die Modelle unabhängig von einem konkreten Datensatz aufweisen. Den Modellen werden fünfzehn konzeptionelle Fragen ohne Datenbezug vorgelegt, zum Beispiel zur Bedeutung der Interquartilsregel, zur Untersuchung von Lagemaßen oder zu den Grenzen der Korrelationskoeffizienten. Die Fragen sind in drei Schwierigkeitsstufen mit steigender Trennschärfe gegliedert, sodass sich unterschiedliche Kompetenzniveaus der Modelle sichtbar machen lassen. Die Antworten werden anhand einer Bewertungsrubrik mit einer Skala von null bis drei Punkten kodiert, die für jede Frage die erwarteten Kernpunkte festlegt. Dieses Experiment bildet die Grundlage für die Einordnung der übrigen Ergebnisse, da geprüft wird, inwieweit fehlendes methodisches Wissen als Erklärung für dort beobachtete Abweichungen infrage kommt.
 
 \subsection*{Experiment 1 -- Referenzanalyse}
 
@@ -128,7 +195,7 @@ Zusätzliche Ausführungen führen nicht zu einem Punktabzug, sofern die geforde
 
 \subsection{Kategorie B: Interpretative Fragen}
 
-Interpretative Fragen zielen auf Zusammenhänge und Merkmalskombinationen, etwa auf die Faktoren, die mit einer Kündigung einhergehen. Für sie existiert kein einzelner Referenzwert, wohl aber ein referenzieller Rahmen aus den berechneten Korrelationskoeffizienten und Assoziationsregeln, an dem sich Richtung und Stärke eines behaupteten Zusammenhangs prüfen lassen. Über die sachliche Richtigkeit hinaus wird die Interpretationsqualität herangezogen. In Anlehnung an \textcite{koesten_talking_2021} gilt eine Interpretation dann als gehaltvoll, wenn sie ihre Aussagen einordnet, Kennzahlen nicht lediglich wiederzugeben und die Grenzen ihrer Aussagekraft benennt (Abschnitt~\ref{sec:eda}). Dazu zählt der Vorbehalt, dass sich aus einer Korrelation kein kausaler Zusammenhang ableiten lässt \parencite[178--189]{boslaugh_statistics_2012}.
+Interpretative Fragen zielen auf Zusammenhänge und Merkmalskombinationen, etwa auf die Faktoren, die mit einer Kündigung einhergehen. Für sie existiert kein einzelner Referenzwert, wohl aber ein referenzieller Rahmen aus den berechneten Korrelationskoeffizienten und Assoziationsregeln, an dem sich Richtung und Stärke eines behaupteten Zusammenhangs prüfen lassen. Über die sachliche Richtigkeit hinaus wird die Interpretationsqualität herangezogen. In Anlehnung an \textcite{koesten_talking_2021} gilt eine Interpretation dann als gehaltvoll, wenn sie ihre Aussagen einordnet, Kennzahlen nicht lediglich wiedergibt und die Grenzen ihrer Aussagekraft benennt (Abschnitt~\ref{sec:eda}). Dazu zählt der Vorbehalt, dass sich aus einer Korrelation kein kausaler Zusammenhang ableiten lässt \parencite[178--189]{boslaugh_statistics_2012}.
 
 Die Bewertung erfolgt auf einer Skala von null bis zwei Punkten. Zwei Punkte werden vergeben, wenn die Antwort die für die Fragestellung wesentlichen Zusammenhänge hinsichtlich Richtung und Stärke datenbasiert zutreffend interpretiert, mit geeigneten Kennzahlen oder aggregierten Datenwerten stützt und angemessen einordnet. Einzelne Beobachtungen gelten dabei nicht als hinreichender Beleg für einen Zusammenhang auf Gruppen- oder Variablenebene.
 
@@ -219,7 +286,7 @@ Die Einzelbewertungen werden für jede Frage zunächst über die fünf Wiederhol
 
 Obwohl für die Kategorien~A und~B jeweils eine Skala von null bis zwei Punkten verwendet wird, erfassen die Punktwerte unterschiedliche Bewertungsdimensionen. Kategorie~A misst die faktische Übereinstimmung mit vorab bestimmten Referenzwerten, während Kategorie~B die Qualität der datenbasierten Interpretation bewertet. Die Ergebnisse werden daher getrennt ausgewiesen und nicht zu einem gemeinsamen Punktewert zusammengeführt.
 
-Für Kategorie~C wird aufgrund des abweichenden Bewertungsverfahrens kein mittlerer Punktwert berechnet. Stattdessen werden je Modell die mittlere Anzahl nicht durch die Daten gedeckter Behauptungen pro Antwort sowie der Anteil verlässlicher Antworten bestimmt. Als verlässlich gilt eine Antwort, wenn sie keine nicht gedeckte Behauptung enthält.
+Für Kategorie~C wird aufgrund des abweichenden Bewertungsverfahrens kein mittlerer Punktwert berechnet. Stattdessen werden je Modell die mittlere Anzahl nicht durch die Daten gedeckter Behauptungen pro Antworten sowie der Anteil verlässlicher Antworten bestimmt. Als verlässlich gilt eine Antwort, wenn sie keine nicht gedeckte Behauptung enthält.
 
 Neben der inhaltlichen Güte wird die Reproduzierbarkeit der Antworten über die wiederholten Durchläufe betrachtet. Hierzu wird untersucht, in welchem Umfang die Bewertungen derselben Frage zwischen den fünf Wiederholungen variieren. Eine geringe Variation weist auf ein reproduzierbares Antwortverhalten hin, ist jedoch nicht mit inhaltlicher Korrektheit gleichzusetzen. Ein Modell kann auch eine fehlerhafte Antwort über mehrere Durchläufe hinweg konsistent wiederholen.
 
