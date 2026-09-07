@@ -290,6 +290,46 @@ Operationalisierung: Du nimmst etwas Abstraktes aus der Literatur – bei Koeste
 
 > Operationalisierung = abstraktes Konzept mess- bzw. bewertbar machen
 
+## Rückblick auf die erwarteten Ergebnisse
+
+Vor Beginn der Untersuchung wurden mehrere erwartete Ergebnisse formuliert. Rückblickend lassen sich diese unterschiedlich stark durch die Arbeit beantworten.
+
+| Ursprüngliche Erwartung                                                                                                                                               | Einordnung durch die Ergebnisse                                                                                                                                                                                                                                                                                                                                                                        |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| LLMs können explorative Analyseschritte strukturiert unterstützen und plausible Ergebnisse generieren.                                                                | **Weitgehend bestätigt.** Experiment 0 zeigt ein sehr hohes methodisches Vorwissen. Auch in Experiment 1 sind viele faktische und interpretative Antworten korrekt beziehungsweise plausibel.                                                                                                                                                                                                          |
+| Die Analysen basieren nicht ausschließlich auf den bereitgestellten Daten, sondern werden teilweise durch vortrainiertes Wissen oder statistische Muster beeinflusst. | **Teilweise bestätigt, aber Ursache nicht nachweisbar.** Experiment 2 zeigt klar, dass die Antworten nicht durchgängig der manipulierten Datengrundlage folgen, sondern mehrfach den Zusammenhang des ursprünglichen Datensatzes wiedergeben. Nicht bestimmbar ist, ob dies auf vortrainiertes Wissen, eine Memorisierung des konkreten Datensatzes oder allgemein gelernte Muster zurückzuführen ist. |
+| Halluzinationen und fehlerhafte Berechnungen treten nicht zufällig auf, sondern stellen ein strukturelles Problem dar.                                                | **Nur vorsichtig bestätigbar.** Es zeigen sich wiederkehrende und aufgabentypabhängige Abweichungen, etwa bei Zählwerten, Halluzinationsfallen und in Experiment 2. Aus zwei Modellen und einem Datensatz kann jedoch kein allgemeines strukturelles Problem aller LLMs abgeleitet werden.                                                                                                             |
+| Unterschiede in Faktentreue, Konsistenz oder Interpretierbarkeit könnten auf den Einfluss von Vorwissen zurückzuführen sein.                                          | **Nur teilweise beantwortbar.** Unterschiede zwischen GPT und Gemini sind klar sichtbar. Die Ursache dieser Unterschiede kann mit dem Untersuchungsdesign jedoch nicht bestimmt werden.                                                                                                                                                                                                                |
+| Bestimmte Formen der Mensch-Modell-Interaktion beeinflussen Qualität und Nachvollziehbarkeit.                                                                         | **Nicht empirisch untersucht.** Dieser Punkt wurde nicht getestet und bleibt eine offene Forschungsfrage für den Ausblick.                                                                                                                                                                                                                                                                             |
+
+### Gute Formulierung für die Verteidigung
+
+**Frage:** _Sind Ihre erwarteten Ergebnisse eingetreten?_
+
+> Teilweise ja. Die Erwartung, dass die Modelle methodisch plausible explorative Analysen liefern können, wurde durch Experiment 0 und große Teile von Experiment 1 bestätigt. Ebenfalls bestätigt wurde, dass die Antworten nicht in jedem Fall vollständig mit der bereitgestellten Datengrundlage übereinstimmen. Experiment 2 zeigt dies besonders deutlich. Nicht direkt bestätigt werden konnte jedoch, dass dieses Verhalten tatsächlich auf vortrainiertes Wissen zurückzuführen ist, da das Untersuchungsdesign keine Aussage über den internen Ursprung der Antworten erlaubt. Auch die ursprünglich erwarteten Effekte der iterativen Mensch-Modell-Interaktion wurden nicht empirisch untersucht und bleiben damit offen.
+
+### Wichtige wissenschaftliche Einordnung
+
+Nicht sagen:
+
+> Die Arbeit beweist, dass das Modell auf vortrainiertes Wissen zurückgreift.
+
+Besser:
+
+> Die Ergebnisse sind mit einem Einfluss bereits repräsentierter Informationen oder allgemein gelernter Muster vereinbar, erlauben aber keinen direkten Schluss auf den internen Mechanismus.
+
+Nicht sagen:
+
+> Halluzinationen sind ein strukturelles Problem von LLMs.
+
+Besser:
+
+> Die beobachteten Abweichungen treten innerhalb der untersuchten Bedingung wiederholt und aufgabentypabhängig auf und lassen sich daher nicht ausschließlich als vereinzelte Zufallsfehler beschreiben.
+
+### Merksatz
+
+**Erwartungen teilweise bestätigt, Ursachen nicht vollständig identifizierbar, Interaktion nicht untersucht.**
+
 ## 30-Sekunden-Zusammenfassung
 
 > Die Modelle verfügen grundsätzlich über sehr gutes methodisches

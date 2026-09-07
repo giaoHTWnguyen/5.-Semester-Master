@@ -1,15 +1,43 @@
 \chapter{Einleitung}
 
 \section{Problemstellung}
+
+Die explorative Datenanalyse bildet den Ausgangspunkt vieler datengetriebener Vorhaben. Bevor Modelle entwickelt oder Entscheidungen abgeleitet werden, wird ein Datensatz systematisch untersucht, um seine Struktur zu erfassen, Auffälligkeiten zu erkennen und erste Hypothesen zu gewinnen \parencite{rahmany_comparing_2020}. Da dieser Prozess nicht rein automatisiert abläuft, hängt die Güte der Ergebnisse maßgeblich davon ab, welche Fragen an die Daten gestellt und wie die gewonnenen Kennzahlen eingeordnet werden \parencite{langer_towards_2019}.
+
+Mit der Verfügbarkeit von \glspl{llm} verschiebt sich, wer diese Schritte ausführt. Da sich natürlichsprachliche Anfragen in ausführbaren Programmcode überführen lassen \parencite{chen_evaluating_2021}, werden \glspl{llm} zunehmend für Aufgaben der Datenanalyse eingesetzt \parencite{cheng_gpt_2023,li_tapilot-crossing_2024,zhecheva_exploratory_2024}. Analyseschritte, die in klassischen Analyseprozessen explizit ausgewählt und ausgeführt werden, können damit an ein System übergeben werden, dessen Ausgaben sprachlich schlüssig und plausibel wirken, ohne dass unmittelbar erkennbar ist, worauf sie beruhen.
+
+Genau darin liegt die Problemstellung. Die Ausgabe eines \gls{llm} kann sowohl durch die im Prompt bereitgestellten Daten als auch durch das in den Modellparametern repräsentierte Wissen beeinflusst werden, und beide Quellen können voneinander abweichen \parencite{cheng_understanding_2024}. Hinzu kommt, dass generierte Inhalte von den tatsächlichen Fakten oder von dem bereitgestellten Eingabekontext abweichen können \parencite{bai_hallucination_2025} und sich solche Abweichungen nach \textcite{xu_hallucination_2025} nicht vollständig ausschließen lassen. Auch eine über mehrere Anfragen hinweg gleichbleibende Antwort bietet dabei keine hinreichende Absicherung, da fehlerhafte Aussagen konsistent wiederholt werden können \parencite{zheng_reliable_2024}.
+
+Für die explorative Datenanalyse wiegt dies besonders schwer. Ihre Ergebnisse bestehen aus Kennzahlen und Aussagen über Zusammenhänge, deren Richtigkeit sich einer Nutzerin oder einem Nutzer nicht ohne Weiteres ansehen lässt. Eine Überprüfung würde voraussetzen, genau jene Analyse selbst durchzuführen, die an das Modell übergeben wurde. Beruht eine genannte Kennzahl auf einer unvollständigen Datengrundlage oder gibt ein Modell einen allgemein erwarteten Zusammenhang wieder, anstatt den in den vorgelegten Daten enthaltenen zu berichten, so wirkt sich dies direkt auf die daraus abgeleiteten Hypothesen und Entscheidungen aus. Wie zuverlässig die Ausgaben eines \gls{llm} in der explorativen Datenanalyse mit dem konkret bereitgestellten Datensatz übereinstimmen, ist bislang jedoch nur begrenzt untersucht. Insbesondere die Übereinstimmung von \gls{llm}-Aussagen mit einer gezielt veränderten Datengrundlage stellt dabei eine offene Untersuchungsfrage dar.
+
 \section{Zielsetzung}
+
+Ziel der vorliegenden Arbeit ist es, die Datenkonsistenz und Zuverlässigkeit \\ \gls{llm}-gestützter explorativer Datenanalyse unter kontrollierten Bedingungen empirisch zu untersuchen. Datenkonsistenz wird dabei als Übereinstimmung zwischen einer generierten Aussage und dem zugrunde liegenden Datensatz verstanden. Die Zuverlässigkeit wird in Anlehnung an \textcite{bornschlegl_towards_2024} über die Stabilität der Antworten bei wiederholter Anfrage sowie über deren Übereinstimmung mit den tatsächlichen Eigenschaften der Daten beurteilt.
+
+Um dies prüfbar zu machen, werden die Ausgaben zweier \glspl{llm} mit Referenzwerten verglichen, die auf denselben Eingabedaten mit etablierten statistischen Methoden berechnet und durch einen kryptografischen Prüfwert eindeutig einer Datenfassung zugeordnet werden. Die Fragen werden mehrfach gestellt, um neben der inhaltlichen Güte auch die Stabilität der Antworten zu erfassen. Sie gliedern sich in faktische Fragen mit eindeutig bestimmbarem Referenzwert, interpretative Fragen nach Zusammenhängen sowie Fragen, die eine nicht zutreffende Prämisse enthalten. Ergänzend wird eine veränderte Fassung des Datensatzes erzeugt, in der ein zuvor beobachteter Zusammenhang gezielt umgekehrt wird. Dadurch entsteht eine Situation, in der sich eine aus den bereitgestellten Daten abgeleitete Antwort von einer Antwort unterscheidet, die dem zuvor beobachteten beziehungsweise allgemein erwartbaren Zusammenhang entspricht.
+
+Die Untersuchung beschränkt sich bewusst auf eine Bedingung, in der der Datensatz als Text im Kontext übergeben wird und den Modellen kein externes Rechenwerkzeug zur Verfügung steht. Damit wird das Antwortverhalten der Modelle bei einem unmittelbar im Kontext bereitgestellten Datensatz untersucht und nicht die Leistungsfähigkeit werkzeuggestützter Analysesysteme. Nicht Gegenstand der Arbeit ist die Bestimmung interner Mechanismen der Modelle; untersucht und beschrieben wird das beobachtbare Antwortverhalten.
+
 \section{Forschungsfragen}
 
-/todo{Untersucht wird in der Arbeit die Datenkonsistenz und Zuverlässigkeit in der LLM-gestützten explorativen Datenanalyse.}
+Aus der dargestellten Problemstellung und Zielsetzung ergeben sich drei Forschungsfragen, die sich auf die Datenbindung der Ausgaben, ihre Übereinstimmung mit berechneten Referenzwerten sowie auf das zugrunde liegende methodische Wissen der Modelle beziehen.
 
 \begin{description}
-    \item[FF1] Inwieweit basieren LLM-gestützte \gls{eda}-Ergebnisse auf den bereitgestellten Daten und nicht auf vortrainiertem Wissen der Modelle?
-    \item[FF2] Wie genau stimmen die Ausgaben von \glspl{llm} mit manuell berechneten Referenzwerten überein und welche Abweichungen treten auf?
-    \item[FF3] Über welches methodische Vorgehen zur explorativen Datenanalyse verfügen \glspl{llm}?  
+    \item[FF1] Inwieweit orientieren sich \gls{llm}-gestützte \\ \gls{eda}-Ergebnisse an den bereitgestellten Daten, wenn diese mit einem zuvor beobachteten beziehungsweise allgemein erwartbaren Zusammenhang in Konflikt stehen?
+    
+    \item[FF2] Wie genau stimmen die Ausgaben von \glspl{llm} mit zuvor berechneten Referenzwerten überein und welche Abweichungen treten auf?
+    
+    \item[FF3] Inwieweit verfügen \glspl{llm} über grundlegendes methodisches Wissen zur explorativen Datenanalyse?
 \end{description}
 
+Die drei Forschungsfragen werden über aufeinander bezogene Experimente adressiert. Ein vorgelagertes Experiment ohne Datenbezug prüft das methodische Vorwissen und dient als Kontrollbedingung für die Einordnung der übrigen Ergebnisse. Ein zweites Experiment vergleicht die Modellausgaben auf dem unveränderten Datensatz mit den berechneten Referenzwerten. Ein drittes Experiment stellt ausgewählte Fragen auf der veränderten Datenfassung und prüft damit, ob die Antworten mit der bereitgestellten Datengrundlage übereinstimmen.
+
 \section{Aufbau der Arbeit}
+
+Kapitel~\ref{ch:grundlagen} legt die theoretischen Grundlagen dar. Es beschreibt zunächst das Vorgehen und die Techniken der explorativen Datenanalyse, anschließend die Funktionsweise von \glspl{llm} sowie deren bisherigen Einsatz in der Datenanalyse. Abschließend werden die Anforderungen an die Zuverlässigkeit solcher Systeme sowie die bekannten Grenzen \gls{llm}-gestützter Analyse dargestellt, die den Bezugsrahmen der Untersuchung bilden.
+
+Kapitel~\ref{ch:methodik} beschreibt die Methodik und die Durchführung. Dargestellt werden die Datengrundlage mit dem zweistufigen Datensatzaufbau und der Berechnung der Referenzwerte, das Forschungsdesign, der Untersuchungsansatz mit den drei Fragekategorien und den zugehörigen Bewertungskriterien sowie die konkrete Durchführung der drei Experimente.
+
+Kapitel~\ref{ch:results} berichtet die Ergebnisse, gegliedert nach den Experimenten und innerhalb des datenbezogenen Experiments nach den Fragekategorien. Den Abschluss bildet eine zusammenfassende Darstellung der über alle Experimente hinweg beobachteten Muster.
+
+Kapitel~\ref{ch:discussion} beantwortet auf dieser Grundlage die drei Forschungsfragen, ordnet die Befunde übergreifend und mit Bezug zum dargestellten Forschungsstand ein und benennt die Grenzen der Untersuchung. Kapitel~\ref{ch:fazit} fasst die Ergebnisse zusammen und zeigt Anknüpfungspunkte für weiterführende Arbeiten auf.
