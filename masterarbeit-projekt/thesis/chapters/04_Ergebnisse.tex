@@ -355,4 +355,39 @@ Bei den Halluzinationsfallen der Kategorie~C ergibt sich ein anderes Verhältnis
 
 Schließlich zeigt Experiment~2 ein einheitliches Antwortmuster gegenüber dem gezielt umgekehrten Zusammenhang zwischen \texttt{OverTime} und \texttt{Attrition}. Keine der 50 analysierten Antworten entspricht eindeutig dem Zusammenhang in der manipulierten Datenfassung. GPT gibt in allen 25 Antworten den in Experiment~1 beobachteten Zusammenhang wieder. Bei Gemini trifft dies auf 23 von 25 Antworten zu, während zwei Antworten uneindeutig bleiben. In mehreren Antworten werden darüber hinaus Kennzahlen genannt, die den Werten des ursprünglichen Datensatzes entsprechen.
 
-Insgesamt zeigen die Ergebnisse damit eine hohe Leistung beider Modelle beim allgemeinen methodischen Vorwissen, während bei der Verarbeitung der konkreten Datengrundlage Unterschiede zwischen den Modellen und Aufgabentypen auftreten. Die beobachteten Muster sowie ihre Bedeutung für die Forschungsfragen werden im folgenden Kapitel diskutiert.
+Insgesamt zeigen die Ergebnisse damit eine hohe Leistung beider Modelle beim allgemeinen methodischen Vorwissen, während bei datenbezogenen Aufgaben Unterschiede zwischen den Modellen und Aufgabentypen auftreten. Besonders deutlich wird dies in Experiment~2, in dem keine der analysierten Antworten eindeutig dem manipulierten Zusammenhang folgt. Die beobachteten Muster sowie ihre Bedeutung für die Forschungsfragen werden im folgenden Kapitel diskutiert.
+
+Tabelle~\ref{tab:gesamtergebnisse} fasst die zentralen quantitativen Ergebnisse der drei Experimente modellübergreifend zusammen. Da sich die verwendeten Bewertungsmaße zwischen den Experimenten und Kategorien unterscheiden, werden die jeweiligen Kennzahlen getrennt ausgewiesen.
+
+\begin{table}[htbp]
+\centering
+\caption{Zusammenfassung der zentralen Ergebnisse der drei Experimente.}
+\label{tab:gesamtergebnisse}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabularx}{\textwidth}{@{} l >{\raggedright\arraybackslash}X c c @{}}
+\toprule
+\textbf{Experiment} & \textbf{Kennzahl} & \textbf{GPT} & \textbf{Gemini} \\
+\midrule
+
+Experiment~0 & Mittlerer Punktwert (0--3) & 2,93 & 2,91 \\
+\addlinespace[0.5em]
+\midrule
+\addlinespace[0.3em]
+
+\multirow{4}{*}{Experiment~1}
+ & Kategorie A, mittlerer Punktwert (0--2)   & 1,96 & 1,38 \\
+ & Kategorie B, mittlerer Punktwert (0--2)   & 2,00 & 1,00 \\
+ & Kategorie C, verlässliche Antworten       & 52\,\% & 64\,\% \\
+ & Kategorie C, nicht gedeckte Behauptungen je Antwort & 0,48 & 0,44 \\
+\addlinespace[0.5em]
+\midrule
+\addlinespace[0.3em]
+
+\multirow{3}{*}{Experiment~2}
+ & Antworten, die den manipulierten Daten folgen      & 0/25 & 0/25 \\
+ & Antworten, die der ursprünglichen Richtung folgen  & 25/25 & 23/25 \\
+ & Uneindeutige Antworten                             & 0/25 & 2/25 \\
+
+\bottomrule
+\end{tabularx}
+\end{table}

@@ -11,9 +11,11 @@ Die Zielvariable \texttt{Attrition} gibt an, ob eine Person das Unternehmen verl
 
 \subsection{Zweistufiger Datensatzaufbau}
 
-Für die Untersuchung wird der Datensatz in zwei Fassungen vorgehalten, die unterschiedliche Funktionen erfüllen. Die erste Fassung entspricht den unveränderten Rohdaten und wird den Modellen als Eingabe vorgelegt. Die zweite Fassung ist eine bereinigte Version, die als Referenz für die Bewertung der Modellantworten dient.
+Für die Untersuchung wird der Datensatz in zwei Fassungen vorgehalten, die unterschiedliche Funktionen erfüllen. Die erste Fassung entspricht den unveränderten Rohdaten und wird den Modellen als Eingabe vorgelegt. Die zweite Fassung basiert auf einer bereinigten Version des Datensatzes und dient als Grundlage für die Berechnung der Referenzwerte, anhand derer die Modellantworten bewertet werden.
 
-Bei der Bereinigung wurden drei Variablen entfernt, die über alle Beobachtungen hinweg einen konstanten Wert aufweisen und damit keine Varianz besitzen: \texttt{EmployeeCount}, \texttt{StandardHours} und \texttt{Over18}. Aus den 35 Variablen der Rohfassung ergeben sich so 32 inhaltlich verwertbare Variablen, auf deren Grundlage sämtliche Referenzwerte berechnet werden.
+Bei der Bereinigung wurden drei Variablen entfernt, die über alle Beobachtungen hinweg einen konstanten Wert aufweisen und damit keine Varianz besitzen: \texttt{EmployeeCount}, \texttt{StandardHours} und \texttt{Over18}. Aus den 35 Variablen der Rohfassung ergeben sich so 32 inhaltlich verwertbare Variablen.
+
+Für die späteren numerischen Berechnungen werden zusätzlich die beiden binären Variablen \texttt{Attrition} und \texttt{OverTime} numerisch kodiert. Die Kodierungen werden als eigene Hilfsvariablen (\texttt{Attrition\_num} und \texttt{OverTime\_num}) ergänzt und ersetzen die ursprünglichen Variablen nicht. Der für die Referenzberechnungen verwendete Datensatz umfasst damit 1470 Beobachtungen und 34 Spalten: 32 inhaltliche Variablen sowie die beiden numerischen Hilfsvariablen.
 
 Die Entscheidung, den Modellen die unbereinigte Rohfassung vorzulegen, ist bewusst getroffen. Sie ermöglicht die Prüfung, ob ein Modell die uninformativen Variablen selbstständig als solche erkennt, anstatt ihnen eine Bedeutung zuzuschreiben. Zugleich entspricht die Rohfassung der Ausgangslage einer realen explorativen Analyse, in der die Beurteilung und Bereinigung der Daten Teil der Analyseaufgabe ist und nicht bereits vorausgesetzt wird. Die bereinigte Fassung bildet demgegenüber den korrekten Sollzustand ab, gegen den die Modellausgaben geprüft werden.
 
@@ -22,7 +24,9 @@ Die Entscheidung, den Modellen die unbereinigte Rohfassung vorzulegen, ist bewus
 
 Die explorative Untersuchung des Datensatzes orientiert sich an dem in Abschnitt~\ref{sec:eda} dargestellten sechsstufigen Vorgehen nach \textcite{rahmany_comparing_2020}, das von der formalen Erfassung der Daten über die uni- und bivariate Betrachtung bis zur Identifikation auffälliger Muster reicht. Auf dieser Grundlage werden die Kennzahlen bestimmt, die anschließend als Referenzwerte für die Bewertung der Modellantworten dienen. Berechnet werden deskriptive Kennzahlen, Zusammenhänge sowie Merkmalskombinationen, die mit der Zielvariable einhergehen.
 
-Als deskriptive Kennzahlen werden für die metrischen Variablen Lage- und Streuungsmaße bestimmt, insbesondere Mittelwert und Median. Ausreißer werden anhand des in Abschnitt~\ref{fig:eda-prozess} eingeführten Kriteriums des 1,5-fachen Interquartilsabstands bestimmt, wonach ein Wert als Ausreißer gilt, wenn er mehr als das Anderthalbfache des Interquartilsabstands unterhalb des ersten oder oberhalb des dritten Quartils liegt. Für die Zielvariable sowie für die nominal-kategorialen Variablen wird die jeweilige Kündigungsquote als Anteil der ausgeschiedenen Personen ermittelt.
+Als deskriptive Kennzahlen werden für die metrischen Variablen Lage- und Streuungsmaße bestimmt, insbesondere Mittelwert und Median. Ausreißer werden anhand des in Abschnitt~\ref{fig:eda-prozess} eingeführten Kriteriums des 1,5-fachen Interquartilsabstands bestimmt, wonach ein Wert als Ausreißer gilt, wenn er mehr als das Anderthalbfache des Interquartilsabstands unterhalb des ersten oder oberhalb des dritten Quartils liegt. Für den gesamten Datensatz sowie für die einzelnen Gruppen der nominal-kategorialen Variablen wird jeweils der Anteil der Personen mit \texttt{Attrition = Yes} berechnet.
+
+Für die Berechnung numerischer Kennzahlen werden die binären Variablen \texttt{Attrition} und \texttt{OverTime} zusätzlich als 0/1-Variablen abgebildet. Dabei entspricht \texttt{Yes} dem Wert~1 und \texttt{No} dem Wert~0. Die daraus entstehenden Hilfsvariablen  \texttt{Attrition\_num} und \\ \texttt{OverTime\_num} ergänzen die ursprünglichen Variablen, ohne diese zu ersetzen. \\ \texttt{Attrition\_num} wird für die Berechnung der Kündigungsquoten und der Korrelationen verwendet; \texttt{OverTime\_num} wird entsprechend in die Korrelationsberechnung einbezogen.
 
 Als Zusammenhangsmaß wird der Pearson-\-Korre\-lations\-koeffi\-zient berechnet. In die Berechnung gehen neben den metrischen auch die ordinal skalierten Variablen ein, deren numerische Codes dabei wie intervallskalierte Werte behandelt werden. Diese Vereinfachung dient als einfache Baseline für die Untersuchung der Frage, welche Faktoren mit einer Kündigung zusammenhängen. Ihre Grenzen sind bekannt: Der Pearson-Koeffizient erfasst ausschließlich lineare, paarweise Zusammenhänge und setzt streng genommen intervallskalierte Variablen voraus, was bei ordinalen Skalen nicht gegeben ist. Um diese Einschränkungen auszugleichen, werden ergänzend Assoziationsregeln herangezogen, die Zusammenhänge zwischen Kombinationen mehrerer Merkmale erfassen und nicht auf paarweise lineare Beziehungen beschränkt sind. 
 
@@ -121,6 +125,39 @@ Das erste Experiment adressiert die Forschungsfragen~1 und ~2 und bildet die Gru
 \subsection*{Experiment 2 -- Manipulierter Datensatz}
 
 Das zweite Experiment vertieft Forschungsfrage~1 und untersucht, ob die Modelle einen gezielt veränderten Zusammenhang in den bereitgestellten Daten in ihren Antworten berücksichtigen. Hierzu wird eine veränderte Fassung des Datensatzes erzeugt, in der der in Experiment~1 beobachtete Zusammenhang zwischen \texttt{OverTime} und \texttt{Attrition} umgekehrt wird. Für diese Fassung werden eigene Referenzwerte berechnet und über einen eigenen Prüfwert identifiziert. Den Modellen werden dieselben Fragen wie in Experiment~1 vorgelegt. Durch den Vergleich der Antworten auf beide Datenfassungen wird geprüft, ob die Modelle den veränderten Zusammenhang in ihren Aussagen berücksichtigen oder weiterhin den in Experiment~1 beobachteten Zusammenhang wiedergeben.
+
+Der in Experiment~1 und Experiment~2 eingesetzte Fragenkatalog umfasst insgesamt 20 Fragen, die den drei Kategorien A bis C zugeordnet sind. Tabelle~\ref{tab:fragenkatalog-uebersicht} fasst deren Aufbau und Untersuchungsgegenstand zusammen.
+
+\begin{table}[htbp]
+\centering
+\caption{Aufbau des Fragenkatalogs in Experiment~1 und Experiment~2.}
+\label{tab:fragenkatalog-uebersicht}
+\renewcommand{\arraystretch}{1.35}
+\begin{tabularx}{\textwidth}{@{} l l >{\raggedright\arraybackslash}X @{}}
+\toprule
+\textbf{Kategorie} & \textbf{Umfang} & \textbf{Gegenstand} \\
+\midrule
+
+A & 10 Fragen &
+Faktische Fragen mit eindeutig bestimmbarem Ergebnis, darunter Zählwerte,
+Mittelwerte, Median, Anteil, kategoriale Ergebnisse und eine
+richtungsbezogene Frage. \\
+\addlinespace[0.6em]
+
+B & 5 Fragen &
+Interpretative Fragen zu Zusammenhängen, Merkmalskombinationen und
+zentralen Befunden im Zusammenhang mit \texttt{Attrition}. \\
+\addlinespace[0.6em]
+
+C & 5 Fragen &
+Halluzinationsfallen mit nicht vorhandenen Variablen, einem falschen
+Wertebereich und einer suggestiven Prämisse. \\
+
+\bottomrule
+\end{tabularx}
+\end{table}
+
+Der vollständige Wortlaut der Fragen ist in Anhang~\ref{app:fragenkatalog} dokumentiert.
 
 \section*{Bewertungsmethodik} 
 \label{sec:evaluation}
