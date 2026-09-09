@@ -436,6 +436,12 @@ Vor der Verwendung wurde die manipulierte Fassung technisch validiert: Die Zahl 
     \end{tabularx}
 \end{table}
 
+Die Auswirkung der Manipulation auf den Zusammenhang zwischen \texttt{OverTime} und \texttt{Attrition} ist in Abbildung~\ref{fig:overtime-manipulation} dargestellt. Während die Kündigungsquote im ursprünglichen Datensatz bei Beschäftigten mit Überstunden deutlich höher liegt, kehrt sich diese Richtung in der manipulierten Datenfassung um.
+
+\include{figures/fig_overtime-manipulation}
+
+Im ursprünglichen Datensatz beträgt die Kündigungsquote bei \texttt{OverTime = Yes} 30,5~\% gegenüber 10,4~\% bei \texttt{OverTime = No}. Nach der Manipulation liegen die entsprechenden Quoten bei 7,9~\% beziehungsweise 19,4~\%, sodass sich die Richtung des Zusammenhangs eindeutig umkehrt.
+
 Die Referenzwerte wurden mit derselben Pipeline wie in Abschnitt~\ref{subsec:referenzwerte} auf der manipulierten Fassung neu berechnet. Eine Kontrollrechnung ergab, dass sich von 54~Kennzahlen nur drei änderten, sämtlich mit Bezug zu \texttt{OverTime}: die Kündigungsquote je \texttt{OverTime}, die Korrelation von \texttt{OverTime} mit \texttt{Attrition} sowie die Assoziationsregeln, in denen \texttt{OverTime} vorkommt. Dieselbe Pipeline reproduzierte die Referenzwerte der Originalfassung exakt. Damit konnten die beobachteten Änderungen auf die gezielte Neuzuordnung von \texttt{OverTime} zurückgeführt werden.
 
 Anschließend wurden dieselben 20~Fragen unter denselben technischen Bedingungen wie in Experiment~1 gestellt, also mit denselben Modellen, Prompts und Parametern sowie fünf Wiederholungen je Frage, woraus sich erneut 200~Antworten ergeben. Die Antworten wurden wie zuvor mit Modell, Frage-Kennung und Iteration gespeichert. Die nicht von \texttt{OverTime} abhängigen Fragen wurden als Kontrolle auf unerwartete Abweichungen gegenüber Experiment~1 geprüft.
