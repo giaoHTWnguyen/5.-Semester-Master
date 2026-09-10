@@ -20,7 +20,6 @@
 \pgfplotsset{compat=1.18}
 
 \usepackage{xcolor}
-\newcommand{\todo}[1]{\textbf{\textcolor{red}{[TODO: #1]}}}
 
 % ── Zeilenabstand ───────────────────────────────────────────
 \usepackage{setspace}
@@ -45,7 +44,6 @@
 
 % ── Grafiken & Farben ───────────────────────────────────────
 \usepackage{graphicx}
-\usepackage{xcolor}
 % \graphicspath{{figures/}}
 
 % ── Tabellen ────────────────────────────────────────────────
@@ -56,7 +54,7 @@
 \usepackage[
   hidelinks,
   pdftitle={Untersuchung der Datenkonsistenz und Zuverlässigkeit
-            in interaktiver LLM-gestützter explorativer Datenanalyse},
+            in LLM-gestützter explorativer Datenanalyse},
   pdfauthor={Giao Thien Nguyen},
   pdfsubject={Masterarbeit HTW Berlin}
 ]{hyperref}
@@ -73,15 +71,24 @@
 
 % ── Caption ───────────────────────────────────
 \usepackage{caption}
-\captionsetup[table]{belowskip=10pt}
 
-\usepackage{booktabs}
-\usepackage{tabularx}
+\captionsetup{
+    labelsep=colon
+}
+
+\captionsetup[table]{
+    belowskip=10pt
+}
+
+\renewcommand*{\figureformat}{\figurename~\thefigure}
+\renewcommand*{\tableformat}{\tablename~\thetable}
+
 \usepackage{array}
 
 % ── Abkürzungsverzeichnis ───────────────────────────────────
-\usepackage[acronym, toc]{glossaries}
-\makeglossaries
+\usepackage[acronym,toc]{glossaries}
+
+\makenoidxglossaries
 % Abkürzungen definieren:
 \newacronym{llm}{LLM}{Large Language Model}
 \newacronym{eda}{EDA}{Explorative Datenanalyse}
@@ -121,26 +128,30 @@
 \textbf{\Large Abstract}
 \vspace{0.5em}
 
-Große Sprachmodelle werden zunehmend für Aufgaben der explorativen Datenanalyse eingesetzt. Dabei stellt sich die Frage, inwieweit ihre Ausgaben tatsächlich mit der konkret bereitgestellten Datengrundlage übereinstimmen und wie zuverlässig dieses Verhalten über wiederholte Anfragen hinweg ist. Die vorliegende Arbeit untersucht daher die Datenkonsistenz und Zuverlässigkeit \gls{llm}-gestützter explorativer Datenanalyse unter kontrollierten Bedingungen.
+Große Sprachmodelle (Large Language Models, LLMs) werden zunehmend für Aufgaben der explorativen Datenanalyse eingesetzt. Dabei stellt sich die Frage, inwieweit ihre Ausgaben tatsächlich mit der konkret bereitgestellten Datengrundlage übereinstimmen und wie zuverlässig dieses Verhalten über wiederholte Anfragen hinweg ist. Die vorliegende Arbeit untersucht daher die Datenkonsistenz und Zuverlässigkeit LLM-gestützter explorativer Datenanalyse unter kontrollierten Bedingungen.
 
 Hierzu werden zwei Sprachmodelle in drei aufeinander bezogenen Experimenten untersucht. Zunächst wird das grundlegende methodische Wissen zur explorativen Datenanalyse geprüft. Anschließend werden faktische, interpretative und mit fehlerhaften Prämissen versehene Fragen auf einem strukturierten HR-Datensatz mehrfach gestellt und mit zuvor berechneten Referenzwerten verglichen. In einem weiteren Experiment wird ein bestehender Zusammenhang zwischen zwei Variablen gezielt umgekehrt, um zu prüfen, ob die Modellantworten der veränderten Datengrundlage folgen.
 
-Die Ergebnisse zeigen, dass beide Modelle über ein weitgehend vollständiges methodisches Vorwissen verfügen. Bei den datenbezogenen Aufgaben treten jedoch deutliche Unterschiede auf. Während viele Mittelwerte, Mediane und Anteile nahe an den Referenzwerten liegen, zeigen sich insbesondere bei Zählwerten Abweichungen sowie Hinweise auf die Nutzung unvollständiger Beobachtungsmengen. In der manipulierten Datenfassung gibt keine der 50 ausgewerteten Antworten den veränderten Zusammenhang wieder; stattdessen wird überwiegend beziehungsweise vollständig der Zusammenhang des ursprünglichen Datensatzes genannt.
+Die Ergebnisse zeigen, dass beide Modelle über ein weitgehend vollständiges methodisches Vorwissen verfügen. Bei den datenbezogenen Aufgaben treten jedoch deutliche Unterschiede auf. Während viele Mittelwerte, Mediane und Anteile nahe an den Referenzwerten liegen, zeigen sich insbesondere bei Zählwerten Abweichungen sowie Hinweise auf die Nutzung unvollständiger Beobachtungsmengen. In der manipulierten Datenfassung gibt keine der 50 ausgewerteten Antworten den veränderten Zusammenhang wieder. GPT gibt in allen 25 Antworten die ursprüngliche Richtung wieder; bei Gemini trifft dies auf 23 von 25 Antworten zu, während zwei Antworten uneindeutig bleiben.
 
 Die Ergebnisse verdeutlichen, dass weder die numerische Plausibilität noch die Stabilität einer Antwort allein hinreichend sind, um Datenkonsistenz zu beurteilen. Für den Einsatz von \glspl{llm} in der explorativen Datenanalyse ist daher eine eigenständige Überprüfung der Modellausgaben gegenüber der tatsächlichen Datengrundlage erforderlich.
 
 \end{abstract}
 
 \tableofcontents
-\clearpage
 
+\clearpage
 \listoffigures
-\clearpage
 
+\clearpage
 \listoftables
-\clearpage
 
-\printglossary[type=\acronymtype, title=Abkürzungsverzeichnis]
+\clearpage
+\printnoidxglossary[
+    type=\acronymtype,
+    title=Abkürzungsverzeichnis
+]
+
 \clearpage
 
 % ── Hauptteil ───────────────────────────────────────────────
