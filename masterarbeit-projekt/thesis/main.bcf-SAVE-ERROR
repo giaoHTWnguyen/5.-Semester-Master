@@ -3129,7 +3129,7 @@
     <bcf:citekey order="53" intorder="1">li_tapilot-crossing_2024</bcf:citekey>
     <bcf:citekey order="54" intorder="1">bornschlegl_towards_2024</bcf:citekey>
     <bcf:citekey order="55" intorder="1">bornschlegl_towards_2024</bcf:citekey>
-    <bcf:citekey order="56" intorder="1">ji_ziwei_survey_2022</bcf:citekey>
+    <bcf:citekey order="56" intorder="1">ji_survey_2023</bcf:citekey>
     <bcf:citekey order="57" intorder="1">bai_hallucination_2025</bcf:citekey>
     <bcf:citekey order="58" intorder="1">bai_hallucination_2025</bcf:citekey>
     <bcf:citekey order="59" intorder="1">agrawal_language_2024</bcf:citekey>
@@ -3154,3 +3154,20 @@
     <bcf:citekey order="78" intorder="1">zheng_reliable_2024</bcf:citekey>
     <bcf:citekey order="79" intorder="1">agrawal_language_2024</bcf:citekey>
     <bcf:citekey order="80" intorder="1">rahmany_comparing_2020</bcf:citekey>
+    <bcf:citekey order="81" intorder="1">bornschlegl_towards_2024</bcf:citekey>
+    <bcf:citekey order="82" intorder="1">zheng_reliable_2024</bcf:citekey>
+    <bcf:citekey order="83" intorder="1">agrawal_language_2024</bcf:citekey>
+    <bcf:citekey order="84" intorder="1">wang_resolving_2024</bcf:citekey>
+    <bcf:citekey order="85" intorder="1">wang_resolving_2024</bcf:citekey>
+    <bcf:citekey order="86" intorder="1">bai_hallucination_2025</bcf:citekey>
+    <bcf:citekey order="87" intorder="1">wang_generalization_2024</bcf:citekey>
+    <bcf:citekey order="88" intorder="1">xu_hallucination_2025</bcf:citekey>
+    <bcf:citekey order="89" intorder="1">cheng_gpt_2023</bcf:citekey>
+    <bcf:citekey order="90" intorder="1">zhecheva_exploratory_2024</bcf:citekey>
+    <bcf:citekey order="91" intorder="1">koesten_talking_2021</bcf:citekey>
+    <bcf:citekey order="92" intorder="1">agrawal_language_2024</bcf:citekey>
+    <bcf:citekey order="93" intorder="1">hammesfahr_identifikation_2021</bcf:citekey>
+    <bcf:citekey order="94" intorder="1">bornschlegl_towards_2024</bcf:citekey>
+    <bcf:citekey order="95" intorder="1">wang_resolving_2024</bcf:citekey>
+    <bcf:citekey order="96" intorder="1">cheng_understanding_2024</bcf:citekey>
+    <bcf:citekey order="97" intorder="1">xu_hallucination_2025</bcf:citekey>
