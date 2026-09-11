@@ -61,7 +61,7 @@ Für die weitere Untersuchung erfüllt Experiment~0 damit seine Kontrollfunktion
 \subsection{Faktische Fragen (Kategorie A)}
 \label{subsec:ergebnisse-a}
 
-Die faktischen Fragen der Kategorie~A umfassen zehn Fragen mit eindeutig bestimmbarem Referenzwert, die je Modell in fünf Wiederholungen gestellt wurden. Bewertet wurde auf einer Skala von null bis zwei Punkten nach der in Tabelle~\ref{tab:rubrik-a} festgelegten Rubrik. Tabelle~\ref{tab:ergebnisse-a} weist für jede Frage den mittleren Punktwert über die fünf Wiederholungen sowie dessen Standardabweichung aus. Über alle Fragen erreicht GPT einen mittleren Punktwert von 1,96, Gemini einen mittleren Punktwert von 1,38. 
+Die faktischen Fragen der Kategorie~A umfassen zehn Fragen mit eindeutig bestimmbarem Referenzwert, die je Modell in fünf Wiederholungen gestellt wurden. Bewertet wurde auf einer Skala von null bis zwei Punkten nach der in Tabelle~\ref{tab:rubrik-a} festgelegten Rubrik. Tabelle~\ref{tab:ergebnisse-a} weist für jede Frage den mittleren Punktwert über die fünf Wiederholungen sowie dessen Standardabweichung aus. Über alle Fragen erreicht GPT einen mittleren Punktwert von 1,96, Gemini einen mittleren Punktwert von 1,36. 
 
 \begin{table}[htbp]
     \centering
@@ -95,13 +95,13 @@ Die faktischen Fragen der Kategorie~A umfassen zehn Fragen mit eindeutig bestimm
         A04 & Anteil          & 2,00 & 0,00 & 0,80 & 0,45 \\
         A05 & Mittelwert      & 2,00 & 0,00 & 2,00 & 0,00 \\
         A06 & Zählwert        & 1,60 & 0,89 & 0,00 & 0,00 \\
-        A07 & Mittelwert      & 2,00 & 0,00 & 1,80 & 0,45 \\
+        A07 & Mittelwert      & 2,00 & 0,00 & 1,60 & 0,89 \\
         A08 & Kategorial      & 2,00 & 0,00 & 1,20 & 1,10 \\
         A09 & Kategorial      & 2,00 & 0,00 & 2,00 & 0,00 \\
         A10 & Kategorial      & 2,00 & 0,00 & 2,00 & 0,00 \\
         \midrule
         \textbf{Gesamt} & & \textbf{1,96} & &
-        \textbf{1,38} & \\
+        \textbf{1,36} & \\
         \bottomrule
     \end{tabularx}
 \end{table}
@@ -251,7 +251,7 @@ Im Ganzen zeigt Kategorie~C ein anderes Muster als die faktischen und interpreta
 
 Über die Kategorien hinweg zeigt sich bei Gemini zudem wiederholt, dass in den Antworten ein gegenüber dem bereitgestellten Datensatz reduzierter Umfang der Datengrundlage ausgewiesen wird. Abbildung~\ref{fig:beobachtungszahlen} fasst sämtliche Antworten aus Experiment~1 zusammen, in denen die Zahl der zugrunde gelegten Beobachtungen ausdrücklich genannt wird.
 
-\include{figures/abb_beobachtungszahlen.tex}
+\input{figures/abb_beobachtungszahlen.tex}
 
 Sämtliche ausdrücklich genannte Beobachtungszahlen liegen unterhalb des tatsächlichen Umfangs von 1470 Beobachtungen und reichen von 400 bis 746, was etwa 27 bis 51~\% des übergebenen Datensatzes entspricht. Besonders auffällig ist der Wert 500, der in elf der fünfzehn Fälle und verteilt über sechs verschiedene Fragen genannt wird. Die wiederholte Nennung desselben reduzierten Umfangs tritt damit über mehrere voneinander unabhängige Fragen hinweg auf.
 
@@ -361,7 +361,7 @@ Zusammenfassend entspricht keine der 50 analysierten Antworten eindeutig der im 
 
 Über die drei Experimente hinweg zeigen sich Unterschiede sowohl zwischen den Modellen als auch zwischen den untersuchten Aufgabentypen. Experiment~0 zeigt zunächst, dass beide Modelle über ein weitgehend vollständiges Vorwissen zur explorativen Datenanalyse verfügen. GPT erreicht im Mittel 2,93 und Gemini 2,91 von drei möglichen Punkten. Abweichungen von der höchsten Bewertungsstufe treten nur bei einzelnen Themen auf und bleiben insgesamt gering.
 
-Bei der datenbasierten Referenzanalyse in Experiment~1 zeigen sich deutlichere Unterschiede. In den faktischen Fragen der Kategorie~A erreicht GPT einen mittleren Punktwert von 1,96 von zwei möglichen Punkten, während Gemini 1,38 Punkte erzielt. Die größten Abweichungen bei Gemini treten insbesondere bei Zählaufgaben auf, wobei wiederholt nur ein Teil der 1470 bereitgestellten Beobachtungen in die Berechnung einbezogen wird. Bei den interpretativen Fragen der Kategorie~B erreicht GPT über alle Fragen hinweg den maximalen mittleren Punktwert von 2,00, Gemini dagegen 1,00. Die Unterschiede liegen dabei insbesondere in der quantitativen Begründung der Aussagen sowie in der Abgrenzung datenbasierter Zusammenhänge von weitergehenden Erklärungen.
+Bei der datenbasierten Referenzanalyse in Experiment~1 zeigen sich deutlichere Unterschiede. In den faktischen Fragen der Kategorie~A erreicht GPT einen mittleren Punktwert von 1,96 von zwei möglichen Punkten, während Gemini 1,36 Punkte erzielt. Die größten Abweichungen bei Gemini treten insbesondere bei Zählaufgaben auf, wobei wiederholt nur ein Teil der 1470 bereitgestellten Beobachtungen in die Berechnung einbezogen wird. Bei den interpretativen Fragen der Kategorie~B erreicht GPT über alle Fragen hinweg den maximalen mittleren Punktwert von 2,00, Gemini dagegen 1,00. Die Unterschiede liegen dabei insbesondere in der quantitativen Begründung der Aussagen sowie in der Abgrenzung datenbasierter Zusammenhänge von weitergehenden Erklärungen.
 
 Bei den Halluzinationsfallen der Kategorie~C ergibt sich ein anderes Verhältnis zwischen den Modellen. Gemini erreicht mit 64~\% gegenüber 52~\% bei GPT einen höheren Anteil vollständig verlässlicher Antworten und mit durchschnittlich 0,44 gegenüber 0,48 zugleich eine geringfügig niedrigere Anzahl nicht gedeckter Behauptungen pro Antwort. Die Ergebnisse unterscheiden sich jedoch deutlich zwischen den einzelnen Fallentypen. Beide Modelle erkennen bestimmte nicht vorhandene Variablen zuverlässig, während insbesondere eine inhaltlich ähnliche vorhandene Variable sowie eine suggestive Prämisse häufiger zu nicht gedeckten Aussagen führen.
 
@@ -387,7 +387,7 @@ Experiment~0 & Mittlerer Punktwert (0--3) & 2,93 & 2,91 \\
 \addlinespace[0.3em]
 
 \multirow{4}{*}{Experiment~1}
- & Kategorie A, mittlerer Punktwert (0--2)   & 1,96 & 1,38 \\
+ & Kategorie A, mittlerer Punktwert (0--2)   & 1,96 & 1,36 \\
  & Kategorie B, mittlerer Punktwert (0--2)   & 2,00 & 1,00 \\
  & Kategorie C, verlässliche Antworten       & 52\,\% & 64\,\% \\
  & Kategorie C, nicht gedeckte Behauptungen je Antwort & 0,48 & 0,44 \\
