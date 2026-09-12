@@ -1,6 +1,17 @@
 \chapter{Theoretische Grundlagen und Stand der Technik}
 \label{ch:grundlagen}
 
+Dieses Kapitel legt die theoretischen und wissenschaftlichen Grundlagen für die anschließende empirische Untersuchung. Zunächst wird das Vorgehen bei der Literaturrecherche erläutert. Anschließend werden für die Arbeit zentralen Konzepte der explorativen Datenanalyse und großer Sprachmodelle eingeordnet sowie der aktuelle Forschungsstand zur LLM-gestützten Datenanalyse, Zuverlässigkeit und Datenübereinstimmung dargestellt. Ziel ist es, die Begriffe und Befunde herauszuarbeiten, auf denen das Forschungsdesign und die Bewertung der Modellantworten in Kapitel~\ref{ch:methodik} aufbauen.
+
+\section{Vorgehen bei der Literaturrecherche}
+\addcontentsline{toc}{section}{Vorgehen bei der Literaturrecherche}
+
+Die Literaturrecherche erfolgte über Google Scholar. Die Suche wurde überwiegend in englischer Sprache durchgeführt, da ein Großteil der einschlägigen Veröffentlichungen in englischer Sprache erscheint. Zu Beginn wurden allgemeinere Suchbegriffe wie \enquote{exploratory data analysis}, \enquote{large language model}, \enquote{LLM data analysis}, \enquote{hallucination} und \enquote{LLM reliability} verwendet.
+
+Im weiteren Verlauf der Literaturarbeit wurden aus bereits identifizierten Veröffentlichungen zusätzliche, für die Forschungsfrage relevante Begriffe abgeleitet und für eine gezieltere Suche verwendet. Dazu gehörten insbesondere \enquote{knowledge conflict}, \enquote{parametric knowledge} und \enquote{context faithfulness}. Auf diese Weise wurde die Recherche schrittweise von einer breiten thematischen Suche zu einer stärker auf die untersuchten Zuverlässigkeits- und Datenkonsistenzfragen ausgerichteten Literaturauswahl verdichtet.
+
+Berücksichtigt wurden Quellen, die einen direkten inhaltlichen Bezug zu den Forschungsfragen oder zu den für die Arbeit benötigten methodischen Grundlagen aufweisen. Da sich das Forschungsfeld rund um \gls{llm} schnell entwickelt, stammt ein großer Teil der verwendeten Literatur aus den Jahren 2023 bis 2026. Ältere Arbeiten wurden vor allem dann herangezogen, wenn sie grundlegende Konzepte oder etablierte Verfahren beschreiben. Dies betrifft beispielsweise klassische Arbeiten zur explorativen Datenanalyse wie \textcite{tukey1977eda} sowie grundlegende statistische und methodische Literatur.
+
 \section{Explorative Datenanalyse (EDA)}
 \label{sec:eda}
 Der Begriff der explorativen Datenanalyse geht auf \textcite{tukey1977eda} zurück, der damit einen Analyseansatz prägte, bei dem Daten zunächst offen und grafisch gestützt untersucht werden, um Muster und Auffälligkeiten zu erkennen und Hypothesen zu gewinnen, statt vorab festgelegte Annahmen konfirmatorisch zu prüfen. Heute wird die \gls{eda} als ein iterativer Analyseprozess verstanden, in dessen Verlauf ein Datensatz systematisch untersucht wird, um Strukturen zu erkennen, Anomalien wie Ausreißer aufzudecken sowie erste Hypothesen zu generieren und vorläufig zu bewerten \parencite{langer_towards_2019}. Im Rahmen dieser Methodik kommen primär deskriptive Statistiken und visuelle Werkzeuge zum Einsatz, um aussagekräftige Hinweise aus den Daten zu gewinnen \parencite{rahmany_comparing_2020}.
