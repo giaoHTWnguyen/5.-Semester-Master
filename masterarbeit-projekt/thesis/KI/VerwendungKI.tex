@@ -1,6 +1,38 @@
-\chapter{Verwendung von KI-Werkzeugen in der Arbeit}
+\chapter{KI-Reflexionsblatt}
+\addcontentsline{toc}{chapter}{KI-Reflexionsblatt}
+
+Im Rahmen dieser Masterarbeit wurden verschiedene generative KI-Werkzeuge unterstützend eingesetzt. Dazu gehören insbesondere ChatGPT sowie Claude Opus~5 und Claude Sonnet~4.6. Der Einsatz erfolgte vor allem bei der sprachlichen Überarbeitung von Textabschnitten, der Strukturierung einzelner Kapitel, der Erstellung und Überarbeitung von \LaTeX{}-Code sowie bei ausgewählten Programmier- und Auswertungsschritten. Die in den Experimenten untersuchten Sprachmodelle sind davon zu unterscheiden, da ihre Antworten selbst Gegenstand der empirischen Untersuchung waren. Die Verantwortung für sämtliche Inhalte, methodischen Entscheidungen und Schlussfolgerungen der Arbeit lag bei mir. Eine nach Werkzeug und Verwendungszweck aufgeschlüsselte Übersicht findet sich im KI-Verzeichnis in Tabelle~\ref{tab:ki-verzeichnis}.
+
+Der verwendete Datensatz ist öffentlich verfügbar und synthetisch erzeugt; er enthält keine personenbezogenen Daten. An die eingesetzten Werkzeuge wurden keine vertraulichen oder personenbezogenen Inhalte übergeben.
+
+\subsection{Wo war die Technologie hilfreich?}
+
+Besonders hilfreich war der Einsatz generativer KI bei der iterativen Überarbeitung bereits vorhandener Inhalte. Eigene Textentwürfe konnten auf sprachliche Unklarheiten, Redundanzen und komplizierte Satzstrukturen geprüft und anschließend präziser formuliert werden. Darüber hinaus unterstützten die Werkzeuge bei der Strukturierung umfangreicher Inhalte, beispielsweise bei der Abgrenzung von Methodik, Ergebnissen und Diskussion sowie bei der Zusammenführung thematisch ähnlicher Abschnitte.
+
+Ein weiterer Nutzen bestand in der Unterstützung bei technischen Arbeitsschritten. Dies betraf unter anderem die Erstellung und Fehlerbehebung von \LaTeX{}-Code, Tabellen und Abbildungen sowie einzelne Python-basierte Auswertungsschritte. Insbesondere bei der Entwicklung des experimentellen Ablaufs konnten mögliche Implementierungsvarianten, Prüfschritte und Plausibilitätskontrollen diskutiert werden. Dazu gehörten beispielsweise die Überprüfung der gezielten Datenmanipulation in Experiment~2 sowie die Aggregation einzelner Kennzahlen aus den gespeicherten Modellantworten. Die vorgeschlagenen Lösungen wurden dabei jeweils anhand des Codes, der Datengrundlage und eigener Berechnungen überprüft.
+
+Generative KI wurde außerdem punktuell zur Unterstützung des Bewertungsprozesses eingesetzt. Einzelne Modellantworten wurden anhand der zuvor festgelegten Bewertungskriterien zusätzlich durch ein Sprachmodell beurteilt. Diese Vorschläge dienten ausschließlich als Hilfsmittel. Die endgültige Kodierung erfolgte nach eigener Prüfung der jeweiligen Antwort, der Referenzwerte und der Bewertungsrubrik.
+
+\subsection{Wo hat die Technologie nicht wie beabsichtigt funktioniert?}
+
+Gleichzeitig zeigte sich, dass die ausgegebenen Vorschläge nicht ungeprüft übernommen werden konnten. Insbesondere bei wissenschaftlichen Aussagen konnten Sprachmodelle Formulierungen erzeugen, die über die tatsächlich durch eine Quelle oder die empirischen Ergebnisse gedeckte Aussage hinausgingen. Auch bei der Literaturarbeit waren vorgeschlagene Quellenangaben, Interpretationen und bibliografische Informationen nicht in jedem Fall zuverlässig. Relevante Aussagen wurden deshalb anhand der jeweiligen Originalquelle überprüft; KI-generierte Inhalte wurden nicht als wissenschaftliche Quelle verwendet.
+
+Bei Programmier- und Datenanalyseaufgaben waren vorgeschlagene Lösungen teilweise syntaktisch korrekt, entsprachen jedoch nicht vollständig dem beabsichtigten Versuchsaufbau oder enthielten Annahmen, die zunächst überprüft werden mussten. Gerade bei der Datenmanipulation war daher entscheidend, zusätzliche Kontrollschritte einzubauen, mit denen sichergestellt wurde, dass nur die vorgesehene Variable verändert wurde und die übrigen Eigenschaften des Datensatzes unverändert blieben.
+
+Ein Beispiel verdeutlicht die Notwendigkeit dieser Kontrollen. Bei der Prüfung, ob die manipulierte Datenfassung tatsächlich an die Modelle übergeben worden war, wurde zunächst auf Formulierungen und Kennwerte innerhalb der Modellantworten verwiesen. Diese Begründung trägt jedoch nicht, da sich anhand einer Antwort nicht unterscheiden lässt, ob die übergebenen Daten nicht verarbeitet oder gar nicht erst berücksichtigt wurden. Der Nachweis konnte erst auf der Ebene der Anfrage geführt werden, indem die tatsächlich gesendete Datengrundlage vor dem Versand geprüft wurde. Der zunächst naheliegende Schluss hätte die zentrale Aussage von Experiment~2 auf eine nicht belastbare Grundlage gestellt.
+
+Eine weitere Grenze zeigte sich bei der Interpretation der Ergebnisse. Sprachmodelle tendierten teilweise dazu, beobachtete Muster stärker zu erklären, als dies auf Grundlage des Versuchsdesigns möglich war. Dies war insbesondere bei möglichen Ursachen für Abweichungen zwischen den bereitgestellten Daten und den Modellantworten relevant. Entsprechende Erklärungen wurden deshalb nur übernommen, wenn sie durch die Ergebnisse oder wissenschaftliche Literatur gestützt werden konnten. Andernfalls wurden sie als mögliche Erklärung gekennzeichnet oder verworfen.
+
+Die beobachteten Grenzen weisen Parallelen zu den in dieser Arbeit untersuchten Muster auf. Die Neigung, eine Aussage über das durch Quellen oder Ergebnisse Gedeckte hinaus zu formulieren, und die Tendenz, ein beobachtetes Muster stärker zu erklären, als es das Untersuchungsdesign zulässt, betreffen dieselbe Eigenschaft, die in Kapitel~\ref{ch:results} anhand der Fragen der Kategorie~C und in Experiment~2 sichtbar wird. Die eigene Arbeitserfahrung bestätigt damit den in Abschnitt~\ref{sec:limitationen} gezogenen Schluss, dass sich die Übereinstimmung einer Modellausgabe mit ihrer Grundlage nicht aus ihrer sprachlichen Form erschließen lässt, sondern eigens geprüft werden muss.
+
+Insgesamt erwies sich generative KI damit vor allem als Werkzeug zur Unterstützung von Formulierung, Strukturierung und technischen Arbeitsschritten. Sie ersetzte jedoch weder die eigenständige Literaturbewertung noch die methodische Planung, die Prüfung der experimentellen Ergebnisse oder deren wissenschaftliche Interpretation. Gerade die wiederholte manuelle Überprüfung der KI-generierten Vorschläge war notwendig, um deren Nutzen mit den Anforderungen an Nachvollziehbarkeit und wissenschaftliche Verlässlichkeit zu verbinden.
+
+\clearpage
+
+\section{Verwendung von KI-Werkzeugen in der Arbeit}
 
 \begin{table}[htbp]
+\caption[KI-Verzeichnis]{KI-Verzeichnis}    
 \centering
 \label{tab:ki-verzeichnis}
 \renewcommand{\arraystretch}{1.25}
