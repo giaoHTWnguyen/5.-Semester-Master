@@ -103,7 +103,64 @@ Die dargestellten Arbeiten zeigen Anwendungen \gls{llm}-gestützter Datenanalyse
 
 Bevor die spezifischen Fehlerquellen \gls{llm}-gestützter Analyse betrachtet werden, ist zu klären, worin die Zuverlässigkeit eines analytischen Systems besteht. \textcite{bornschlegl_towards_2024} überträgt die Dimensionen zwischenmenschlichen Vertrauens auf die Vertrauenswürdigkeit technischer Systeme und benennt für deren Ausgaben insbesondere Reproduzierbarkeit und Validität. Reproduzierbarkeit bezeichnet die Fähigkeit, mit denselben Eingabedaten, Rechenschritten, Methoden und demselben Code konsistente Ergebnisse zu erzielen. Validität beschreibt den Grad, in dem die erzeugten Daten oder Ergebnisse korrekt sind. Übertragen auf die \gls{llm}-gestützte explorative Datenanalyse beschreibt Reproduzierbarkeit demnach die Stabilität der Ergebnisse bei gleicher Eingabe und Validität ihre Übereinstimmung mit den tatsächlichen Eigenschaften der Daten \parencite{bornschlegl_towards_2024}. Inwieweit diese beiden Anforderungen durch charakteristische Eigenschaften von \glspl{llm} beeinträchtigt werden können, ist Gegenstand der folgenden Betrachtungen.
 
-\textcite{ji_survey_2023} weisen darauf hin, dass moderne Deep-Learning-Modelle zwar sprachlich kohärente Ausgaben erzeugen, jedoch häufig Inhalte produzieren, die weder mit der zugrundeliegenden Eingabequelle übereinstimmen noch faktisch korrekt sind. Da Halluzinationen definitionsgemäß von den tatsächlichen Fakten oder dem bereitgestellten Eingabekontext abweichen, können sie die Validität der im Rahmen einer Datenanalyse erzeugten Ergebnisse erheblich beeinträchtigen. Solche Angaben lassen sich in zwei Typen unterscheiden. Faktische Halluzination bezeichnet die Diskrepanz zwischen generiertem Inhalt und verifizierbaren Fakten \parencite{bai_hallucination_2025}. Im Kontext der explorativen Datenanalyse liegt eine faktische Halluzination beispielsweise dann vor, wenn ein Modell eine Kennzahl nennt, die vom tatsächlich berechenbaren Wert abweicht, oder eine Variable anführt, die im Datensatz nicht enthalten ist. Treuebezogene Halluzinationen umfassen demgegenüber die Abweichung von der Nutzeranweisung oder dem bereitgestellten Eingabekontext sowie eine fehlende Selbstkonsistenz \parencite{bai_hallucination_2025}. Ein Beispiel ist eine Analyse, die statt der vorgelegten Daten einen allgemein erwarteten Zusammenhang wiedergibt. Ebenso zählt dazu der Fall, dass eine Aussage innerhalb derselben Antwort später widerrufen wird.
+\textcite{ji_survey_2023} weisen darauf hin, dass moderne Deep-Learning-Modelle zwar sprachlich kohärente Ausgaben erzeugen, jedoch häufig Inhalte produzieren, die weder mit der zugrundeliegenden Eingabequelle übereinstimmen noch faktisch korrekt sind. Da Halluzinationen definitionsgemäß von den tatsächlichen Fakten oder dem bereitgestellten Eingabekontext abweichen, können sie die Validität der im Rahmen einer Datenanalyse erzeugten Ergebnisse erheblich beeinträchtigen. Solche Angaben lassen sich in zwei Typen unterscheiden. 
+
+Faktische Halluzination bezeichnet die Diskrepanz zwischen generiertem Inhalt und verifizierbaren Fakten \parencite{bai_hallucination_2025}. Treuebezogene Halluzinationen umfassen demgegenüber die Abweichung von der Nutzeranweisung oder dem bereitgestellten Eingabekontext sowie eine fehlende Selbstkonsistenz \parencite{bai_hallucination_2025}. Im Kontext der vorliegenden Untersuchung liegt eine treuebezogene Halluzination beispielsweise dann vor, wenn eine genannte Kennzahl nicht mit dem bereitgestellten Datensatz übereinstimmt, eine dort nicht vorhandene Variable als gegeben behandelt wird oder ein allgemein erwarteter Zusammenhang anstelle des in den Daten enthaltenen Zusammenhangs wiedergegeben wird. Ebenso zählt dazu der Fall, dass eine Aussage innerhalb derselben Antwort später widerrufen wird.
+
+Zur Einordnung der für diese Arbeit relevanten Abweichungen ist die Unterscheidung zwischen faktischen und treuebezogenen Halluzinationen hilfreich. Abbildung~\ref{fig:halluzinationstypen} stellt beide Typen gegenüber.
+
+\begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}[
+        font=\small,
+        wurzel/.style={
+            draw, rounded corners=2pt, align=center,
+            inner sep=6pt, text width=5.4cm, anchor=north
+        },
+        typ/.style={
+            draw, rounded corners=2pt, align=left,
+            inner sep=6pt, text width=5.1cm, anchor=north
+        },
+        fokus/.style={
+            draw, dashed, rounded corners=2pt, align=center,
+            inner sep=5pt, text width=5.1cm, anchor=north
+        },
+        pfeil/.style={->, >=stealth}
+    ]
+    \node[wurzel] (root) at (0,0)
+        {\textbf{Halluzination}\\
+         Abweichung einer erzeugten Aussage von einer
+         maßgeblichen Bezugsgröße};
+    \path (root.south) ++(0,-0.8) coordinate (bus);
+    \path (bus) ++(-3.1,-0.7) node[typ] (fakt)
+        {\textbf{Faktische Halluzination}\\[4pt]
+         \emph{Bezugsgröße:} verifizierbare reale Fakten\\[4pt]
+         \emph{Prüfung:} Abgleich mit Wissen außerhalb der konkreten Anfrage\\[4pt]
+         \emph{In dieser Arbeit:} nicht systematisch untersucht};
+    \path (bus) ++(3.1,-0.7) node[typ] (treu)
+        {\textbf{Treuebezogene Halluzination}\\[4pt]
+         \emph{Bezugsgröße:} Nutzeranweisung, bereitgestellter Eingabekontext
+         oder Selbstkonsistenz\\[4pt]
+         \emph{Prüfung:} Abgleich mit dem bereitgestellten Datensatz
+         beziehungsweise den daraus berechneten Referenzwerten\\[4pt]
+         \emph{In dieser Arbeit:} relevant für die datenbezogenen Experimente; gezielt geprüft insbesondere in Kategorie~C und Experiment~2};
+    \path (treu.south) ++(0,-1.0) node[fokus] (fokusnode)
+        {Gegenstand der vorliegenden Arbeit};
+    \draw (root.south) -- (bus);
+    \draw[pfeil] (bus) -| (fakt.north);
+    \draw[pfeil] (bus) -| (treu.north);
+    \draw[pfeil, dashed] (treu.south) -- (fokusnode.north);
+    \end{tikzpicture}
+    \caption[Halluzinationstypen]%
+    {Unterscheidung faktischer und treuebezogener Halluzinationen nach
+    \textcite{bai_hallucination_2025}. Beide Typen unterscheiden sich darin,
+    gegen welche Bezugsgröße eine erzeugte Aussage geprüft wird.}
+    \label{fig:halluzinationstypen}
+\end{figure}
+
+Die Unterscheidung ist für die vorliegende Arbeit zentral, weil nicht jede Abweichung dieselbe Art von Fehler beschreibt. Faktische Halluzinationen betreffen Aussagen, die im Widerspruch zu verifizierbaren realen Fakten stehen. Treuebezogene Halluzinationen betreffen dagegen Aussagen, die dem abweichen, was im konkreten Eingabekontext enthalten ist oder was durch die Nutzeranweisung vorgegeben wurde \parencite{bai_hallucination_2025}.
+
+Für die explorative Datenanalyse ist vor allem die zweite Form relevant. Da die Modelle in der vorliegenden Untersuchung ausschließlich Aussagen über einen konkret bereitgestellten Datensatz treffen, bildet dieser Datensatz die entscheidende Bezugsgröße für die Bewertung der Antworten. Die berechneten Referenzwerte ermöglichen es, Abweichungen vom bereitgestellten Datenkontext systematisch zu prüfen. Faktische Halluzinationen stehen demgegenüber nicht im Mittelpunkt der Untersuchung, da die Fragen nicht auf Wissen über die Welt außerhalb des Datensatzes, sondern auf die korrekte Wiedergabe der bereitgestellten Daten abzielen.
 
 Dass Halluzinationen messbar und modellabhängig sind, zeigt eine Untersuchung zu fabrizierten Literaturangaben. \textcite{agrawal_language_2024} bestimmen für die Generierung wissenschaftlicher Referenzen modellspezifische Halluzinationsraten, die zwischen 47 Prozent für GPT-4 und über 76 Prozent für kleinere Modelle liegen, wobei leistungsfähigere Modelle durchgängig geringere Raten aufweisen. Zugleich betonen sie, dass Halluzination kein rein binäres Merkmal darstellt, da sich etwa eine generierte Referenz mit Teilen eines existierenden Titels nicht eindeutig klassifizieren lässt \parencite{agrawal_language_2024}. Ein anschauliches Beispiel aus der explorativen Datenanalyse ist der von GPT-4 erzeugte, nicht existente Titel \enquote{Exploratory Data Analysis and the Role of Visualization}, dem das Modell zudem den Autor \textit{John W. Tukey} der klassischen Arbeit zur explorativen Datenanalyse zuschrieb \parencite{agrawal_language_2024}.
 
