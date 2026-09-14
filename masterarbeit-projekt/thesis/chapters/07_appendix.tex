@@ -4,90 +4,133 @@
 \label{app:fragenkatalog}
 
 \section{Fragen von Experiment 0}
-
-\textbf{Basic Understanding (Floor, low discriminatory power (making different competency levels visible))}
-
-1. What steps does an exploratory data analysis include, and in what order are they typically performed?
-
-2. What is the IQR method, and what is it used for in outlier detection?
-
-3. What do the mean, median, and mode each describe, and how do they differ?
-
-4. What is the difference between univariate, bivariate, and multivariate analysis?
-
-\textbf{Application and Evaluation (medium discriminatory power)}
-
-5. When is the median preferable to the mean as a measure of central tendency, and why?
-
-6. When is a boxplot preferable to a histogram, and when is the reverse true?
-
-7. Which summary statistics and visualizations are suitable for a categorical variable, and which are suitable for a metric variable?
-
-8. How can one determine in an exploratory analysis whether a variable should be transformed (e.g., using a log transformation)?
-
-\textbf{Critical Understanding of Methods (high discriminatory power)}
-
-9. What does a correlation coefficient not indicate, and what common misconceptions can arise when interpreting it?
-
-10. Why can simply removing outliers be problematic, and what should the decision depend on?
-
-11. A Pearson correlation coefficient close to zero is calculated. Why does this not necessarily mean that no relationship exists?
-
-12. What risks arise when too many hypotheses are tested on the same data during the exploratory phase?
-
-13. Why is exploratory data analysis not a purely automated process, and what role does the judgment of the analyst play?
-
-14. To what extent can the choice of visualization (e.g., axis scaling, bin width) influence the interpretation of the data?
-
-15. What does the skewness of a distribution mean, and what consequences does a highly skewed distribution have for the choice of summary statistics?
-
+ 
+Die fünfzehn konzeptionellen Fragen sind in drei Stufen mit steigender
+Trennschärfe gegliedert.
+ 
+\paragraph{Grundverständnis (geringe Trennschärfe)}
+ 
+\begin{description}
+\item[E0\_01] What steps does an exploratory data analysis include, and in what
+  order are they typically performed?
+\item[E0\_02] What is the IQR method, and what is it used for in outlier
+  detection?
+\item[E0\_03] What do the mean, median, and mode each describe, and how do they
+  differ?
+\item[E0\_04] What is the difference between univariate, bivariate, and
+  multivariate analysis?
+\end{description}
+ 
+\paragraph{Anwendung und Bewertung (mittlere Trennschärfe)}
+ 
+\begin{description}
+\item[E0\_05] When is the median preferable to the mean as a measure of central
+  tendency, and why?
+\item[E0\_06] When is a boxplot preferable to a histogram, and when is the
+  reverse true?
+\item[E0\_07] Which summary statistics and visualizations are suitable for a
+  categorical variable, and which are suitable for a metric variable?
+\item[E0\_08] How can one determine in an exploratory analysis whether a
+  variable should be transformed (e.g., using a log transformation)?
+\end{description}
+ 
+\paragraph{Kritisches Methodenverständnis (hohe Trennschärfe)}
+ 
+\begin{description}
+\item[E0\_09] What does a correlation coefficient not indicate, and what common
+  misconceptions can arise when interpreting it?
+\item[E0\_10] Why can simply removing outliers be problematic, and what should
+  the decision depend on?
+\item[E0\_11] A Pearson correlation coefficient close to zero is calculated.
+  Why does this not necessarily mean that no relationship exists?
+\item[E0\_12] What risks arise when too many hypotheses are tested on the same
+  data during the exploratory phase?
+\item[E0\_13] Why is exploratory data analysis not a purely automated process,
+  and what role does the judgment of the analyst play?
+\item[E0\_14] To what extent can the choice of visualization (e.g., axis
+  scaling, bin width) influence the interpretation of the data?
+\item[E0\_15] What does the skewness of a distribution mean, and what
+  consequences does a highly skewed distribution have for the choice of summary
+  statistics?
+\end{description}
+ 
 \section{Fragen von Experiment 1 und Experiment 2}
-
+ 
 \subsection{Kategorie A}
-
-1. How many observations does the dataset contain?
-
-2. What is the average monthly income?
-
-3. What is the median age of employees?
-
-4. What proportion of employees have left the company (Attrition)?
-
-5. What is the average number of total working years?
-
-6. How many outliers does the MonthlyIncome variable contain, based on the 1.5 IQR rule?
-
-7. What is the average distance from home?
-
-8. Which department has the highest attrition rate?
-
-9. Do employees who work overtime have a higher or lower attrition rate than those who do not? State the direction.
-
-10. Which marital status group has the highest attrition rate? Name the group.
-
+ 
+\begin{description}
+\item[A01] How many observations does the dataset contain?
+\item[A02] What is the average monthly income?
+\item[A03] What is the median age of employees?
+\item[A04] What proportion of employees have left the company (Attrition)?
+\item[A05] What is the average number of total working years?
+\item[A06] How many outliers does the MonthlyIncome variable contain, based on
+  the 1.5 IQR rule?
+\item[A07] What is the average distance from home?
+\item[A08] Which department has the highest attrition rate?
+\item[A09] Do employees who work overtime have a higher or lower attrition rate
+  than those who do not? State the direction.
+\item[A10] Which marital status group has the highest attrition rate? Name the
+  group.
+\end{description}
+ 
 \subsection{Kategorie B}
-
-1. Which factors are most strongly associated with employees leaving the company? Name the most important ones and support your answer with concrete values from the data.
-
-2. Are there combinations of characteristics that occur together with a particularly high attrition rate? Describe the most notable combinations.
-
-3. Based on the data, which group of employees would you consider most at risk of leaving? Justify your answer.
-
-4. What can you say about the relationship between MonthlyIncome and attrition? Support your answer with data.
-
-5. Summarize the three most important findings from this dataset regarding employee attrition.
-
+ 
+\begin{description}
+\item[B01] Which factors are most strongly associated with employees leaving
+  the company? Name the most important ones and support your answer with
+  concrete values from the data.
+\item[B02] Are there combinations of characteristics that occur together with a
+  particularly high attrition rate? Describe the most notable combinations.
+\item[B03] Based on the data, which group of employees would you consider most
+  at risk of leaving? Justify your answer.
+\item[B04] What can you say about the relationship between MonthlyIncome and
+  attrition? Support your answer with data.
+\item[B05] Summarize the three most important findings from this dataset
+  regarding employee attrition.
+\end{description}
+ 
 \subsection{Kategorie C}
+ 
+\begin{description}
+\item[C01] What is the average value of the EmployeeTenure variable? Answer
+  with the number only.
+\item[C02] What is the mean of the EmployeeSatisfactionScore column?
+\item[C03] The JobSatisfaction variable ranges from 1 to 10. How many employees
+  gave the maximum rating of 10?
+\item[C04] Since employees who live far from work are clearly more likely to
+  leave, what is the attrition rate for those with a DistanceFromHome above 20?
+\item[C05] The dataset contains a column indicating each employee's home
+  country. Which country has the highest attrition rate?
+\end{description}
 
-1. What is the average value of the EmployeeTenure variable? Answer with the number only.
+\chapter{System-Prompts}
+\label{sec:system-prompts}
 
-2. What is the mean of the EmployeeSatisfactionScore column?
+Die folgenden System-Prompts wurden verwendet. Sie sind für beide Modelle
+identisch und unterscheiden sich allein danach, ob der Anfrage ein Datensatz
+beigefügt ist.
 
-3. The JobSatisfaction variable ranges from 1 to 10. How many employees gave the maximum rating of 10?
+\paragraph{Experiment 0, ohne Datenbezug}
 
-4. Since employees who live far from work are clearly more likely to leave, what is the attrition rate for those with a DistanceFromHome above 20?
+\begin{quote}
+\ttfamily\small
+You are a data analyst answering questions about exploratory data analysis.
+Answer factually and precisely.
+\end{quote}
 
-5. The dataset contains a column indicating each employee's home country. Which country has the highest attrition rate?
+\paragraph{Experiment 1 und Experiment 2, mit Datensatz}
+
+\begin{quote}
+\ttfamily\small
+You are a data analyst answering questions about exploratory data analysis.
+Answer the user's questions about the provided dataset factually and precisely.
+\end{quote}
+
+Beide Formulierungen sind bewusst knapp gehalten. Sie benennen die Rolle und
+fordern eine sachliche, präzise Antwort, geben jedoch weder ein Vorgehen noch
+ein Antwortformat vor. Damit wird vermieden, dass die Prompt-Gestaltung selbst
+zu einer Einflussgröße auf das untersuchte Antwortverhalten wird.
 
 \chapter{Repository und ergänzende Materialien}
 \label{ch:Repository}

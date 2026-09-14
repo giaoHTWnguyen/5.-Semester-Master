@@ -61,50 +61,38 @@ Für die weitere Untersuchung erfüllt Experiment~0 damit seine Kontrollfunktion
 \subsection{Faktische Fragen (Kategorie A)}
 \label{subsec:ergebnisse-a}
 
-Die faktischen Fragen der Kategorie~A umfassen zehn Fragen mit eindeutig bestimmbarem Referenzwert, die je Modell in fünf Wiederholungen gestellt wurden. Bewertet wurde auf einer Skala von null bis zwei Punkten nach der in Tabelle~\ref{tab:rubrik-a} festgelegten Rubrik. Tabelle~\ref{tab:ergebnisse-a} weist für jede Frage den mittleren Punktwert über die fünf Wiederholungen sowie dessen Standardabweichung aus. Über alle Fragen erreicht GPT einen mittleren Punktwert von 1,96, Gemini einen mittleren Punktwert von 1,36. 
+Die faktischen Fragen der Kategorie~A umfassen zehn Fragen mit eindeutig bestimmbarem Referenzwert, die je Modell in fünf Wiederholungen gestellt wurden. Bewertet wurde auf einer Skala von null bis zwei Punkten nach der in Tabelle~\ref{tab:rubrik-a} festgelegten Rubrik. Tabelle~\ref{tab:ergebnisse-a} weist für jede Frage den berechneten Referenzwert sowie den mittleren Punktwert über die fünf Wiederholungen und dessen Standardabweichung aus. Über alle Fragen erreicht GPT einen mittleren Punktwert von 1,96, Gemini einen mittleren Punktwert von 1,36. 
 
 \begin{table}[htbp]
-    \centering
-    \small
-    \caption[Ergebnisse der faktischen Fragen (Kategorie A)]%
-    {Mittlerer Punktwert und Standardabweichung über fünf Wiederholungen je
-    Frage und Modell für die faktischen Fragen der Kategorie~A. Die Skala reicht
-    von null bis zwei Punkten.}
-    \label{tab:ergebnisse-a}
-    \renewcommand{\arraystretch}{1.2}
-    \begin{tabularx}{\textwidth}{
-        >{\raggedright\arraybackslash}p{2.2cm}
-        >{\raggedright\arraybackslash}X
-        >{\centering\arraybackslash}p{2.2cm}
-        >{\centering\arraybackslash}p{2.2cm}
-        >{\centering\arraybackslash}p{2.2cm}
-        >{\centering\arraybackslash}p{2.2cm}
-    }
-        \toprule
-        & &
-        \multicolumn{2}{c}{\textbf{gpt-5.6-luna}} &
-        \multicolumn{2}{c}{\textbf{gemini-3.6-flash}} \\
-        \cmidrule(lr){3-4}\cmidrule(lr){5-6}
-        \textbf{Frage} & \textbf{Ergebnistyp} &
-        \textbf{Mittel} & \textbf{SD} &
-        \textbf{Mittel} & \textbf{SD} \\
-        \midrule
-        A01 & Zählwert        & 2,00 & 0,00 & 0,40 & 0,89 \\
-        A02 & Mittelwert      & 2,00 & 0,00 & 2,00 & 0,00 \\
-        A03 & Median          & 2,00 & 0,00 & 1,60 & 0,89 \\
-        A04 & Anteil          & 2,00 & 0,00 & 0,80 & 0,45 \\
-        A05 & Mittelwert      & 2,00 & 0,00 & 2,00 & 0,00 \\
-        A06 & Zählwert        & 1,60 & 0,89 & 0,00 & 0,00 \\
-        A07 & Mittelwert      & 2,00 & 0,00 & 1,60 & 0,89 \\
-        A08 & Kategorial      & 2,00 & 0,00 & 1,20 & 1,10 \\
-        A09 & Kategorial      & 2,00 & 0,00 & 2,00 & 0,00 \\
-        A10 & Kategorial      & 2,00 & 0,00 & 2,00 & 0,00 \\
-        \midrule
-        \textbf{Gesamt} & & \textbf{1,96} & &
-        \textbf{1,36} & \\
-        \bottomrule
-    \end{tabularx}
+\centering
+\caption{Referenzwert, mittlerer Punktwert und Standardabweichung über fünf
+Wiederholungen je Frage und Modell für die faktischen Fragen der Kategorie~A.
+Die Skala reicht von null bis zwei Punkten.}
+\label{tab:kategorie-a-ergebnisse}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabularx}{\textwidth}{@{} l l >{\raggedright\arraybackslash}X r r r r @{}}
+\toprule
+& & & \multicolumn{2}{c}{\textbf{gpt-5.6-luna}} & \multicolumn{2}{c@{}}{\textbf{gemini-3.6-flash}} \\
+\cmidrule(l){4-5}\cmidrule(l){6-7}
+\textbf{Frage} & \textbf{Ergebnistyp} & \textbf{Referenzwert} &
+\textbf{Mittel} & \textbf{SD} & \textbf{Mittel} & \textbf{SD} \\
+\midrule
+A01 & Zählwert   & 1470                      & 2,00 & 0,00 & 0,40 & 0,89 \\
+A02 & Mittelwert & 6502,93                   & 2,00 & 0,00 & 2,00 & 0,00 \\
+A03 & Median     & 36                        & 2,00 & 0,00 & 1,60 & 0,89 \\
+A04 & Anteil     & 16,12\,\%                 & 2,00 & 0,00 & 0,80 & 0,45 \\
+A05 & Mittelwert & 11,28                     & 2,00 & 0,00 & 2,00 & 0,00 \\
+A06 & Zählwert   & 114                       & 1,60 & 0,89 & 0,00 & 0,00 \\
+A07 & Mittelwert & 9,19                      & 2,00 & 0,00 & 1,60 & 0,89 \\
+A08 & Kategorial & Sales                     & 2,00 & 0,00 & 1,20 & 1,10 \\
+A09 & Kategorial & höher bei Überstunden     & 2,00 & 0,00 & 2,00 & 0,00 \\
+A10 & Kategorial & Single                    & 2,00 & 0,00 & 2,00 & 0,00 \\
+\midrule
+\multicolumn{3}{@{}l}{\textbf{Gesamt}} & \textbf{1,96} & & \textbf{1,36} & \\
+\bottomrule
+\end{tabularx}
 \end{table}
+
 
 Die Unterschiede zwischen den Modellen und den einzelnen Fragen werden in Abbildung~\ref{fig:kategorie-a-ergebnisse} zusätzlich grafisch gegenübergestellt.
 

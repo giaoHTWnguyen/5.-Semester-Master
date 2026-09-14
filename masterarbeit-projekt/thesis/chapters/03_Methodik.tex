@@ -39,7 +39,7 @@ Ein bekanntes Problem solcher Verfahren besteht darin, dass sie eine für die An
 \label{sec:forschungsdesign}
 
 Die vorliegende Arbeit verfolgt ein empirisch-experimentelles Forschungsdesign mit dem Ziel, die Zuverlässigkeit und 
-Datentreue \gls{llm}-gestützter explorativer Datenanalyse unter kontrollierten Bedingungen systematisch zu untersuchen.
+Datenkonsistenz \gls{llm}-gestützter explorativer Datenanalyse unter kontrollierten Bedingungen systematisch zu untersuchen.
 
 Dazu werden die Ausgaben zweier \glspl{llm} mit rechnerisch ermittelten Referenzwerten verglichen, die auf Grundlage derselben Eingabedaten mit etablierten statistischen Methoden bestimmt werden. Durch unterschiedliche Aufgabenstellungen und Datenfassungen werden dabei verschiedene Aspekte der Datenanalyse gezielt geprüft.
 
@@ -387,9 +387,32 @@ Zur Unterstützung des Bewertungsprozesses wurden einzelne Modellantworten zusä
 \section{Durchführung}
 \label{sec:durchfuehrung}
 
-Die Experimente wurden über die Programmierschnittstellen (APIs) von OpenAI und Google durchgeführt. Verwendet wurden die Modelle \texttt{gpt-5.6-luna} (OpenAI) und\\ \texttt{gemini-3.6-flash} (Google) mit einem neutralen, englischen System-Prompt und einer Temperatur von~1, die bei GPT vorgegeben ist und bei Gemini entsprechend gesetzt wurde. Jede Anfrage wurde in einem eigenständigen Kontext gestellt. Die Antworten wurden sofort nach ihrer Erzeugung gespeichert, jeweils mit Modell, Frage-Kennung, Iteration, Token-Zahlen, Abschlussgrund und Zeitstempel. Ein Ausführungsskript mit Wiederaufnahme übersprang bei einem Neustart bereits erfolgreich beantwortete Kombinationen. Antworten, die auf technische Fehler der API zurückgingen, wurden nicht als inhaltliches Ergebnis gewertet, sondern erneut erhoben, um Übertragungsfehler nicht als inhaltliches Versagen des Modells irrtümlich zu interpretieren.
+Die Experimente wurden über die Programmierschnittstellen (APIs) von OpenAI und Google durchgeführt. Tabelle~\ref{tab:erhebungsparameter} fasst die Parameter der Erhebung zusammen, die für beide Modelle identisch gesetzt wurden.
 
-In den datenbezogenen Experimenten wurde der Datensatz als CSV-Text übergeben. Für GPT wurde er jeder Anfrage vorangestellt, für Gemini über einen Kontext-Cache bereitgestellt, sodass bei den einzelnen Anfragen nur die jeweilige Frage erneut gesendet werden musste. Inhaltlich stand damit beiden Modellen bei jeder Anfrage derselbe vollständige Datensatz zur Verfügung; die Verfahren unterschieden sich lediglich in der technischen Bereitstellung des wiederverwendeten Kontexts. Das Prompt-Caching erfolgte bei OpenAI automatisch als Präfix-Cache, bei Google über einen explizit angelegten Kontext-Cache. Dessen Lebensdauer wurde bei längeren Läufen auf 7200~Sekunden gesetzt, da ein vorzeitiges Ablaufen sonst zu einem Fehler wegen eines nicht mehr verfügbaren Caches während des Laufs führte. Die Übergabe des vollständigen Datensatzes umfasste rund 115.000~Token je Anfrage, die Antwortlänge war auf 8000~Token begrenzt.
+\begin{table}[htbp]
+\centering
+\caption{Konfiguration der Erhebung.}
+\label{tab:erhebungsparameter}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabularx}{\textwidth}{@{} l >{\raggedright\arraybackslash}X @{}}
+\toprule
+\textbf{Parameter} & \textbf{Einstellung} \\
+\midrule
+Modelle & \texttt{gpt-5.6-luna} (OpenAI), \texttt{gemini-3.6-flash} (Google) \\
+Temperatur & 1 \\
+Maximale Antwortlänge & 8000 Token \\
+System-Prompt & je Experiment festgelegt, für beide Modelle identisch (Anhang~\ref{sec:system-prompts}) \\
+Kontext & je Anfrage eigenständig; Datensatz als CSV-Text, rund 115.000 Token \\
+Bereitstellung & Präfix-Cache (OpenAI), expliziter Kontext-Cache mit 7200 Sekunden (Google) \\
+Wiederholungen & drei in Experiment~0, fünf in Experiment~1 und~2 \\
+Erhobene Antworten & 90 (E0), 200 (E1), 200 (E2), 3 (Kontrollabfrage) \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+Die Temperatur von~1 ist bei GPT vorgegeben und wurde bei Gemini entsprechend gesetzt, um beide Modelle unter denselben Bedingungen zu befragen. Jede Anfrage wurde in einem eigenständigen Kontext gestellt, sodass sich die Antworten nicht gegenseitig beeinflussen. Die Antworten wurden nach ihrer Erzeugung gespeichert, jeweils mit Modell, Frage-Kennung, Iteration, Token-Zahlen, Abschlussgrund und Zeitstempel. Ein Ausführungsskript mit Wiederaufnahme übersprang bei einem Neustart bereits erfolgreich beantwortete Kombinationen. Antworten, die auf technische Fehler der Programmierschnittstelle nicht vollständig oder nicht korrekt erhoben werden konnten, wurden nicht als inhaltliches Ergebnis gewertet, sondern erneut erhoben, um technische Fehler nicht als inhaltliches Versagen des Modells zu erfassen.
+
+Die beiden Anbieter unterscheiden sich in der technischen Bereitstellung des wiederverwendeten Kontexts: Bei OpenAI erfolgt das Prompt-Caching automatisch als Präfix-Cache, bei Google über einen explizit angelegten Kontext-Cache. Dessen Lebensdauer wurde bei längeren Läufen erhöht, da ein vorzeitiges Ablaufen sonst zu einem Fehler wegen eines nicht mehr verfügbaren Caches während des Laufs führte. Inhaltlich stand beiden Modellen bei jeder Anfrage derselbe vollständige Datensatz zur Verfügung.
 
 \subsection{Experiment 0}
 \label{exec:experiment0}
