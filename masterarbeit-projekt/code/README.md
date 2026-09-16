@@ -69,8 +69,9 @@ source .venv/bin/activate          # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-Im Projektverzeichnis eine Datei `.env` anlegen und die Zugangsdaten beider Anbieter
-eintragen. Die Datei enthält Geheimnisse und gehört nicht in die Versionsverwaltung.
+Die Datei `.env.example` nach `.env` kopieren und die eigenen Zugangsdaten
+eintragen. Benötigt werden `OPENAI_API_KEY` und `GOOGLE_API_KEY`. Die `.env`
+enthält Geheimnisse und gehört nicht in die Versionsverwaltung.
 
 ## Ablauf einer vollständigen Reproduktion
 
@@ -163,9 +164,46 @@ IBM HR Analytics Employee Attrition and Performance, ein öffentlich verfügbare
 erzeugter Datensatz mit 1470 Beobachtungen und 35 Variablen. Die Kündigungsquote liegt bei
 etwa 16 Prozent.
 
-## Hinweis
+## Zentrale Parameter
 
-Der Code dient der Reproduktion der in der Masterarbeit berichteten Ergebnisse. Anfragen an
-die Modelle verursachen Kosten beim jeweiligen Anbieter. Die gespeicherten Antworten in
-`results/` sind die Grundlage aller berichteten Auswertungen; ein erneuter Lauf erzeugt
-andere Antworten und reproduziert die berichteten Punktwerte nicht.
+Sämtliche Festlegungen der Untersuchung stehen als benannte Konstanten in `config.py` und werden von den Notebooks importiert. Die Notebooks setzen keine eigenen Werte. Wer einen Parameter verändern möchte, ändert ihn dort und nur dort.
+
+| Konstante            | Wert | Bedeutung                                                              |
+| -------------------- | ---- | ---------------------------------------------------------------------- |
+| `SEED`               | 42   | Zufalls-Seed der Permutation in Experiment 2                           |
+| `TARGET_YES_LEAVERS` | 33   | Zahl der Gekündigten, die der Gruppe mit Überstunden zugeordnet werden |
+| `TEMPERATURE`        | 1    | bei GPT vorgegeben, bei Gemini entsprechend gesetzt                    |
+| `MAX_OUTPUT_TOKENS`  | 8000 | maximale Antwortlänge                                                  |
+| `CACHE_TTL_SECONDS`  | 7200 | Lebensdauer des expliziten Kontext-Caches bei Google                   |
+| `ITERATIONS_EXP0`    | 3    | Wiederholungen in Experiment 0                                         |
+| `ITERATIONS_DATA`    | 5    | Wiederholungen in Experiment 1 und 2                                   |
+| `IQR_FACTOR`         | 1,5  | Schwellenwert der Ausreißerbestimmung                                  |
+| `N_BINS`             | 3    | quantilsbasierte Einteilung in niedrig, mittel, hoch                   |
+| `MIN_SUPPORT`        | 0,05 | Mindestsupport der Regelgenerierung                                    |
+| `MIN_IMPROVEMENT`    | 0,05 | Minimal Improvement nach Hammesfahr und Spott (2021)                   |
+| `TOLERANCE_FULL`     | 0,02 | relative Abweichung bis 2 %, volle Punktzahl                           |
+| `TOLERANCE_PARTIAL`  | 0,05 | relative Abweichung bis 5 %, ein Punkt                                 |
+
+Die Mindestkonfidenz der Regelgenerierung ist kein fester Wert, sondern wird
+als Median der Konfidenzen der Ausgangsregelmenge bestimmt.
+
+### Seed und Reproduzierbarkeit
+
+Die Manipulation in Experiment 2 ist der einzige Schritt mit einer
+Zufallskomponente. Sie ordnet die Spalte `OverTime` neu zu und lässt dabei
+beide Randverteilungen unverändert. Mit `SEED = 42` und
+`TARGET_YES_LEAVERS = 33` entsteht dieselbe Zuordnung bei jedem Lauf; die
+Kreuztabelle von `OverTime` und `Attrition` lässt sich als Kontrolle
+heranziehen und muss 850, 204, 383 und 33 ergeben.
+
+Die Anfragen an die Modelle sind demgegenüber nicht reproduzierbar, da beide
+mit einer Temperatur von 1 angefragt werden. Ein erneuter Lauf erzeugt andere
+Antworten und damit andere Punktwerte. Die in der Arbeit berichteten Ergebnisse
+beruhen auf den gespeicherten Antworten unter `results/`.
+
+### Bewertungsparameter
+
+`TOLERANCE_FULL` und `TOLERANCE_PARTIAL` dokumentieren die in der Arbeit
+festgelegten Toleranzbänder für die faktischen Fragen. Die Bewertung selbst
+erfolgt manuell in den Excel-Dateien unter `Bewertung/`; die Konstanten werden
+im Code nicht ausgewertet und stehen dort ausschließlich zur Dokumentation.
